@@ -1,6 +1,22 @@
 ---
-title: Welcome to Quartz
+title: synapse
 ---
 
-This is a blank Quartz installation.
-See the [documentation](https://quartz.jzhao.xyz) for how to get started.
+## サイトコンセプト：「synapse」
+
+「synapse」は、神経細胞（ニューロン）間の接合部であり、情報伝達が行われる場所です。
+
+このウェブサイトでは、個々の知識（ノート）がニューロンのように存在し、それらが相互にリンクすることで、ソフトウェアエンジニアリングや周辺領域に関する広範な知識ネットワークを形成します。
+
+このシナプスを通じて知識を探索し、新たな発見や理解を深めることを目指します。
+
+![[og-image.png]]
+
+## 主要カテゴリ
+
+- [[001. 礎 (Foundations) - 基礎知識]]
+- [[002. 匠 (Craftsmanship) - 開発技術と実践]]
+- [[003. 域 (Domains) - 専門分野]]
+- [[004. 創 (Creation) - 製品開発と価値創造]]
+- [[005. 具 (Tools & Environments) - ツールと環境]]
+- [[006. 道 (Pathways) - キャリアと学習]]
