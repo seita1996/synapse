@@ -2,6 +2,7 @@
 tags:
   - moc
 enableToc: "true"
+permalink: moc/data-structures
 ---
 ## 概要
 - [[データ構造とは (コンピュータ科学における役割)]]

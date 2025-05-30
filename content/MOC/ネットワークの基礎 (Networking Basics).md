@@ -1,0 +1,382 @@
+---
+tags:
+  - moc
+enableToc: "true"
+draft: "false"
+permalink: moc/network-basics
+---
+## 1. [[ネットワークの基本概念 MOC]]
+   - **ネットワークの定義と目的**
+      - [[コンピュータネットワークとは (複数のコンピュータやデバイスの接続)]]
+      - [[ネットワークの目的 (リソース共有、情報伝達、負荷分散、信頼性向上)]]
+      - [[ネットワークの利点と欠点]]
+   - **ネットワークの種類 (分類)**
+      - **規模による分類**
+         - [[LAN (Local Area Network) / ローカルエリアネットワーク]]
+         - [[WAN (Wide Area Network) / 広域ネットワーク]]
+         - [[MAN (Metropolitan Area Network) / 都市圏ネットワーク]]
+         - [[PAN (Personal Area Network) / パーソナルエリアネットワーク]] (例: Bluetooth)
+      - **接続形態・利用形態による分類**
+         - [[イントラネット (Intranet)]]
+         - [[エクストラネット (Extranet)]]
+         - [[VPN (Virtual Private Network) / 仮想プライベートネットワーク]]
+         - [[インターネット (Internet)]]
+   - **ネットワークトポロジ (Network Topology)**
+      - [[ネットワークトポロジとは (物理的または論理的な接続形態)]]
+      - [[バス型トポロジ (Bus Topology)]]
+      - [[スター型トポロジ (Star Topology)]]
+      - [[リング型トポロジ (Ring Topology)]]
+      - [[メッシュ型トポロジ (Mesh Topology)]] (フルメッシュ、パーシャルメッシュ)
+      - [[ツリー型トポロジ (Tree Topology)]]
+      - [[ハイブリッド型トポロジ (Hybrid Topology)]]
+      - [[各トポロジの特徴、利点、欠点]]
+   - **データ通信の基礎**
+      - [[データ (Data) と信号 (Signal)]]
+      - [[アナログ信号 (Analog Signal) とデジタル信号 (Digital Signal)]]
+      - [[データ伝送 (Data Transmission)]]
+         - [[アナログ伝送とデジタル伝送]]
+      - [[帯域幅 (Bandwidth)]] (ヘルツ単位とビット/秒単位)
+      - [[スループット (Throughput)]]
+      - [[遅延 (Latency / Delay)]] (伝播遅延、伝送遅延、キューイング遅延、処理遅延)
+      - [[ジッタ (Jitter)]] (遅延のばらつき)
+      - [[ビットレート (Bit Rate) とボーレート (Baud Rate)]]
+   - **通信方式 (Communication Modes)**
+      - [[単方向通信 (Simplex Communication)]]
+      - [[半二重通信 (Half-duplex Communication)]]
+      - [[全二重通信 (Full-duplex Communication)]]
+   - **ネットワーク標準化団体** (ISO, IEEE, IETF, W3Cなど - 概要)
+
+## 2. [[ネットワークモデルと階層化 MOC]]
+   - **階層化アーキテクチャの原則**
+      - [[なぜネットワークアーキテクチャを階層化するのか (複雑性の管理、標準化、モジュール性)]]
+      - [[各層の役割とインターフェース]]
+      - [[プロトコル (Protocol) とは (通信規約)]]
+      - [[サービス (Service) とは (下位層が上位層に提供する機能)]]
+      - [[カプセル化 (Encapsulation) と非カプセル化 (Decapsulation)]]
+      - [[PDU (Protocol Data Unit) と SDU (Service Data Unit)]] (ヘッダ、ペイロード、トレーラ)
+   - **[[OSI参照モデル (OSI Reference Model) MOC]]**
+      - [[OSI参照モデルの7階層構造の概要]]
+      - **[[物理層 (Physical Layer - Layer 1) - OSI]]**
+         - [[物理層の機能 (ビットの伝送、物理的接続)]]
+      - **[[データリンク層 (Data Link Layer - Layer 2) - OSI]]**
+         - [[データリンク層の機能 (フレーミング、物理アドレッシング、フロー制御、エラー制御、アクセスコントロール)]]
+      - **[[ネットワーク層 (Network Layer - Layer 3) - OSI]]**
+         - [[ネットワーク層の機能 (論理アドレッシング、ルーティング)]]
+      - **[[トランスポート層 (Transport Layer - Layer 4) - OSI]]**
+         - [[トランスポート層の機能 (エンドツーエンドの信頼性のある通信、フロー制御、エラー制御)]]
+      - **[[セッション層 (Session Layer - Layer 5) - OSI]]**
+         - [[セッション層の機能 (対話制御、同期)]]
+      - **[[プレゼンテーション層 (Presentation Layer - Layer 6) - OSI]]**
+         - [[プレゼンテーション層の機能 (データ表現形式の変換、暗号化、圧縮)]]
+      - **[[アプリケーション層 (Application Layer - Layer 7) - OSI]]**
+         - [[アプリケーション層の機能 (ユーザーインターフェース、特定のアプリケーションプロトコル)]]
+   - **[[TCP/IPプロトコルスイート (TCP/IP Protocol Suite) MOC]]**
+      - [[TCP/IPモデルの階層構造 (4層または5層モデル)]]
+         - [[リンク層 (Link Layer) / ネットワークインターフェース層 (Network Interface Layer)]]
+         - [[インターネット層 (Internet Layer)]]
+         - [[トランスポート層 (Transport Layer)]]
+         - [[アプリケーション層 (Application Layer)]]
+      - [[TCP/IPにおける各層の主要プロトコル]]
+   - **[[OSI参照モデルとTCP/IPモデルの比較 MOC]]**
+      - [[類似点と相違点]]
+      - [[各モデルの利点と欠点]]
+
+## 3. [[物理層 (Physical Layer - Layer 1) 詳細 MOC]]
+   - **伝送媒体 (Transmission Media)**
+      - **有線媒体 (Guided Media)**
+         - [[ツイストペアケーブル (Twisted Pair Cable)]] (UTP, STP, カテゴリ分類)
+         - [[同軸ケーブル (Coaxial Cable)]]
+         - [[光ファイバーケーブル (Fiber Optic Cable)]] (シングルモード、マルチモード、利点と欠点)
+      - **無線媒体 (Unguided Media)**
+         - [[電波 (Radio Waves)]] (ラジオ、テレビ、携帯電話、Wi-Fi、Bluetooth)
+         - [[マイクロ波 (Microwaves)]] (地上マイクロ波、衛星マイクロ波)
+         - [[赤外線 (Infrared)]]
+   - **デジタル伝送 (Digital Transmission)**
+      - [[デジタル信号の利点]]
+      - **[[ラインコーディング (Line Coding)]]** (ビット列をデジタル信号に変換)
+         - [[NRZ (Non-Return-to-Zero)方式]] (NRZ-L, NRZ-I)
+         - [[RZ (Return-to-Zero)方式]]
+         - [[マンチェスタ符号 (Manchester Coding)]]
+         - [[差動マンチェスタ符号 (Differential Manchester Coding)]]
+         - [[(オプション) AMI (Alternate Mark Inversion), B8ZS, HDB3]]
+      - [[ブロックコーディング (Block Coding)]] (例: 4B/5B, 8B/10B)
+   - **アナログ伝送 (Analog Transmission)**
+      - [[アナログ信号の伝送 (変調の必要性)]]
+      - **[[変調 (Modulation)]]** (デジタルデータをアナログ信号に変換)
+         - [[振幅偏移変調 (ASK - Amplitude Shift Keying)]]
+         - [[周波数偏移変調 (FSK - Frequency Shift Keying)]]
+         - [[位相偏移変調 (PSK - Phase Shift Keying)]] (BPSK, QPSK)
+         - [[直交振幅変調 (QAM - Quadrature Amplitude Modulation)]]
+      - [[(オプション) パルス符号変調 (PCM - Pulse Code Modulation)]] (アナログ信号をデジタルデータに変換)
+   - **多重化 (Multiplexing)**
+      - [[多重化とは (複数の信号を単一の伝送路で共有)]]
+      - **[[周波数分割多重化 (FDM - Frequency Division Multiplexing)]]**
+      - **[[時分割多重化 (TDM - Time Division Multiplexing)]]**
+         - [[同期TDM (Synchronous TDM)]]
+         - [[統計的TDM (STDM - Statistical TDM / Asynchronous TDM)]]
+      - **[[波長分割多重化 (WDM - Wavelength Division Multiplexing)]]** (光ファイバー)
+         - [[DWDM (Dense WDM)]]
+      - **[[符号分割多重アクセス (CDMA - Code Division Multiple Access)]]** (概念)
+   - **物理層デバイス**
+      - [[リピータ (Repeater)]]
+      - [[ハブ (Hub)]]
+      - [[ネットワークインターフェースカード (NIC - Network Interface Card) / ネットワークアダプタ]]
+      - [[モデム (Modem)]]
+      - [[トランシーバ (Transceiver)]]
+
+## 4. [[データリンク層 (Data Link Layer - Layer 2) 詳細 MOC]]
+   - **データリンク層の機能と役割**
+   - **フレーミング (Framing)**
+      - [[フレームとは (ビットストリームを管理可能な単位に分割)]]
+      - [[固定長フレーミングと可変長フレーミング]]
+      - **フレーミング手法**
+         - [[文字数カウント (Character Count)]]
+         - [[文字スタッフィング (Character Stuffing / Byte Stuffing)]] (例: PPPのDLE STX, DLE ETX)
+         - [[ビットスタッフィング (Bit Stuffing)]] (例: HDLC, SONET)
+         - [[物理層コーディング違反を利用したフレーミング]]
+   - **物理アドレッシング (Physical Addressing)**
+      - **[[MACアドレス (Media Access Control Address)]]**
+         - [[MACアドレスの構造 (OUI, NIC固有番号)]]
+         - [[ユニキャスト、マルチキャスト、ブロードキャストMACアドレス]]
+   - **フロー制御 (Flow Control)** (データリンク層レベル)
+      - [[送信者と受信者の速度調整]]
+      - **[[ストップアンドウェイトARQ (Stop-and-Wait ARQ)]]**
+      - **[[スライディングウィンドウARQ (Sliding Window ARQ)]]**
+         - [[ゴーバックN ARQ (Go-Back-N ARQ)]]
+         - [[セレクティブリピートARQ (Selective Repeat ARQ / Selective Reject ARQ)]]
+   - **エラー制御 (Error Control)** (データリンク層レベル)
+      - [[エラーの種類 (シングルビットエラー、バーストエラー)]]
+      - **エラー検出 (Error Detection)**
+         - [[パリティチェック (Parity Check)]] (垂直パリティ、水平パリティ、2次元パリティ)
+         - [[チェックサム (Checksum)]] (例: インターネットチェックサム)
+         - [[巡回冗長検査 (CRC - Cyclic Redundancy Check)]]
+            - [[CRCの生成多項式と計算方法]]
+      - **エラー訂正 (Error Correction)**
+         - [[ハミング符号 (Hamming Code)]]
+         - [[前方誤り訂正 (FEC - Forward Error Correction)]]
+   - **メディアアクセス制御 (MAC - Media Access Control) サブレイヤ**
+      - [[MACサブレイヤの役割 (共有メディアへのアクセス制御)]]
+      - **ランダムアクセスプロトコル (Random Access Protocols / Contention-based Protocols)**
+         - [[ALOHAプロトコル (Pure ALOHA, Slotted ALOHA)]]
+         - **[[CSMA (Carrier Sense Multiple Access) /搬送波感知多重アクセス]]**
+            - [[CSMAのパーシステンス戦略 (1-persistent, non-persistent, p-persistent)]]
+         - **[[CSMA/CD (Carrier Sense Multiple Access with Collision Detection)]]** (有線LAN/イーサネット)
+            - [[CSMA/CDの衝突検出とバックオフアルゴリズム (Binary Exponential Backoff)]]
+         - **[[CSMA/CA (Carrier Sense Multiple Access with Collision Avoidance)]]** (無線LAN/Wi-Fi)
+            - [[CSMA/CAの衝突回避メカニズム (RTS/CTS, ACK, NAV)]]
+      - **制御アクセスプロトコル (Controlled Access Protocols)**
+         - [[ポーリング (Polling)]]
+         - [[トークンパッシング (Token Passing)]] (例: トークンリング, トークンバス)
+      - **チャネライゼーションプロトコル (Channelization Protocols / Channel Partitioning Protocols)**
+         - [[FDMA (Frequency Division Multiple Access)]]
+         - [[TDMA (Time Division Multiple Access)]]
+         - [[CDMA (Code Division Multiple Access)]]
+   - **[[イーサネット (Ethernet - IEEE 802.3) MOC]]**
+      - [[イーサネットの歴史と標準]]
+      - [[イーサネットフレームフォーマット (Preamble, SFD, DA, SA, Type/Length, Data, FCS)]]
+      - [[イーサネットの物理層規格 (10BASE-T, 100BASE-TX, 1000BASE-T, 10GBASE-Tなど)]]
+      - [[イーサネットスイッチ (L2スイッチ) の動作 (学習、フィルタリング、フォワーディング)]]
+   - **[[無線LAN (WLAN - IEEE 802.11 / Wi-Fi) MOC]]**
+      - [[無線LANのアーキテクチャ (BSS, ESS, IBSS/Ad hoc)]]
+      - [[IEEE 802.11の物理層規格 (802.11a, b, g, n, ac, ax/Wi-Fi 6, be/Wi-Fi 7)]]
+      - [[IEEE 802.11のMACサブレイヤ (DCF, PCF)]]
+      - [[無線LANのセキュリティ (WEP, WPA, WPA2, WPA3)]]
+   - **データリンク層デバイス**
+      - [[ブリッジ (Bridge)]]
+      - [[スイッチ (Switch / L2スイッチ)]]
+   - **[[VLAN (Virtual LAN) / 仮想LAN MOC]]**
+      - [[VLANの概念と利点 (ブロードキャストドメインの分割、セキュリティ向上)]]
+      - [[タグVLAN (IEEE 802.1Q)]]
+   - **[[(オプション) PPP (Point-to-Point Protocol)]]** (ダイヤルアップ、WAN接続)
+   - **[[(オプション) HDLC (High-Level Data Link Control)]]**
+   - **[[(オプション) ATM (Asynchronous Transfer Mode)]]**
+   - **[[(オプション) MPLS (Multiprotocol Label Switching)]]** (L2.5技術)
+
+## 5. [[ネットワーク層 (Network Layer - Layer 3) 詳細 MOC]]
+   - **ネットワーク層の機能と役割** (ホスト間のデータ配信)
+   - **論理アドレッシング (Logical Addressing)**
+      - **[[IPアドレス (Internet Protocol Address)]]**
+         - **[[IPv4アドレス (Internet Protocol version 4) MOC]]**
+            - [[IPv4アドレスの構造 (32ビット、ドット付き10進表記)]]
+            - [[IPv4アドレスクラス (クラスA, B, C, D, E)]] (歴史的)
+            - [[プライベートIPアドレスとパブリックIPアドレス]]
+            - **[[サブネット化 (Subnetting)]]**
+               - [[サブネットマスク]]
+               - [[サブネット化の目的と手順]]
+            - **[[CIDR (Classless Inter-Domain Routing) / クラスレスアドレッシング]]**
+               - [[プレフィックス長表記 (例: /24)]]
+            - **[[(オプション) VLSM (Variable Length Subnet Masking)]]**
+         - **[[IPv6アドレス (Internet Protocol version 6) MOC]]**
+            - [[IPv6の必要性と利点 (アドレス空間枯渇対策、セキュリティ向上など)]]
+            - [[IPv6アドレスの構造 (128ビット、コロン付き16進表記、省略記法)]]
+            - [[IPv6アドレスの種類 (ユニキャスト、マルチキャスト、エニーキャスト)]]
+            - [[IPv6のヘッダフォーマット]]
+            - [[IPv4からIPv6への移行技術 (デュアルスタック、トンネリング、トランスレーション)]]
+   - **ルーティング (Routing)**
+      - [[フォワーディング (Forwarding) とルーティング (Routing) の違い]]
+      - [[ルーティングテーブル (Routing Table)]] (宛先ネットワーク、ネクストホップ、メトリックなど)
+      - [[スタティックルーティング (Static Routing)]]
+      - [[ダイナミックルーティング (Dynamic Routing)]]
+      - **[[ルーティングアルゴリズム MOC]]**
+         - **経路制御プロトコル (Routing Protocols) の分類** (IGP/EGP, 距離ベクトル型/リンクステート型)
+         - **距離ベクトル型ルーティングアルゴリズム (Distance Vector Routing Algorithm)**
+            - [[ベルマン・フォードアルゴリズムの応用]]
+            - [[RIP (Routing Information Protocol)]]
+            - [[(オプション) IGRP/EIGRP (Cisco独自)]]
+            - [[無限カウント問題と解決策 (スプリットホライズン、ポイズンリバース)]]
+         - **リンクステート型ルーティングアルゴリズム (Link State Routing Algorithm)**
+            - [[ダイクストラアルゴリズムの応用]]
+            - [[OSPF (Open Shortest Path First)]]
+            - [[IS-IS (Intermediate System to Intermediate System)]]
+         - **パスベクトル型ルーティングプロトコル (Path Vector Routing Protocol)**
+            - [[BGP (Border Gateway Protocol)]] (インターネットの基幹ルーティング)
+      - **[[(オプション)階層的ルーティング (Hierarchical Routing)]]** (AS - Autonomous System)
+   - **[[インターネットプロトコル (IP - Internet Protocol) MOC]]**
+      - [[IPの役割 (コネクションレス、ベストエフォート型配信)]]
+      - [[IPデータグラムフォーマット (IPv4ヘッダ、IPv6ヘッダ)]]
+      - [[IPフラグメンテーション (Fragmentation) と再構成 (Reassembly)]]
+      - [[TTL (Time To Live) / ホップリミット]]
+   - **[[ICMP (Internet Control Message Protocol) MOC]]**
+      - [[ICMPの役割 (エラー報告、制御メッセージ)]]
+      - [[ICMPメッセージの種類 (エコー要求/応答 - ping, 宛先到達不能, 時間超過など)]]
+      - [[traceroute (tracert) の仕組み (ICMPとTTLを利用)]]
+      - [[ICMPv6]]
+   - **[[ARP (Address Resolution Protocol) MOC]]**
+      - [[ARPの役割 (IPアドレスからMACアドレスへの解決)]]
+      - [[ARPキャッシュとARP要求/応答]]
+   - **[[RARP (Reverse Address Resolution Protocol) MOC]]** (歴史的、DHCPに代替)
+   - **ネットワーク層デバイス**
+      - [[ルータ (Router)]]
+      - [[L3スイッチ (Layer 3 Switch)]]
+   - **[[(オプション) NAT (Network Address Translation) MOC]]**
+      - [[NATの仕組みと種類 (スタティックNAT、ダイナミックNAT、NAPT/PAT/IPマスカレード)]]
+      - [[NATの利点と欠点 (IPv4延命、セキュリティ、エンドツーエンド接続性の問題)]]
+   - **[[(オプション) DHCP (Dynamic Host Configuration Protocol) MOC]]** (IPアドレス自動割り当て) - (アプリケーション層プロトコルだがネットワーク層と密接)
+
+## 6. [[トランスポート層 (Transport Layer - Layer 4) 詳細 MOC]]
+   - **トランスポート層の機能と役割** (プロセス間通信の実現)
+   - **サービスポイントアドレッシング (Service Point Addressing / Port Addressing)**
+      - **[[ポート番号 (Port Number)]]**
+         - [[ポート番号の範囲 (ウェルノウンポート、登録済みポート、ダイナミック/プライベートポート)]]
+         - [[ソケットアドレス (IPアドレス + ポート番号)]]
+   - **セグメンテーションと再構成 (Segmentation and Reassembly)**
+   - **コネクション制御 (Connection Control)** (コネクション指向サービスの場合)
+   - **フロー制御 (Flow Control)** (トランスポート層レベル)
+   - **エラー制御 (Error Control)** (トランスポート層レベル)
+   - **[[UDP (User Datagram Protocol) MOC]]**
+      - [[UDPの特徴 (コネクションレス、非信頼性、低オーバーヘッド)]]
+      - [[UDPデータグラムフォーマット (ヘッダ構造)]]
+      - [[UDPチェックサム]]
+      - [[UDPの利用例 (DNS, DHCP, SNMP, VoIP, オンラインゲーム)]]
+   - **[[TCP (Transmission Control Protocol) MOC]]**
+      - [[TCPの特徴 (コネクション指向、信頼性、順序保証、ストリーム指向)]]
+      - [[TCPセグメントフォーマット (ヘッダ構造)]]
+      - **TCPコネクション管理**
+         - [[TCPコネクション確立 (3ウェイハンドシェイク: SYN, SYN-ACK, ACK)]]
+         - [[TCPコネクション解放 (FIN, ACK)]] (4ウェイハンドシェイク、ハーフクローズ)
+      - **TCPの信頼性確保メカニズム**
+         - [[シーケンス番号と確認応答番号 (ACK番号)]]
+         - [[肯定応答 (Acknowledgement - ACK)]]
+         - [[タイムアウトと再送 (Retransmission)]]
+            - [[RTO (Retransmission Timeout) の計算 (RTTの推定)]]
+      - **TCPフロー制御**
+         - [[スライディングウィンドウプロトコル (TCP版)]]
+         - [[受信ウィンドウ (rwnd)]]
+      - **TCP輻輳制御 (Congestion Control)**
+         - [[輻輳とは (ネットワークの混雑)]]
+         - [[輻輳ウィンドウ (cwnd)]]
+         - **TCP輻輳制御アルゴリズム**
+            - [[スロースタート (Slow Start)]]
+            - [[輻輳回避 (Congestion Avoidance)]] (AIMD: Additive Increase, Multiplicative Decrease)
+            - [[高速再送 (Fast Retransmit)]] (3つの重複ACK)
+            - [[高速回復 (Fast Recovery)]]
+            - [[(オプション) TCP Tahoe, Reno, NewReno, Vegas, CUBIC]]
+      - [[TCPの利用例 (HTTP/HTTPS, FTP, SMTP, Telnet/SSH)]]
+   - **[[(オプション) SCTP (Stream Control Transmission Protocol) MOC]]**
+      - [[SCTPの特徴 (マルチストリーミング、マルチホーミング)]]
+
+## 7. [[(概要) 上位層 (セッション層、プレゼンテーション層、アプリケーション層) MOC]]
+   - **[[セッション層 (Session Layer - Layer 5) の役割と機能 (OSIモデル)]]**
+      - [[対話制御 (Dialog Control)]] (単方向、半二重、全二重)
+      - [[同期点 (Synchronization Points)]]
+   - **[[プレゼンテーション層 (Presentation Layer - Layer 6) の役割と機能 (OSIモデル)]]**
+      - [[データ表現形式の変換 (エンコーディング/デコーディング)]] (例: ASCII, EBCDIC, ASN.1)
+      - [[暗号化 (Encryption) と復号 (Decryption)]]
+      - [[データ圧縮 (Data Compression)]]
+   - **[[アプリケーション層 (Application Layer - Layer 7) の役割と機能]]**
+      - [[ユーザーとの直接的なインターフェース提供]]
+      - [[ネットワークアプリケーションの基盤]]
+
+## 8. [[代表的なアプリケーション層プロトコル MOC]]
+   - **[[DNS (Domain Name System) MOC]]**
+      - [[DNSの役割 (ドメイン名とIPアドレスの相互変換)]]
+      - [[DNSの名前空間 (階層構造)]]
+      - [[DNSサーバの種類 (ルートサーバ、トップレベルドメイン(TLD)サーバ、権威DNSサーバ、キャッシュDNSサーバ/リゾルバ)]]
+      - [[DNSクエリの種類 (再帰的問い合わせ、反復的問い合わせ)]]
+      - [[DNSレコードの種類 (A, AAAA, CNAME, MX, NS, PTR, SOAなど)]]
+      - [[DNSキャッシュ]]
+   - **[[HTTP (Hypertext Transfer Protocol) / HTTPS (HTTP Secure) MOC]]**
+      - [[HTTPの役割 (Webコンテンツの転送)]]
+      - [[HTTPリクエストとHTTPレスポンスのメッセージ構造]]
+      - [[HTTPメソッド (GET, POST, PUT, DELETEなど)]]
+      - [[HTTPステータスコード (200 OK, 404 Not Found, 500 Internal Server Errorなど)]]
+      - [[HTTPのコネクション (非永続的HTTP, 永続的HTTP)]]
+      - [[HTTPSの仕組み (HTTP + SSL/TLSによる暗号化)]]
+      - [[Cookieとセッション管理]]
+      - [[(オプション) HTTP/2, HTTP/3 (QUIC)]]
+   - **電子メールプロトコル**
+      - **[[SMTP (Simple Mail Transfer Protocol) MOC]]** (メール送信)
+      - **[[POP3 (Post Office Protocol version 3) MOC]]** (メール受信)
+      - **[[IMAP (Internet Message Access Protocol) MOC]]** (メール受信・管理)
+      - [[MIME (Multipurpose Internet Mail Extensions)]]
+   - **[[FTP (File Transfer Protocol) MOC]]**
+      - [[FTPの役割 (ファイル転送)]]
+      - [[FTPのコネクション (制御コネクション、データコネクション)]]
+      - [[アクティブモードとパッシブモード]]
+   - **[[Telnet / SSH (Secure Shell) MOC]]**
+      - [[Telnet (リモートログイン、非暗号化)]]
+      - [[SSH (セキュアなリモートログイン、暗号化、ポートフォワーディング)]]
+   - **[[DHCP (Dynamic Host Configuration Protocol) MOC]]** (再掲、アプリケーション層としての詳細)
+      - [[DHCPの役割 (IPアドレス等の自動割り当て)]]
+      - [[DHCPの動作 (Discover, Offer, Request, Acknowledge - DORA)]]
+   - **[[(オプション) NTP (Network Time Protocol)]]** (時刻同期)
+   - **[[(オプション) SNMP (Simple Network Management Protocol)]]** (ネットワーク管理)
+
+## 9. [[ネットワークセキュリティの基礎 MOC]]
+   - **ネットワークセキュリティのCIA (機密性、完全性、可用性)**
+   - **一般的なネットワーク脅威**
+      - [[盗聴 (Eavesdropping / Sniffing)]]
+      - [[なりすまし (Spoofing)]] (IPスプーフィング、MACスプーフィング、DNSスプーフィング)
+      - [[サービス妨害攻撃 (DoS - Denial of Service)]] (例: SYNフラッド、Ping of Death)
+      - [[分散サービス妨害攻撃 (DDoS - Distributed Denial of Service)]]
+      - [[中間者攻撃 (MitM - Man-in-the-Middle Attack)]]
+      - [[マルウェア (Malware) のネットワーク経由の拡散]]
+   - **基本的なセキュリティ対策技術**
+      - **[[ファイアウォール (Firewall) MOC]]**
+         - [[ファイアウォールの種類 (パケットフィルタリング、ステートフルインスペクション、プロキシサーバ、アプリケーションゲートウェイ)]]
+      - **[[侵入検知システム (IDS - Intrusion Detection System) / 侵入防止システム (IPS - Intrusion Prevention System) MOC]]**
+      - **[[VPN (Virtual Private Network) MOC]]** (再掲、セキュリティ観点)
+         - [[VPNプロトコル (PPTP, L2TP/IPsec, OpenVPN, SSL-VPN)]]
+      - **暗号化技術のネットワークへの応用**
+         - [[SSL (Secure Sockets Layer) / TLS (Transport Layer Security)]]
+         - [[IPsec (Internet Protocol Security)]]
+         - [[WEP, WPA, WPA2, WPA3]] (無線LANセキュリティ)
+      - [[認証 (Authentication)、認可 (Authorization)、アカウンティング (Accounting) - AAA]]
+   - **セキュアなネットワーク設計の原則**
+
+## 10. [[(概要) 現代のネットワークトピックと将来展望 MOC]]
+   - **[[Software-Defined Networking (SDN) MOC]]**
+      - [[SDNの概念 (コントロールプレーンとデータプレーンの分離)]]
+      - [[OpenFlowプロトコル]]
+   - **[[Network Function Virtualization (NFV) MOC]]**
+      - [[NFVの概念 (ネットワーク機能の仮想化)]]
+   - **[[Content Delivery Network (CDN) MOC]]**
+      - [[CDNの仕組みと利点]]
+   - **[[IoT (Internet of Things) ネットワーキング MOC]]**
+      - [[IoTネットワークの課題 (省電力、多数デバイス接続、セキュリティ)]]
+      - [[LPWA (Low Power Wide Area) ネットワーク]] (LoRaWAN, Sigfox, NB-IoTなど)
+   - **[[5Gネットワーキング MOC]]**
+      - [[5Gの特徴 (超高速・大容量、超低遅延、多数同時接続)]]
+      - [[5Gのネットワークアーキテクチャ (ネットワークスライシングなど)]]
+   - **[[(概要) クラウドネットワーキング]]** (VPC, ロードバランサなど)
+   - **[[(概要) ゼロトラストネットワーク]]**

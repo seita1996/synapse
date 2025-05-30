@@ -1,0 +1,267 @@
+---
+tags:
+  - moc
+enableToc: "true"
+draft: "false"
+permalink: moc/logic
+---
+## 1. [[論理学の導入と基本概念 MOC]]
+   - **論理学とは何か**
+      - [[論理学の定義 (妥当な推論と論証の研究)]]
+      - [[論理学の目的 (真理の探求、思考の明晰化、矛盾の排除)]]
+      - [[形式論理学 (Formal Logic) と非形式論理学 (Informal Logic)]]
+      - [[演繹論理 (Deductive Logic) と帰納論理 (Inductive Logic)]]
+      - [[論理学の重要性 (哲学、数学、コンピュータサイエンス、言語学、認知科学)]]
+   - **論理学の主要分野概観** (命題論理、述語論理、様相論理、証明論、モデル理論など)
+   - **論理学の歴史的概観**
+      - [[アリストテレス論理学 (三段論法、カテゴリー論)]]
+      - [[ストア派論理学]]
+      - [[中世スコラ哲学における論理学]]
+      - [[ライプニッツと普遍記号、推論計算]]
+      - **[[近代論理学の成立 (ブール、フレーゲ、ラッセル、ホワイトヘッド)]]**
+         - [[ジョージ・ブールと論理代数]]
+         - [[ゴットロープ・フレーゲと概念記法、述語論理の創始]]
+         - [[バートランド・ラッセルとアルフレッド・ノース・ホワイトヘッドの『プリンキピア・マテマティカ』]]
+      - [[20世紀の論理学の発展 (ゲーデル、タルスキ、チューリング)]]
+
+## 2. [[命題論理 (Propositional Logic / Sentential Logic) MOC]]
+   - **命題論理の基本要素**
+      - **[[命題 (Proposition) とその性質]]** (真偽値を持つ文)
+      - [[単純命題と複合命題]]
+      - [[命題変数 (Propositional Variables)]]
+   - **[[論理結合子 (Logical Connectives) と真理関数 (Truth Functions) MOC]]**
+      - **[[否定 (Negation - `¬`, `~`)]]** とその真理値表
+      - **[[論理積 (Conjunction - `∧`, `&`)]]** とその真理値表
+      - **[[論理和 (Disjunction - `∨`, `|`)]]** (包含的) とその真理値表
+      - **[[含意 (Material Implication / Conditional - `→`, `⇒`)]]**
+         - [[含意の真理値表と「実質含意のパラドックス」]]
+         - [[前件 (Antecedent) と後件 (Consequent)]]
+         - [[含意の様々な表現 (十分条件、必要条件)]]
+      - **[[同値 (Material Equivalence / Biconditional - `↔`, `⇔`)]]** とその真理値表
+      - **[[排他的論理和 (Exclusive OR - `⊕`, `XOR`)]]**
+      - **[[NAND (Sheffer Stroke - `↑`) と NOR (Peirce's Arrow - `↓`)]]** (完全性)
+         - [[NAND/NORによる他の結合子の表現]]
+   - **[[整形式論理式 (Well-formed Formula - WFF) MOC]]**
+      - [[WFFの再帰的定義]]
+      - [[構文木 (Parse Tree) / 形成木]]
+      - [[主結合子 (Main Connective)]]
+      - [[部分論理式 (Subformula)]]
+   - **[[真理値表 (Truth Tables) と論理式の評価 MOC]]**
+      - [[真理値割り当て (Truth Assignment / Valuation)]]
+      - [[トートロジー (Tautology / 恒真式)]]
+      - [[矛盾 (Contradiction / 恒偽式)]]
+      - [[充足可能論理式 (Satisfiable Formula) と非充足可能論理式 (Unsatisfiable Formula)]]
+      - [[論理的帰結 (Logical Consequence / Semantic Consequence - `⊨`)]]
+         - [[前提の集合から結論が論理的に導かれることの定義]]
+      - [[論理的同値 (Logical Equivalence - `≡` or `⇔` in meta-language)]]
+         - **[[主要な論理同値法則のリストと証明]]** (ド・モルガン、分配法則、結合法則など - 再掲・詳述)
+         - [[標準形 (Normal Forms)]]
+            - **[[選言標準形 (DNF - Disjunctive Normal Form)]]** と主選言標準形 (PDNF)
+            - **[[連言標準形 (CNF - Conjunctive Normal Form)]]** と主連言標準形 (PCNF)
+            - [[標準形への変換アルゴリズム]]
+   - **[[推論体系 (Deductive Systems / Proof Systems) MOC]]** (命題論理)
+      - **公理的体系 (Axiomatic System)**
+         - [[公理 (Axioms) と推論規則 (Rules of Inference)]]
+         - [[証明 (Proof / Derivation - `⊢`)]]
+         - [[定理 (Theorem)]]
+         - [[(例) ヒルベルト流の公理系]]
+      - **自然演繹 (Natural Deduction)**
+         - [[仮定の導入と解消]]
+         - [[導入規則 (Introduction Rules) と除去規則 (Elimination Rules)]] (各結合子に対して)
+         - [[ゲンツェン流の体系]]
+      - **シークエント計算 (Sequent Calculus)**
+         - [[シークエント (`Γ ⊢ Δ`)]]
+         - [[構造規則 (弱化、縮約、転置)]]
+         - [[論理規則]]
+      - **タブロー法 (Semantic Tableau / Truth Trees)**
+         - [[反駁による証明 (矛盾の導出)]]
+         - [[タブローの構築規則]]
+   - **[[命題論理の健全性 (Soundness) と完全性 (Completeness) MOC]]**
+      - [[健全性の定義 (`Γ ⊢ φ ⇒ Γ ⊨ φ`)]]
+      - [[完全性の定義 (`Γ ⊨ φ ⇒ Γ ⊢ φ`)]]
+      - [[健全性と完全性の証明の概要]]
+   - **[[充足可能性問題 (SAT - Satisfiability Problem) MOC]]**
+      - [[SAT問題の定義と重要性 (NP完全問題の代表)]]
+      - [[2-SAT (多項式時間で解ける)]]
+      - [[主なSATソルバーのアルゴリズム (DPLLアルゴリズムなど - 概要)]]
+   - **[[(オプション) コンパクト性定理 (Compactness Theorem) - 命題論理]]**
+
+## 3. [[述語論理 (Predicate Logic / First-Order Logic - FOL) MOC]]
+   - **述語論理の必要性 (命題論理の限界)**
+   - **述語論理の基本要素**
+      - [[個体 (Individual / Object)]]
+      - [[個体定項 (Individual Constant / Name)]]
+      - [[個体変項 (Individual Variable)]]
+      - **[[述語記号 (Predicate Symbol)]]** (性質や関係を表す)
+         - [[n項述語 (n-ary Predicate)]] (例: P(x), R(x,y))
+      - **[[関数記号 (Function Symbol)]]** (個体から個体への関数 - オプション、項の構成要素)
+      - **[[項 (Term)]]** (個体定項、個体変項、関数記号と項からなるもの)
+      - **[[原子論理式 (Atomic Formula)]]** (述語記号に項を適用したもの)
+   - **[[量化子 (Quantifiers) MOC]]**
+      - **[[全称量化子 (Universal Quantifier - `∀`)]]** (`∀x P(x)` - 「すべてのxについてP(x)」)
+      - **[[存在量化子 (Existential Quantifier - `∃`)]]** (`∃x P(x)` - 「P(x)となるxが存在する」)
+      - [[束縛変数 (Bound Variable) と自由変数 (Free Variable)]]
+      - [[量化子のスコープ (Scope of a Quantifier)]]
+      - [[閉論理式 (Closed Formula / Sentence) と開論理式 (Open Formula)]]
+   - **[[整形式論理式 (WFF) - 述語論理 MOC]]**
+      - [[述語論理におけるWFFの再帰的定義]]
+   - **[[述語論理の意味論 (Semantics of Predicate Logic) MOC]]**
+      - **[[解釈 (Interpretation / Model / Structure)]]**
+         - [[議論領域 (Domain of Discourse / Universe - D)]] (空でない集合)
+         - [[個体定項へのDの要素の割り当て]]
+         - [[述語記号へのD上の関係の割り当て]]
+         - [[関数記号へのD上の関数の割り当て]]
+      - **[[付値 (Assignment / Valuation)]]** (自由変数へのDの要素の割り当て)
+      - [[論理式の真偽の定義 (タルスキの真理定義)]]
+      - [[モデル (Model)]] (論理式を真にする解釈)
+      - [[論理的妥当性 (Logical Validity / Tautology - `⊨ φ`)]] (すべての解釈で真)
+      - [[充足可能性 (Satisfiability)]] (真にする解釈が存在する)
+      - [[論理的帰結 (Logical Consequence - `Γ ⊨ φ`)]]
+      - [[論理的同値 (Logical Equivalence - `φ ≡ ψ`)]]
+         - **[[量化子に関する主要な同値法則]]** (ド・モルガン、量化子の順序変更の注意点など - 再掲・詳述)
+         - [[束縛変数の名前変更 (α-conversion)]]
+   - **[[推論体系 (Deductive Systems) - 述語論理 MOC]]**
+      - **公理的体系**
+         - [[命題論理の公理と推論規則に加えて、量化子に関する公理と推論規則]]
+         - [[(例) ∀xP(x) → P(t) (tは自由な項)]]
+      - **自然演繹**
+         - [[全称導入 (∀I), 全称除去 (∀E)]]
+         - [[存在導入 (∃I), 存在除去 (∃E)]] (存在除去の際の注意点)
+      - **シークエント計算**
+      - **タブロー法**
+         - [[量化子を含む論理式の展開規則]] (∀規則、∃規則 - スコーレム化のアイデア)
+   - **[[述語論理の健全性 (Soundness) と完全性 (Completeness) MOC]]** (ゲーデルの完全性定理)
+      - [[ゲーデルの完全性定理の意義]]
+   - **[[(オプション) コンパクト性定理 (Compactness Theorem) - 述語論理]]**
+   - **[[(オプション) レーヴェンハイム-スコーレムの定理 (Löwenheim-Skolem Theorem)]]**
+   - **[[等号を含む述語論理 (First-Order Logic with Equality)]]**
+      - [[等号記号 `=` の公理]] (反射律、対称律、推移律、置換公理)
+   - **[[多ソート述語論理 (Many-Sorted Predicate Logic)]]** (概要)
+   - **[[高階述語論理 (Higher-Order Predicate Logic)]]** (述語や関数を量化 - 概要と複雑性)
+
+## 4. [[証明論 (Proof Theory) MOC]]
+   - [[証明論の目的 (形式的証明の構造と性質の研究)]]
+   - [[形式的証明システムの種類 (再掲 - 公理系、自然演繹、シークエント計算)]]
+   - [[証明の構文論的側面]]
+   - [[導出可能性 (`⊢`)]]
+   - **[[無矛盾性 (Consistency)]]**
+      - [[ある体系が無矛盾であるとは (矛盾を証明できない)]]
+      - [[`¬(φ ∧ ¬φ)` が定理であること]]
+   - **[[決定可能性 (Decidability)]]**
+      - [[ある論理体系が決定可能であるとは (任意の論理式が定理であるか否かを判定するアルゴリズムが存在する)]]
+      - [[命題論理の決定可能性]]
+      - [[述語論理の決定不可能性 (チャーチの定理)]]
+   - **[[ゲンツェンのカット除去定理 (Cut-Elimination Theorem)]]** (シークエント計算)
+      - [[カット規則の冗長性とその意義 (証明の構成的性質)]]
+   - **[[(オプション) 自然演繹における正規形 (Normal Form)]]**
+   - **[[(オプション) 直観主義論理における証明論 (BHK解釈)]]**
+
+## 5. [[モデル理論 (Model Theory) MOC]]
+   - [[モデル理論の目的 (形式言語の解釈と真理の研究)]]
+   - [[構造 (Structure / Model) の概念の再訪]]
+   - [[真理の定義 (タルスキ)]]
+   - [[充足可能性、論理的妥当性、論理的帰結のモデル理論的定義 (再訪)]]
+   - **[[基本的なモデル理論的性質]]**
+      - [[コンパクト性定理とその応用]]
+      - [[レーヴェンハイム-スコーレムの定理とその含意]]
+   - **[[(オプション) カテゴリシティ (Categoricity)]]** (ある理論が同型なモデルしか持たないか)
+   - **[[(オプション) 型 (Types) と飽和モデル (Saturated Models)]]**
+   - **[[(オプション) 非標準モデル (Non-standard Models)]]** (例: ペアノ算術の非標準モデル)
+   - **[[モデル理論と代数学の関係]]**
+
+## 6. [[ゲーデルの不完全性定理 MOC]]
+   - **形式算術体系 (ペアノ算術 - PAなど)**
+   - **[[第一不完全性定理]]**
+      - [[「無矛盾な任意の帰納的可算な公理系で、ペアノ算術を含むものは、決定不能な命題（自身もその否定も証明できない命題）を含む」]]
+      - [[ゲーデル数 (Gödel Numbering) と算術化]]
+      - [[自己言及の構成 (対角化補題)]]
+   - **[[第二不完全性定理]]**
+      - [[「無矛盾な任意の帰納的可算な公理系で、ペアノ算術を含み、かつ自身の無矛盾性を表現できるならば、その体系内で自身の無矛盾性は証明できない」]]
+   - **[[不完全性定理の哲学的・数学的意義]]**
+      - [[ヒルベルト・プログラムの限界]]
+      - [[数学の完全性への挑戦]]
+   - **[[(オプション) 決定不可能性 (Undecidability) と計算可能性理論との関連]]** (チューリングマシン、停止性問題)
+
+## 7. [[非古典論理 (Non-Classical Logics) MOC]] (導入)
+   - **なぜ非古典論理か (古典論理の仮定と限界)**
+      - [[排中律の否定、矛盾許容、時間や可能性の扱いなど]]
+   - **[[様相論理 (Modal Logic) MOC]]**
+      - [[様相演算子 (Necessity `□`, Possibility `◇`)]]
+      - [[可能世界意味論 (Possible Worlds Semantics - クリプキモデル)]]
+      - [[様相論理の公理系 (K, T, S4, S5など)]]
+      - **様々な様相論理**
+         - [[認識論理 (Epistemic Logic)]] (知識 `K`, 信念 `B`)
+         - [[義務論理 (Deontic Logic)]] (義務 `O`, 許可 `P`, 禁止 `F`)
+         - [[時相論理 (Temporal Logic)]] (後述)
+   - **[[時相論理 (Temporal Logic) MOC]]**
+      - [[時間的様相演算子 (常に `G`, いつか `F`, 次に `X`, まで `U`)]]
+      - [[線形時相論理 (LTL - Linear Temporal Logic)]]
+      - [[計算木論理 (CTL - Computation Tree Logic)]]
+      - [[形式検証における応用]]
+   - **[[直観主義論理 (Intuitionistic Logic) MOC]]**
+      - [[構成的証明の重視]]
+      - [[排中律 (`P ∨ ¬P`) の不承認]]
+      - [[二重否定の除去 (`¬¬P → P` は成立するが `P → ¬¬P` のみ)]]
+      - [[ブラウワー、ハイティングによる形式化]]
+      - [[クリプキ意味論 (直観主義版)]]
+      - [[BHK解釈 (Brouwer-Heyting-Kolmogorov interpretation)]]
+   - **[[多値論理 (Many-Valued Logic) MOC]]**
+      - [[真理値が2つ以上 (例: 真、偽、不確定)]]
+      - [[ウカシェヴィッツ論理 (Łukasiewicz Logic)]]
+      - [[クリーネ論理 (Kleene Logic)]]
+      - **[[ファジィ論理 (Fuzzy Logic)]]**
+         - [[真理値が[0,1]区間の実数値]]
+         - [[ファジィ集合との関連]]
+         - [[制御システムなどへの応用]]
+   - **[[(オプション) 線形論理 (Linear Logic)]]** (リソースの概念)
+   - **[[(オプション) 関連性論理 (Relevance Logic)]]** (含意の実質性への疑問)
+   - **[[(オプション) 矛盾許容論理 (Paraconsistent Logic)]]** (矛盾から全てが導出される爆発律を否定)
+
+## 8. [[論理と計算・コンピュータサイエンス MOC]]
+   - **[[論理プログラミング (Logic Programming)]]** (再掲、Prologと論理の直接的関係)
+   - **[[型理論 (Type Theory) と論理]]**
+      - [[カリー＝ハワード同型対応 (Curry-Howard Correspondence)]] (命題と型、証明とプログラムの対応)
+      - [[依存型 (Dependent Types)]]
+   - **[[自動定理証明 (Automated Theorem Proving - ATP)]]**
+      - [[導出原理 (Resolution Principle) - ロビンソン]]
+      - [[SAT/SMTソルバー]]
+   - **[[形式検証 (Formal Verification)]]**
+      - [[モデル検査 (Model Checking)]] (時相論理の応用)
+      - [[プログラムの正当性証明]] (ホーア論理など)
+   - **[[データベース理論と論理]]** (Datalog, 関係代数/計算と述語論理)
+   - **[[人工知能 (AI) における論理]]**
+      - [[知識表現と推推論 (Knowledge Representation and Reasoning - KRR)]]
+      - [[記述論理 (Description Logics)]] (オントロジー)
+      - [[非単調論理 (Non-monotonic Logic)]] (デフォルト推論、信念改訂)
+   - **[[計算可能性理論 (Computability Theory)]]** (チューリングマシン、決定可能性、チャーチ＝チューリングのテーゼ)
+   - **[[計算複雑性理論 (Computational Complexity Theory)]]** (P vs NP問題と論理)
+   - **[[論理回路設計とブール代数]]** (再掲)
+
+## 9. [[非形式論理学とクリティカルシンキング MOC]]
+   - **議論 (Argument) の構造**
+      - [[前提 (Premise) と結論 (Conclusion)]]
+      - [[議論の評価 (妥当性、健全性)]]
+   - **演繹的推論 (Deductive Reasoning) と帰納的推論 (Inductive Reasoning)**
+      - [[演繹の確実性と帰納の蓋然性]]
+      - [[アブダクション (Abduction / 仮説形成)]]
+   - **[[誤謬 (Fallacy) MOC]]**
+      - **形式的誤謬 (Formal Fallacies)** (論理構造の誤り)
+         - [[前件否定の誤謬]]
+         - [[後件肯定の誤謬]]
+      - **非形式的誤謬 (Informal Fallacies)** (内容や文脈の誤り)
+         - [[人身攻撃 (Ad Hominem)]]
+         - [[ストローマン (Straw Man)]]
+         - [[権威に訴える論証 (Argument from Authority)]]
+         - [[伝統に訴える論証 (Appeal to Tradition)]]
+         - [[衆人に訴える論証 (Ad Populum)]]
+         - [[論点先取 (Begging the Question / Circular Reasoning)]]
+         - [[早まった一般化 (Hasty Generalization)]]
+         - [[誤った二分法 (False Dilemma / False Dichotomy)]]
+         - [[滑り坂論法 (Slippery Slope)]]
+         - [[相関関係と因果関係の混同 (Correlation implies causation fallacy)]]
+         - [[その他多数の非形式的誤謬]]
+   - **クリティカルシンキングのスキル**
+      - [[明確性、正確性、関連性、論理性、幅広さ、深さ、重要性、公正さ]]
+      - [[議論の分析と評価]]
+      - [[バイアスの認識]]
+      - [[問題解決への応用]]

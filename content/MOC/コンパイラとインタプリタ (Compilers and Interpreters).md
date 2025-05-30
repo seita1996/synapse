@@ -1,0 +1,268 @@
+---
+tags:
+  - moc
+enableToc: "true"
+draft: "false"
+permalink: moc/compilers-and-interpreters
+---
+## 1. [[言語処理系の基本 MOC]]
+   - **言語処理系とは**
+      - [[プログラミング言語処理系の定義と役割]]
+      - [[高水準言語と低水準言語 (機械語、アセンブリ言語)]]
+      - [[ソースコード、オブジェクトコード、実行可能コード]]
+   - **[[コンパイラ (Compiler) の概要 MOC]]**
+      - [[コンパイラの定義 (ソースコード全体を一括してターゲットコードに翻訳)]]
+      - [[コンパイラの主な目的 (実行速度の向上、最適化)]]
+      - [[コンパイル型言語の例 (C, C++, Go, Rust, Haskell, Swift)]]
+      - [[コンパイルエラーと実行時エラー]]
+   - **[[インタプリタ (Interpreter) の概要 MOC]]**
+      - [[インタプリタの定義 (ソースコードを1行ずつ解釈・実行)]]
+      - [[インタプリタの主な目的 (開発サイクルの短縮、プラットフォーム非依存性)]]
+      - [[インタプリタ型言語の例 (Python, Ruby, JavaScript (初期), Perl, LISP)]]
+      - [[インタプリタにおけるエラー報告]]
+   - **[[コンパイラとインタプリタの比較 MOC]]**
+      - [[実行速度 (コンパイラ優位) vs. 起動速度 (インタプリタ優位の場合も)]]
+      - [[開発の柔軟性とデバッグの容易さ (インタプリタ優位の場合も)]]
+      - [[プラットフォーム依存性 (コンパイラはターゲット依存、インタプリタはVM依存/ソース依存)]]
+      - [[メモリ使用量]]
+      - [[エラー検出のタイミング]]
+   - **言語処理系の分類**
+      - [[コンパイラ、インタプリタ、アセンブラ、プリプロセッサ、リンカ、ローダ]]
+      - [[ハイブリッド型処理系 (Java, C#, Pythonの一部)]]
+
+## 2. [[コンパイラの構造とフェーズ MOC]]
+   - **コンパイラの全体構造**
+      - **[[フロントエンド (Frontend) MOC]]** (ソース言語依存、ターゲットマシン非依存)
+         - [[字句解析、構文解析、意味解析、中間コード生成 (一部)]]
+      - **[[バックエンド (Backend) MOC]]** (ソース言語非依存、ターゲットマシン依存)
+         - [[コード最適化 (一部)、ターゲットコード生成]]
+      - **[[中間表現 (Intermediate Representation - IR) MOC]]** (フロントエンドとバックエンドのインターフェース)
+         - [[抽象構文木 (AST) はフロントエンド内で使われることが多いが、広義のIRの一種]]
+         - [[三番地コード (Three-Address Code)]]
+         - [[スタックマシンコード (例: Pコード)]]
+         - [[静的単一代入形式 (SSA - Static Single Assignment Form)]]
+         - [[線形IR (例: LLVM IR)]]
+      - **[[シンボルテーブル (Symbol Table) MOC]]**
+         - [[シンボルテーブルの役割 (識別子の属性情報を記録・管理)]]
+         - [[シンボルテーブルの構造 (ハッシュテーブル、平衡木など)]]
+         - [[スコープ管理とシンボルテーブル]]
+      - **[[エラーハンドラ (Error Handler) MOC]]**
+         - [[コンパイル時エラーの種類と報告]]
+         - [[エラー回復戦略]]
+      - **[[パス (Pass) の概念]]**
+         - [[ワンパスコンパイラ (One-Pass Compiler)]]
+         - [[マルチパスコンパイラ (Multi-Pass Compiler)]]
+   - **[[2.1. 字句解析 (Lexical Analysis / Scanning) MOC]]**
+      - [[字句解析の役割 (ソースコードをトークンの列に分割)]]
+      - **[[トークン (Token)]]** (識別子、キーワード、演算子、定数、区切り文字など)
+         - [[トークンの種類、字句 (Lexeme)、属性値]]
+      - [[字句解析器 (Lexical Analyzer / Scanner / Lexer) の設計]]
+      - **[[正規表現 (Regular Expression) と字句解析]]**
+         - [[正規表現によるトークンパターンの定義]]
+      - **[[有限オートマトン (Finite Automata - FA) と字句解析]]**
+         - [[決定性有限オートマトン (DFA)]]
+         - [[非決定性有限オートマトン (NFA)]]
+         - [[正規表現からNFAへの変換 (Thompsonの構築アルゴリズム)]]
+         - [[NFAからDFAへの変換 (サブセット構築アルゴリズム)]]
+         - [[DFAの最小化 (ホップクロフトのアルゴリズム)]]
+      - [[字句解析器ジェネレータ (Lexer Generator)]] (例: `Lex`, `Flex`)
+      - [[入力バッファリング (Input Buffering) と番兵 (Sentinel)]]
+      - [[予約語 (Reserved Word) とキーワード (Keyword) の扱い]]
+      - [[コメントと空白の除去]]
+   - **[[2.2. 構文解析 (Syntax Analysis / Parsing) MOC]]**
+      - [[構文解析の役割 (トークン列から構文構造を認識し、構文木を構築)]]
+      - **[[文法 (Grammar)]]**
+         - **[[文脈自由文法 (CFG - Context-Free Grammar)]]** (BNF記法, EBNF記法)
+            - [[終端記号 (Terminal Symbol) と非終端記号 (Non-terminal Symbol)]]
+            - [[生成規則 (Production Rule)]]
+            - [[開始記号 (Start Symbol)]]
+            - [[導出 (Derivation) と導出木 (Derivation Tree / Parse Tree)]]
+         - [[曖昧な文法 (Ambiguous Grammar) とその解消]] (演算子の優先順位、結合規則など)
+         - [[チョムスキー階層 (Chomsky Hierarchy)]] (正規文法、文脈自由文法、文脈依存文法、句構造文法 - 概要)
+      - **[[構文解析器 (Parser) の種類]]**
+         - **トップダウン構文解析 (Top-Down Parsing)**
+            - [[再帰下降構文解析 (Recursive Descent Parsing)]]
+            - **[[LL(k)構文解析]]** (予測構文解析 - Predictive Parsing)
+               - [[LL(1)文法とLL(1)パーサ]]
+               - [[FIRST集合とFOLLOW集合の計算]]
+               - [[LL(1)構文解析表の構築]]
+               - [[左再帰の除去と左因子分解 (Left Factoring)]]
+         - **ボトムアップ構文解析 (Bottom-Up Parsing) / シフトリデュース構文解析 (Shift-Reduce Parsing)**
+            - **[[LR(k)構文解析]]**
+               - [[LR(0)構文解析]] (LR(0)アイテム、LR(0)オートマトン)
+               - [[SLR(1)構文解析 (Simple LR)]]
+               - [[LALR(1)構文解析 (Look-Ahead LR)]]
+               - [[CLR(1)構文解析 (Canonical LR)]]
+               - [[LR構文解析表の構築 (Action表とGoto表)]]
+               - [[シフトリデュース衝突とリデュースリデュース衝突]]
+      - **[[抽象構文木 (AST - Abstract Syntax Tree)]]** (構文木から意味情報のみを抽出)
+      - [[構文解析器ジェネレータ (Parser Generator)]] (例: `Yacc`, `Bison`, `ANTLR`)
+      - [[エラー回復 (Error Recovery in Parsers)]] (パニックモード、フレーズレベル回復など)
+   - **[[2.3. 意味解析 (Semantic Analysis) MOC]]**
+      - [[意味解析の役割 (構文的に正しいプログラムの意味的な正しさを検証)]]
+      - **[[型チェック (Type Checking)]]**
+         - [[静的型チェックと動的型チェック]] (コンパイラにおける静的型チェック)
+         - [[型システム (Type System)]]
+         - [[型の等価性 (構造的等価性、名前的等価性)]]
+         - [[型変換 (Type Conversion) と型キャスト (Type Casting)]]
+         - [[型推論 (Type Inference)]]
+         - [[ポリモーフィズム (Polymorphism) の型チェック]]
+      - **[[スコープ解決 (Scope Resolution) と名前解決 (Name Resolution)]]**
+         - [[識別子の宣言と参照の対応付け]]
+         - [[静的スコープ (レキシカルスコープ) と動的スコープ]]
+      - [[意味規則 (Semantic Rules)]]
+      - [[属性文法 (Attribute Grammar)]] (概要)
+      - [[シンボルテーブルの活用 (意味解析時)]]
+      - [[意味エラーの検出 (型不一致、未定義変数など)]]
+   - **[[2.4. 中間コード生成 (Intermediate Code Generation) MOC]]**
+      - [[中間コードの役割 (マシン非依存の最適化、移植性の向上)]]
+      - **中間コードの種類 (再掲)**
+         - [[抽象構文木 (AST)]]
+         - [[逆ポーランド記法 (Postfix Notation)]]
+         - **[[三番地コード (Three-Address Code)]]**
+            - [[四つ組 (Quadruples)]]
+            - [[三つ組 (Triples)]]
+            - [[間接三つ組 (Indirect Triples)]]
+         - [[スタックマシンコード (Pコード)]]
+         - [[静的単一代入形式 (SSA Form)]]
+            - [[φ関数 (phi-function)]]
+      - [[中間コード生成の手法 (構文主導翻訳など)]]
+      - [[制御フロー構造の中間コード表現 (if-then-else, while, for)]]
+      - [[配列参照の中間コード]]
+      - [[手続き呼び出しの中間コード]]
+   - **[[2.5. コード最適化 (Code Optimization) MOC]]**
+      - [[コード最適化の目的 (実行速度向上、メモリ使用量削減、消費電力削減)]]
+      - **最適化のレベル**
+         - [[局所的最適化 (Local Optimization) / 基本ブロック内最適化]]
+            - **[[基本ブロック (Basic Block)]]**
+            - [[共通部分式の削除 (Common Subexpression Elimination)]] (局所的)
+            - [[定数畳み込み (Constant Folding)]]
+            - [[代数的な単純化と強度低減 (Algebraic Simplification and Strength Reduction)]]
+            - [[コピー伝播 (Copy Propagation)]] (局所的)
+            - [[到達不能コードの削除 (Dead Code Elimination)]] (局所的)
+         - **[[大域的最適化 (Global Optimization) / ループ最適化]]**
+            - **[[制御フローグラフ (CFG - Control Flow Graph)]]**
+            - **[[データフロー解析 (Data Flow Analysis)]]**
+               - [[到達定義 (Reaching Definitions)]]
+               - [[生存変数解析 (Live Variable Analysis)]]
+               - [[利用可能式 (Available Expressions)]]
+            - [[共通部分式の削除 (Common Subexpression Elimination)]] (大域的)
+            - [[コピー伝播 (Copy Propagation)]] (大域的)
+            - [[到達不能コードの削除 (Dead Code Elimination)]] (大域的)
+            - **[[ループ不変コード移動 (Loop-Invariant Code Motion)]]**
+            - [[ループ展開 (Loop Unrolling)]]
+            - [[ループ融合 (Loop Fusion / Loop Jamming)]]
+            - [[ループ交換 (Loop Interchange)]]
+            - [[(オプション) 誘導変数の削除 (Induction Variable Elimination)]]
+         - **[[マシン依存の最適化 (Machine-Dependent Optimization)]]**
+            - [[レジスタ割り付け (Register Allocation)]]
+            - [[命令スケジューリング (Instruction Scheduling)]]
+            - [[ピープホール最適化 (Peephole Optimization)]]
+      - [[最適化のトレードオフ (コンパイル時間 vs. 最適化効果)]]
+      - [[プロファイルガイド最適化 (PGO - Profile-Guided Optimization)]]
+   - **[[2.6. ターゲットコード生成 (Target Code Generation) MOC]]**
+      - [[ターゲットコード生成の役割 (中間コードをターゲットマシン語またはアセンブリ言語に翻訳)]]
+      - [[ターゲットマシンのアーキテクチャの考慮 (命令セット、レジスタ、メモリアドレス)]]
+      - **[[命令選択 (Instruction Selection)]]**
+      - **[[レジスタ割り付け (Register Allocation)]]**
+         - [[グラフ彩色アルゴリズムによるレジスタ割り付け]]
+      - **[[命令スケジューリング (Instruction Scheduling)]]** (パイプライン効率化のため)
+      - [[メモリ管理 (スタックフレームのレイアウト、大域変数の配置)]]
+      - [[アセンブリコードの出力]]
+      - [[(オプション) オブジェクトファイルフォーマット (ELF, COFF, Mach-O)]]
+
+## 3. [[インタプリタの構造と動作 MOC]]
+   - **インタプリタの種類**
+      - **[[純粋なインタプリタ (Pure Interpreter) / ASTウォーカー]]**
+         - [[ソースコードまたは抽象構文木 (AST) を直接解釈・実行]]
+         - [[動作原理とステップ (字句解析 → 構文解析 → (意味解析) → 実行)]]
+      - **[[バイトコードインタプリタ (Bytecode Interpreter)]]**
+         - [[ソースコードを中間的なバイトコードにコンパイルし、バイトコードを仮想マシン (VM) で実行]]
+         - [[バイトコードの利点 (移植性、実行効率の向上 - 純粋インタプリタ比)]]
+         - [[仮想マシンの役割と構造]]
+   - **インタプリタの実行ループ (REPL - Read-Eval-Print Loop)**
+      - [[対話的実行環境の仕組み]]
+   - **インタプリタにおける動的機能**
+      - [[動的型付けの処理]]
+      - [[動的スコープの処理 (一部言語)]]
+      - `[[eval` 関数の実装とセキュリティリスク]]
+   - **インタプリタの例**
+      - [[初期のBASICインタプリタ]]
+      - [[CPython (Pythonの標準インタプリタ - バイトコードインタプリタ)]]
+      - [[Ruby (YARV - バイトコードインタプリタ)]]
+      - [[Perlインタプリタ]]
+      - [[Bashなどのシェルスクリプトインタプリタ]]
+
+## 4. [[ハイブリッドアプローチと高度なトピック MOC]]
+   - **[[バイトコード (Bytecode) と仮想マシン (Virtual Machine - VM) MOC]]**
+      - [[バイトコードの定義と役割 (プラットフォーム非依存の中間表現)]]
+      - [[仮想マシンの定義と役割 (バイトコードを実行する抽象的なコンピュータ)]]
+      - **代表的な仮想マシン**
+         - `[[JVM (Java Virtual Machine)]]`
+            - [[Javaバイトコードの構造]]
+            - [[クラスローダ、バイトコードベリファイア、実行エンジン (インタプリタ、JIT)]]
+            - [[ガベージコレクション (JVM内)]]
+         - `[[CLR (Common Language Runtime) - .NET]]`
+            - [[CIL (Common Intermediate Language) / MSIL]]
+         - `[[BEAM (Erlang VM)]]`
+         - `[[CPythonのVM]]`
+   - **[[Just-In-Time (JIT) コンパイル MOC]]**
+      - [[JITコンパイルの定義 (実行時にバイトコード等をネイティブコードにコンパイル)]]
+      - [[JITコンパイルの目的 (インタプリタの実行速度向上)]]
+      - [[JITコンパイルの仕組み (ホットスポット検出、適応的最適化)]]
+      - [[JITコンパイラの利点と欠点 (ウォームアップ時間)]]
+      - [[JITコンパイルを採用している言語処理系 (Java HotSpot VM, .NET CLR, V8 (JavaScript), PyPy)]]
+   - **[[Ahead-Of-Time (AOT) コンパイル MOC]]**
+      - [[AOTコンパイルの定義 (事前にネイティブコードにコンパイル)]]
+      - [[VMベース言語におけるAOTコンパイル (例: AndroidのART, GraalVM Native Image)]]
+      - [[AOTコンパイルの利点 (起動時間短縮、リソース削減) と欠点 (動的機能の制約)]]
+   - **[[トランスパイラ (Transpiler / Source-to-Source Compiler) MOC]]**
+      - [[トランスパイラの定義 (ある高水準言語を別の高水準言語に変換)]]
+      - [[トランスパイラの利用例 (TypeScript→JavaScript, Babel, CoffeeScript→JavaScript)]]
+   - **自己ホスティングコンパイラ (Self-hosting Compiler)**
+      - [[コンパイラ自身がそのコンパイラがコンパイルする言語で書かれていること]]
+      - [[ブートストラップ問題]]
+   - **クロスコンパイラ (Cross Compiler)**
+      - [[実行環境とは異なるアーキテクチャ向けのコードを生成するコンパイラ]]
+   - **[[(オプション) インクリメンタルコンパイル (Incremental Compilation)]]** (変更部分のみ再コンパイル)
+   - **[[(オプション) リンカブルフォーマットとデバッグ情報の生成]]**
+
+## 5. [[関連ツールとプロセス MOC]]
+   - **[[プリプロセッサ (Preprocessor)]]**
+      - [[プリプロセッサの役割 (コンパイル前のソースコード変換)]]
+      - [[Cプリプロセッサの機能 (`#include`, `#define`, `#if`など)]]
+   - **[[アセンブラ (Assembler)]]**
+      - [[アセンブリ言語を機械語に変換]]
+      - [[アセンブラのパス (ワンパス、ツーパス)]]
+   - **[[リンカ (Linker) MOC]]**
+      - [[リンカの役割 (複数のオブジェクトファイルやライブラリを結合し実行可能ファイルを生成)]]
+      - [[シンボル解決 (Symbol Resolution)]]
+      - [[再配置 (Relocation)]]
+      - **[[静的リンク (Static Linking)]]**
+      - **[[動的リンク (Dynamic Linking)]]**
+         - [[共有ライブラリ (Shared Libraries / DLLs)]]
+         - [[動的リンクの利点と欠点 (DLL Hellなど)]]
+   - **[[ローダ (Loader)]]**
+      - [[ローダの役割 (実行可能ファイルをメモリにロードし実行準備)]]
+      - [[動的ロードと遅延ロード]]
+   - **[[デバッガ (Debugger)]]**
+      - [[デバッガとコンパイラ/インタプリタの連携 (シンボル情報、ソースマッピング)]]
+   - **[[ビルドシステム (Build Systems)]]**
+      - [[ビルド自動化の役割]]
+      - [[Makefileとmake]]
+      - [[CMake, Ant, Maven, Gradle, SConsなど]]
+
+## 6. [[コンパイラ/インタプリタ設計の選択肢と影響 MOC]]
+   - **[[エラー診断の質と言語設計]]**
+   - **[[コンパイル時間 vs. 実行時間 vs. 開発時間]]**
+   - **[[移植性とターゲット依存性]]**
+   - **[[言語機能と処理系の複雑性]]** (例: 動的機能、高度な型システム、マクロ)
+   - **[[セキュリティと処理系]]** (例: バイトコードベリファイア、サンドボックス実行)
+
+## 7. [[代表的な言語処理系の事例研究 MOC]]
+   - **[[gcc (GNU Compiler Collection) のアーキテクチャ概要]]**
+   - **[[LLVM (Low Level Virtual Machine) のアーキテクチャとエコシステム]]** (Clang, Swift, Rustなど)
+   - **[[V8 JavaScript Engine の仕組み概要]]** (JIT, GC)
+   - **[[CPython のインタプリタとバイトコード実行]]**
+   - **[[Java HotSpot VM のアーキテクチャ概要]]** (インタプリタ、C1/C2 JITコンパイラ, GC)
+   - **[[Haskell GHC (Glasgow Haskell Compiler) のコンパイルパイプライン概要]]** (Core言語への変換、最適化)

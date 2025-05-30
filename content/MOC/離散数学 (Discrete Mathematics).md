@@ -1,0 +1,427 @@
+---
+tags:
+  - moc
+enableToc: "true"
+draft: "false"
+permalink: moc/discrete-mathematics
+---
+## 1. [[離散数学の導入と基本概念 MOC]]
+   - **離散数学とは何か**
+      - [[離散的な対象を扱う数学]]
+      - [[連続数学との対比]]
+      - [[コンピュータサイエンスにおける離散数学の重要性]] (アルゴリズム、データ構造、データベース、暗号理論、ネットワークなど)
+   - **離散数学の主要分野概観** (集合論、論理、組合せ論、グラフ理論など)
+
+## 2. [[集合論 (Set Theory) MOC]]
+   - **集合の基本**
+      - [[集合の定義と記法 (外延的記法、内包的記法)]]
+      - [[要素 (元) と帰属関係 (`∈`, `∉`)]]
+      - [[空集合 (Empty Set - `∅`, `{}`)]]
+      - [[普遍集合 (Universal Set - U)]]
+      - [[有限集合と無限集合]]
+      - [[集合の濃度 (位数、基数 - Cardinality)]] `|A|`
+      - **[[部分集合 (Subset - `⊆`, `⊂`)]]**
+         - [[真部分集合 (Proper Subset)]]
+         - [[部分集合の性質]]
+      - [[集合の相等 (`A = B`)]]
+   - **集合演算 (Set Operations)**
+      - **[[和集合 (Union - `∪`)]]**
+         - [[和集合の定義と性質 (交換法則、結合法則、冪等法則)]]
+         - [[ベン図による表現]]
+      - **[[積集合 (共通部分 - Intersection - `∩`)]]**
+         - [[積集合の定義と性質 (交換法則、結合法則、冪等法則)]]
+         - [[ベン図による表現]]
+      - **[[差集合 (Difference - `A - B`, `A \ B`)]]**
+         - [[差集合の定義と性質]]
+         - [[ベン図による表現]]
+      - **[[補集合 (Complement - `Aᶜ`, `Ā`)]]**
+         - [[補集合の定義と性質]]
+         - [[ド・モルガンの法則 (集合版)]] `(A ∪ B)ᶜ = Aᶜ ∩ Bᶜ`, `(A ∩ B)ᶜ = Aᶜ ∪ Bᶜ`
+         - [[ベン図による表現]]
+      - **[[対称差 (Symmetric Difference - `A △ B`, `A ⊕ B`)]]**
+         - [[対称差の定義と性質]]
+   - **[[べき集合 (Power Set - `P(A)`, `2^A`)]]**
+      - [[べき集合の定義と要素数]]
+   - **[[集合の直積 (デカルト積 - Cartesian Product - `A × B`)]]**
+      - [[直積の定義と要素数]]
+      - [[順序対 (Ordered Pair)]]
+      - [[n項の直積]]
+   - **集合の分割 (Partition of a Set)**
+      - [[分割の定義と条件]]
+   - **[[包除原理 (Inclusion-Exclusion Principle)]]**
+      - [[2集合、3集合の場合の包除原理]]
+      - [[一般の場合の包除原理の公式]]
+      - [[包除原理の応用 (例: 条件を満たす要素の個数計算)]]
+   - **[[(オプション) ラッセルのパラドックスと集合論の公理化]]** (ZF, ZFC - 概要)
+   - **[[(オプション) ファジィ集合 (Fuzzy Set)]]** (概要)
+   - **[[(オプション) マルチセット (Multiset / Bag)]]** (概要)
+
+## 3. [[論理 (Logic) MOC]]
+   - **[[命題論理 (Propositional Logic) MOC]]**
+      - **命題 (Proposition)**
+         - [[命題の定義 (真偽が定まる文)]]
+         - [[単純命題と複合命題]]
+      - **論理演算子 (Logical Connectives)**
+         - **[[否定 (Negation - `¬`, `~`, `NOT`)]]** と真理値表
+         - **[[論理積 (Conjunction - `∧`, `AND`)]]** と真理値表
+         - **[[論理和 (Disjunction - `∨`, `OR`)]]** と真理値表 (包含的論理和)
+         - **[[排他的論理和 (Exclusive OR - `⊕`, `XOR`)]]** と真理値表
+         - **[[含意 (Implication / Conditional - `→`, `⇒`, `IF ... THEN ...`)]]**
+            - [[前件 (Antecedent) と後件 (Consequent)]]
+            - [[含意の真理値表 (偽→真は真など)]]
+            - [[逆 (Converse), 裏 (Inverse), 対偶 (Contrapositive)]] とその同値性
+         - **[[同値 (Biconditional / Equivalence - `↔`, `⇔`, `IF AND ONLY IF (iff)`)]]** と真理値表
+      - **[[論理式 (Logical Formula / Well-formed Formula - WFF)]]**
+         - [[論理式の構成規則]]
+         - [[演算子の優先順位]]
+      - **真理値表 (Truth Table)**
+         - [[真理値表による論理式の評価]]
+      - **論理的同値 (Logical Equivalence - `≡`)**
+         - [[論理的同値の定義]]
+         - **[[基本的な論理同値法則]]**
+            - [[恒等法則 (Identity Laws)]]
+            - [[支配法則 (Domination Laws)]]
+            - [[冪等法則 (Idempotent Laws)]]
+            - [[二重否定の法則 (Double Negation Law)]]
+            - [[交換法則 (Commutative Laws)]]
+            - [[結合法則 (Associative Laws)]]
+            - [[分配法則 (Distributive Laws)]]
+            - [[ド・モルガンの法則 (De Morgan's Laws - 論理版)]] `¬(P ∧ Q) ≡ ¬P ∨ ¬Q`, `¬(P ∨ Q) ≡ ¬P ∧ ¬Q`
+            - [[吸収法則 (Absorption Laws)]]
+            - [[含意の同値変形 (`P → Q ≡ ¬P ∨ Q`)]]
+            - [[対偶の法則 (`P → Q ≡ ¬Q → ¬P`)]]
+      - **[[トートロジー (Tautology / 恒真式)]]**
+      - **[[矛盾 (Contradiction / 恒偽式)]]**
+      - **[[充足可能性 (Satisfiability)]]** (SAT問題の導入)
+      - **論理的帰結 (Logical Consequence) と推論規則 (Inference Rules)**
+         - [[前提 (Premise) と結論 (Conclusion)]]
+         - **[[基本的な推論規則]]**
+            - [[モーダスポネンス (Modus Ponens)]] `(P ∧ (P → Q)) ⇒ Q`
+            - [[モーダストレンス (Modus Tollens)]] `(¬Q ∧ (P → Q)) ⇒ ¬P`
+            - [[仮言三段論法 (Hypothetical Syllogism)]] `((P → Q) ∧ (Q → R)) ⇒ (P → R)`
+            - [[選言三段論法 (Disjunctive Syllogism)]] `((P ∨ Q) ∧ ¬P) ⇒ Q`
+            - [[構成的ジレンマ (Constructive Dilemma)]]
+            - [[破壊的ジレンマ (Destructive Dilemma)]]
+            - [[単純化 (Simplification)]] `(P ∧ Q) ⇒ P`
+            - [[付加 (Addition)]] `P ⇒ (P ∨ Q)`
+            - [[結合 (Conjunction)]] `(P, Q) ⇒ (P ∧ Q)`
+      - **[[(オプション) 完全性 (Completeness) と健全性 (Soundness) - 命題論理]]**
+      - **[[(オプション) 論理回路との対応 (AND, OR, NOTゲート)]]** (ブール代数の項で詳述)
+   - **[[述語論理 (Predicate Logic / First-Order Logic - FOL) MOC]]**
+      - **述語 (Predicate)**
+         - [[述語の定義 (個体の性質や関係を表す)]]
+         - [[n項述語 (n-ary Predicate)]]
+         - [[変項 (Variable) と個体定項 (Constant)]]
+         - [[定義域 (Domain of Discourse / Universe of Discourse)]]
+      - **量化子 (Quantifiers)**
+         - **[[全称量化子 (Universal Quantifier - `∀`)]]** (すべての～について)
+         - **[[存在量化子 (Existential Quantifier - `∃`)]]** (ある～が存在する)
+         - [[束縛変数 (Bound Variable) と自由変数 (Free Variable)]]
+         - [[量化子のスコープ (Scope of Quantifier)]]
+      - **量化子を含む論理式の真偽**
+      - **量化子に関する同値関係**
+         - [[量化子の否定 (`¬∀x P(x) ≡ ∃x ¬P(x)`, `¬∃x P(x) ≡ ∀x ¬P(x)`)]] (ド・モルガンの法則の拡張)
+         - [[量化子の順序交換 (∀x∀y は ∀y∀x と同値、∃x∃y は ∃y∃x と同値。∀x∃y と ∃y∀x は非同値)]]
+      - **述語論理における推論**
+         - [[全称具体化 (Universal Instantiation - UI)]]
+         - [[全称汎化 (Universal Generalization - UG)]]
+         - [[存在具体化 (Existential Instantiation - EI)]]
+         - [[存在汎化 (Existential Generalization - EG)]]
+      - **[[(オプション) 等号を含む述語論理]]**
+      - **[[(オプション) 高階論理 (Higher-Order Logic) - 概要]]**
+
+## 4. [[証明法 (Proof Techniques) MOC]]
+   - **証明とは何か**
+      - [[公理 (Axiom)、定義 (Definition)、定理 (Theorem)、補題 (Lemma)、系 (Corollary)]]
+      - [[証明の構造と厳密性]]
+   - **直接証明法 (Direct Proof)**
+      - `[[P → Q` を示すために、Pを仮定してQを導く]]
+      - [[直接証明の例 (偶数・奇数の性質など)]]
+   - **間接証明法 (Indirect Proof)**
+      - **[[対偶法 (Proof by Contraposition)]]**
+         - `[[P → Q` を示すために、`¬Q → ¬P` を示す]]
+         - [[対偶法の例]]
+      - **[[背理法 (Proof by Contradiction / Reductio ad Absurdum)]]**
+         - [[結論を否定して矛盾を導く]]
+         - [[背理法の例 (√2が無理数であることの証明など)]]
+   - **存在証明 (Existence Proof)**
+      - **[[構成的証明 (Constructive Proof)]]** (条件を満たす実例を具体的に示す)
+      - **[[非構成的証明 (Non-constructive Proof)]]** (実例を示さずに存在を証明する)
+   - **一意性証明 (Uniqueness Proof)**
+      - [[存在を示し、かつそれが唯一であることを示す]]
+   - **場合分けによる証明 (Proof by Cases / Proof by Exhaustion)**
+      - [[全ての可能性を網羅して各々で証明する]]
+   - **数学的帰納法 (Mathematical Induction)**
+      - **[[帰納法の原理]]**
+      - **[[基底段階 (Base Case / Basis Step)]]**
+      - **[[帰納的段階 (Inductive Step)]]**
+         - [[帰納法の仮定 (Inductive Hypothesis)]]
+      - [[数学的帰納法の様々な形式]]
+         - [[通常の帰納法]]
+         - [[強力な帰納法 (Strong Induction / Complete Induction)]]
+         - [[構造的帰納法 (Structural Induction)]] (データ構造や再帰的定義に対して)
+      - [[数学的帰納法の適用例 (数列の和、性質の証明など)]]
+      - [[帰納法による誤った証明の例 (落とし穴)]]
+   - **[[(オプション) 整礎帰納法 (Well-founded Induction)]]**
+   - **[[(オプション) 鳩の巣原理 (Pigeonhole Principle)]]**
+      - [[鳩の巣原理の単純な形式と一般化された形式]]
+      - [[鳩の巣原理の応用例]]
+   - **証明戦略と記述の作法**
+      - [[証明の書き方のヒント]]
+      - [[よくある間違い]]
+
+## 5. [[組合せ論 (Combinatorics) MOC]]
+   - **数え上げの基本原理**
+      - **[[和の法則 (Sum Rule / Addition Principle)]]**
+      - **[[積の法則 (Product Rule / Multiplication Principle)]]**
+   - **順列 (Permutation)**
+      - [[順列 (`nPr`, `P(n, r)`) の定義 (順序を考慮した選び方)]]
+      - [[順列の公式 `nPr = n! / (n-r)!`]]
+      - [[円順列 (Circular Permutation)]]
+      - [[重複順列 (Permutation with Repetition)]]
+      - [[同じものを含む順列]]
+   - **組合せ (Combination)**
+      - [[組合せ (`nCr`, `C(n, r)`, `(n r)`) の定義 (順序を考慮しない選び方)]]
+      - [[組合せの公式 `nCr = n! / (r! * (n-r)!)`]]
+      - [[組合せに関する恒等式]]
+         - `[[C(n, r) = C(n, n-r)]]`
+         - **[[パスカルの恒等式 `C(n, r) = C(n-1, r-1) + C(n-1, r)`]]**
+         - **[[パスカルの三角形 (Pascal's Triangle)]]**
+      - [[重複組合せ (Combination with Repetition)]] (`nHr = C(n+r-1, r)`) (仕切りとボール)
+   - **[[二項定理 (Binomial Theorem)]]**
+      - `[[(x + y)^n の展開式と二項係数]]`
+      - [[二項定理の応用]]
+   - **[[(オプション) 多項定理 (Multinomial Theorem)]]**
+   - **[[(オプション) スターリング数 (Stirling Numbers)]]** (第1種、第2種 - 概要)
+   - **[[(オプション)カタラン数 (Catalan Numbers)]]** (概要と応用例)
+   - **[[(オプション) 母関数 (Generating Functions)]]** (概要と利用例)
+   - **[[(オプション) ラムゼー理論 (Ramsey Theory)]]** (「完全な無秩序は存在しない」 - 概要)
+
+## 6. [[グラフ理論 (Graph Theory) MOC]]
+   - **グラフの基本** (詳細は[[データ構造 MOC]] > [[グラフ MOC]]も参照、数学的側面に焦点)
+      - [[グラフの定義 (頂点/ノードと辺/エッジ)]]
+      - **グラフの種類**
+         - [[無向グラフ (Undirected Graph) と有向グラフ (Directed Graph / Digraph)]]
+         - [[単純グラフ (Simple Graph)]]
+         - [[多重グラフ (Multigraph) と擬グラフ (Pseudograph - ループ許容)]]
+         - [[重み付きグラフ (Weighted Graph)]]
+         - [[部分グラフ (Subgraph)]]
+         - [[完全グラフ (Complete Graph - `Kn`)]]
+         - [[二部グラフ (Bipartite Graph)]] (`Km,n`)
+         - [[正則グラフ (Regular Graph)]]
+         - [[木 (Tree)]] (グラフ理論における特殊なグラフとして)
+      - **グラフの用語**
+         - [[隣接 (Adjacent)、接続 (Incident)]]
+         - [[次数 (Degree - 無向グラフ)、入次数 (In-degree)・出次数 (Out-degree - 有向グラフ)]]
+         - [[握手補題 (Handshaking Lemma - 次数の総和は辺の数の2倍)]]
+         - [[歩道 (Walk)、道 (Trail)、路 (Path)]]
+         - [[閉路 (Cycle / Circuit)]]
+         - [[連結性 (Connectivity - 無向グラフ)]] (連結グラフ、非連結グラフ、連結成分)
+         - [[強連結性 (Strong Connectivity - 有向グラフ)]] (強連結グラフ、強連結成分)
+         - [[グラフの距離 (Distance) と直径 (Diameter)]]
+   - **グラフの表現方法** (数学的側面)
+      - [[隣接行列 (Adjacency Matrix)]] とその性質 (対称性、べき乗の意味)
+      - [[接続行列 (Incidence Matrix)]]
+      - [[隣接リスト (Adjacency List)]]
+   - **グラフの同型 (Graph Isomorphism)**
+   - **特別な路と閉路**
+      - **[[オイラー路 (Eulerian Path) とオイラー閉路 (Eulerian Circuit)]]**
+         - [[オイラーグラフの判定条件 (頂点の次数)]]
+      - **[[ハミルトン路 (Hamiltonian Path) とハミルトン閉路 (Hamiltonian Cycle)]]**
+         - [[ハミルトン閉路問題の困難性 (NP完全)]]
+         - [[ディラックの定理、オーレの定理 (十分条件)]]
+   - **平面グラフ (Planar Graph)**
+      - [[平面描画と辺の交差]]
+      - [[オイラーの公式 (頂点数v, 辺数e, 面の数f の関係 `v - e + f = 2`)]]
+      - [[クラトフスキーの定理 (K5とK3,3が部分グラフとして含まれない)]] (概要)
+   - **グラフ彩色 (Graph Coloring)**
+      - [[頂点彩色 (Vertex Coloring) と彩色数 (Chromatic Number)]]
+      - [[辺彩色 (Edge Coloring) と彩色指数 (Chromatic Index)]]
+      - [[四色定理 (Four Color Theorem)]] (概要)
+      - [[グラフ彩色の応用 (スケジューリング問題など)]]
+   - **[[(オプション) マッチング (Matching) と被覆 (Covering)]]**
+      - [[最大マッチング、完全マッチング]]
+      - [[結婚定理 (Hall's Marriage Theorem)]]
+   - **[[(オプション) ネットワークフロー (Network Flow)]]** (最大フロー最小カット定理 - 概要)
+   - **[[(オプション) ランダムグラフ (Random Graph)]]** (概要)
+
+## 7. [[木 (Trees) MOC]] (グラフ理論の特殊ケースとして詳述)
+   - **木の定義と性質**
+      - [[連結で閉路のないグラフ]]
+      - [[n頂点の木はn-1本の辺を持つ]]
+      - [[任意の2頂点間に唯一の単純路が存在する]]
+      - [[根付き木 (Rooted Tree)]]
+         - [[親 (Parent)、子 (Child)、兄弟 (Sibling)、先祖 (Ancestor)、子孫 (Descendant)]]
+         - [[葉 (Leaf / Terminal Node) と内部ノード (Internal Node)]]
+         - [[木の高さ (Height) と深さ (Depth)]]
+         - [[レベル (Level)]]
+      - [[順序木 (Ordered Tree) と無順序木]]
+      - **[[m分木 (m-ary Tree) と完全m分木]]**
+      - **[[二分木 (Binary Tree)]]** (データ構造の観点とは別に数学的性質)
+         - [[完全二分木 (Complete Binary Tree)]]
+         - [[満タン二分木 (Full Binary Tree / Proper Binary Tree)]]
+   - **木の走査 (Tree Traversal)** (数学的アルゴリズムとして)
+      - [[前順走査 (Pre-order)]]
+      - [[中順走査 (In-order)]] (二分木)
+      - [[後順走査 (Post-order)]]
+      - [[レベル順走査 (Level-order)]]
+   - **全域木 (Spanning Tree)**
+      - [[連結グラフの全域木]]
+      - [[最小全域木 (Minimum Spanning Tree - MST)]]
+         - [[クラスカルのアルゴリズムの数学的背景]]
+         - [[プリムのアルゴリズムの数学的背景]]
+   - **木の応用**
+      - [[決定木 (Decision Tree)]]
+      - [[構文解析木 (Parse Tree)]]
+      - [[ハフマン符号化の木]]
+
+## 8. [[関係 (Relations) MOC]]
+   - **関係の定義**
+      - [[二項関係 (Binary Relation) - 直積の部分集合]]
+      - [[関係の表現 (順序対の集合、行列、有向グラフ)]]
+   - **関係の性質**
+      - **[[反射的 (Reflexive)]]**
+      - **[[対称的 (Symmetric)]]**
+      - **[[反対称的 (Antisymmetric)]]**
+      - **[[推移的 (Transitive)]]**
+   - **関係の合成 (Composition of Relations)**
+   - **関係の閉包 (Closure of Relations)**
+      - [[反射閉包、対称閉包、推移閉包]]
+      - [[ワーシャルアルゴリズム (Warshall's Algorithm) による推移閉包の計算]]
+   - **[[同値関係 (Equivalence Relation)]]**
+      - [[同値関係の3性質 (反射性、対称性、推移性)]]
+      - **[[同値類 (Equivalence Class)]]**
+      - [[商集合 (Quotient Set) - 同値類による集合の分割]]
+   - **[[半順序関係 (Partial Order Relation / Poset)]]**
+      - [[半順序の3性質 (反射性、反対称性、推移性)]]
+      - **[[ハッセ図 (Hasse Diagram)]]**
+      - [[極大元 (Maximal Element)、極小元 (Minimal Element)]]
+      - [[最大元 (Greatest Element / Maximum)、最小元 (Least Element / Minimum)]]
+      - [[上限 (Upper Bound)、下限 (Lower Bound)]]
+      - [[最小上界 (Supremum / Least Upper Bound - lub)]]
+      - [[最大下界 (Infimum / Greatest Lower Bound - glb)]]
+   - **[[全順序関係 (Total Order Relation / Linear Order)]]**
+   - **[[(オプション) 整礎関係 (Well-founded Relation) と整列集合 (Well-ordered Set)]]**
+   - **[[(オプション) 関係データベースモデルとの関連]]**
+
+## 9. [[関数 (Functions) MOC]] (数学的観点)
+   - **関数の定義**
+      - [[関数とは (各始集合要素に唯一の終集合要素を対応させる関係)]]
+      - [[定義域 (Domain)、共変域 (Codomain)、値域 (Range / Image)]]
+      - [[`f: A → B` の記法]]
+      - [[関数のグラフ表現]]
+   - **関数の種類**
+      - **[[単射 (Injective Function / One-to-one Function)]]**
+      - **[[全射 (Surjective Function / Onto Function)]]**
+      - **[[全単射 (Bijective Function / One-to-one Correspondence)]]**
+         - [[全単射と集合の濃度の比較]]
+   - **関数の合成 (Composition of Functions)** (`g ◦ f`)
+      - [[合成関数の性質 (結合法則)]]
+   - **[[逆関数 (Inverse Function - `f⁻¹`)]]**
+      - [[逆関数が存在するための条件 (全単射)]]
+   - **特別な関数**
+      - [[恒等関数 (Identity Function)]]
+      - [[定数関数 (Constant Function)]]
+      - [[床関数 (Floor Function - `⌊x⌋`) と天井関数 (Ceiling Function - `⌈x⌉`)]]
+      - [[階乗関数 (Factorial Function - `n!`)]]
+      - [[絶対値関数 (Absolute Value Function - `|x|`)]]
+      - [[ハッシュ関数 (Hash Function)]] (離散数学的側面)
+   - **[[(オプション) 関数の無限集合の濃度 (可算無限、非可算無限)]]** (カントールの対角線論法)
+   - **[[(オプション) ラムダ記法による関数の表現]]** (関数型プログラミングとの関連)
+
+## 10. [[ブール代数 (Boolean Algebra) MOC]]
+   - **ブール代数の定義と公理**
+      - [[ブール代数の構造 (集合B, 2つの二項演算 +, ·, 1つの単項演算 ', 2つの定数 0, 1)]]
+      - [[束 (Lattice) としてのブール代数]] (概要)
+   - **ブール代数の基本法則** (再掲、代数的構造として)
+      - [[交換法則、結合法則、分配法則、吸収法則、補元法則、同一法則、支配法則、冪等法則、ド・モルガンの法則]]
+   - **双対原理 (Principle of Duality)**
+   - **ブール関数 (Boolean Function)**
+      - [[n変数ブール関数]]
+      - [[ブール関数の表現 (真理値表、ブール式)]]
+      - **[[ブール式の標準形 (Canonical Forms)]]**
+         - [[選言標準形 (DNF - Disjunctive Normal Form) / 主加法標準形 (Minterm Expansion)]]
+         - [[連言標準形 (CNF - Conjunctive Normal Form) / 主乗法標準形 (Maxterm Expansion)]]
+   - **論理ゲートとブール代数** (再掲、代数的側面)
+      - [[AND, OR, NOTゲートとブール演算子の対応]]
+      - [[NAND, NORゲートの万能性]]
+   - **ブール代数の応用**
+      - **[[論理回路の設計と簡単化]]**
+         - [[カルノー図 (Karnaugh Map)]] (2, 3, 4変数)
+         - [[クワイン・マクラスキー法 (Quine-McCluskey Algorithm)]] (概要)
+      - [[スイッチング回路]]
+      - [[集合演算との同型性]]
+      - [[命題論理との同型性]]
+
+## 11. [[再帰と漸化式 (Recursion and Recurrence Relations) MOC]]
+   - **再帰的定義 (Recursive Definition)**
+      - [[数列の再帰的定義 (例: フィボナッチ数列)]]
+      - [[集合の再帰的定義]]
+      - [[関数の再帰的定義]]
+      - [[データ構造の再帰的定義 (リスト、木)]]
+   - **漸化式 (Recurrence Relation)**
+      - [[漸化式の定義 (数列の項を先行する項で表す式)]]
+      - [[初期条件 (Initial Conditions / Boundary Conditions)]]
+      - **線形漸化式 (Linear Recurrence Relation)**
+         - **[[定数係数線形斉次漸化式 (Linear Homogeneous Recurrence Relations with Constant Coefficients)]]**
+            - [[特性方程式 (Characteristic Equation) を用いた解法]]
+            - [[重根の場合の解法]]
+         - **[[定数係数線形非斉次漸化式 (Linear Nonhomogeneous Recurrence Relations with Constant Coefficients)]]**
+            - [[同伴斉次方程式の一般解と非斉次方程式の特殊解]]
+            - [[未定係数法による特殊解の求め方]]
+      - **[[(オプション) 分割統治アルゴリズムと漸化式]]** (例: マージソート T(n) = 2T(n/2) + cn)
+         - [[マスター定理 (Master Theorem) の紹介]] (アルゴリズム解析の文脈で詳述)
+   - **[[(オプション) 母関数を用いた漸化式の解法]]**
+   - **再帰と数学的帰納法の関係**
+
+## 12. [[(概要) 数論の基礎 (Basic Number Theory - for CS) MOC]]
+   - **整数 (Integers)**
+      - [[整除可能性 (Divisibility) と約数 (Divisor)、倍数 (Multiple)]]
+      - [[除法のアルゴリズム (Division Algorithm)]] `a = dq + r`
+   - **素数 (Prime Numbers)**
+      - [[素数と合成数]]
+      - [[素因数分解の一意性 (算術の基本定理)]]
+      - [[無限に多くの素数が存在することの証明 (ユークリッド)]]
+      - [[エラトステネスの篩]] (再掲、数論的側面)
+   - **最大公約数 (GCD - Greatest Common Divisor)**
+      - **[[ユークリッドの互除法 (Euclidean Algorithm)]]** (再掲)
+      - [[`gcd(a,b) = gcd(b, a mod b)`]]
+   - **最小公倍数 (LCM - Least Common Multiple)**
+      - [[`lcm(a,b) = (|a*b|) / gcd(a,b)`]]
+   - **合同式 (Congruence Relation)**
+      - [[`a ≡ b (mod m)` の定義]]
+      - [[合同式の性質]]
+      - [[線形合同方程式 `ax ≡ b (mod m)` の解法]]
+   - **[[モジュラ逆数 (Modular Multiplicative Inverse)]]**
+      - [[拡張ユークリッドの互除法による計算]]
+   - **[[(オプション) フェルマーの小定理 (Fermat's Little Theorem)]]**
+   - **[[(オプション) オイラーのトーシェント関数 (Euler's Totient Function) とオイラーの定理]]**
+   - **[[(オプション) 中国剰余定理 (Chinese Remainder Theorem)]]**
+   - **数論の応用**
+      - [[暗号理論 (RSA暗号など)]] (概要)
+      - [[ハッシュ関数]]
+      - [[擬似乱数生成]]
+
+## 13. [[(オプション/概要) 形式言語とオートマトン理論の基礎 MOC]]
+   - **形式言語 (Formal Languages)**
+      - [[アルファベット、文字列、言語の定義]]
+      - [[言語の演算 (連接、和集合、クリーネ閉包)]]
+   - **正規表現 (Regular Expressions)** (離散構造としての側面)
+   - **有限オートマトン (Finite Automata - FA)**
+      - [[決定性有限オートマトン (DFA - Deterministic Finite Automaton)]]
+      - [[非決定性有限オートマトン (NFA - Non-deterministic Finite Automaton)]]
+      - [[DFAとNFAの等価性]]
+      - [[正規言語と有限オートマトンの関係 (クリーネの定理)]]
+   - **[[(概要) 文脈自由文法 (Context-Free Grammar - CFG) とプッシュダウンオートマトン (PDA)]]**
+   - **[[(概要) チューリングマシン (Turing Machine) と計算可能性]]**
+
+## 14. [[(オプション/概要) 離散確率論 (Discrete Probability) MOC]]
+   - **確率の基本**
+      - [[標本空間、事象、確率の公理]]
+      - [[条件付き確率とベイズの定理]]
+      - [[独立な事象]]
+   - **離散確率変数**
+      - [[期待値と分散]]
+   - **代表的な離散確率分布** (ベルヌーイ分布、二項分布、幾何分布、ポアソン分布 - 概要)
+   - **[[(概要) ランダムウォーク]]**
+   - **[[(概要) マルコフ連鎖]]**

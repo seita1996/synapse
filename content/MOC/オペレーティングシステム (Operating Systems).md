@@ -1,0 +1,444 @@
+---
+tags:
+  - moc
+enableToc: "true"
+draft: "false"
+permalink: moc/operationg-systems
+---
+## 1. [[OSの基本概念と概要 MOC]]
+   - **OSの定義と役割**
+      - [[オペレーティングシステムとは (コンピュータシステムの管理者)]]
+      - [[OSの主な機能 (リソース管理、プロセス管理、メモリ管理、ファイルシステム管理、I/O管理、ユーザーインターフェース提供)]]
+      - [[OSの目標 (利便性、効率性、拡張性、保護、セキュリティ)]]
+      - [[カーネル (Kernel) とは (OSの中核部分)]]
+      - [[ユーザーモード (User Mode) とカーネルモード (Kernel Mode / Supervisor Mode)]]
+      - [[モード移行 (システムコール、割り込み、トラップ)]]
+   - **OSの歴史と進化**
+      - [[初期のOS (存在しない時代、モニタープログラム)]]
+      - [[バッチ処理システム (Batch Processing System)]]
+      - [[マルチプログラミング (Multiprogramming) / 多重プログラミング]]
+      - [[タイムシェアリングシステム (TSS - Time-Sharing System) / 時分割システム]]
+      - [[リアルタイムオペレーティングシステム (RTOS - Real-Time Operating System)]]
+      - [[分散オペレーティングシステム (Distributed Operating System)]]
+      - [[ネットワークオペレーティングシステム (Network Operating System)]]
+      - [[組み込みオペレーティングシステム (Embedded Operating System)]]
+      - [[モバイルオペレーティングシステム (Mobile Operating System)]] (Android, iOSなど)
+      - [[クラウドOS (Cloud Operating System)]] (概念)
+   - **OSの構造 (アーキテクチャ)**
+      - [[単純構造OS (例: MS-DOS)]]
+      - [[モノリシックカーネル (Monolithic Kernel)]]
+         - [[モノリシックカーネルの利点と欠点]]
+      - [[階層構造OS (Layered Operating System)]]
+         - [[階層構造の利点と欠点]]
+      - [[マイクロカーネル (Microkernel)]]
+         - [[マイクロカーネルの利点と欠点 (性能オーバーヘッドなど)]]
+      - [[モジュラーカーネル (Modular Kernel / Loadable Kernel Modules)]]
+      - [[ハイブリッドカーネル (Hybrid Kernel)]] (例: Windows NT, macOS)
+      - [[エクソカーネル (Exokernel)]] (概念)
+   - **システムコール (System Calls)**
+      - [[システムコールとは (OSのサービスを利用するためのインターフェース)]]
+      - [[システムコールの種類 (プロセス制御、ファイル操作、デバイス操作、情報維持、通信)]]
+      - [[システムコールの仕組み (ライブラリ経由、トラップ命令)]]
+      - [[API (Application Programming Interface) とシステムコールの関係]]
+   - **OSのブートプロセス (Boot Process)**
+      - [[BIOS/UEFIの役割]]
+      - [[ブートローダ (Boot Loader)]]
+      - [[カーネルのロードと初期化]]
+
+## 2. [[プロセス管理 (Process Management) MOC]]
+   - **プロセスとは**
+      - [[プロセス (Process) の定義 (実行中のプログラム)]]
+      - [[プロセスとプログラムの違い]]
+      - [[プロセスの構成要素 (プログラムコード、データ、スタック、ヒープ、プログラムカウンタ、レジスタ)]]
+      - **[[プロセス状態 (Process State)]]**
+         - [[新規 (New)、実行中 (Running)、待機中 (Waiting)、準備完了 (Ready)、終了 (Terminated)]]
+         - [[プロセス状態遷移図]]
+      - **[[プロセス制御ブロック (PCB - Process Control Block) / プロセスタスクブロック (Task Control Block)]]**
+         - [[PCBに含まれる情報 (プロセス状態、プログラムカウンタ、CPUレジスタ、スケジューリング情報、メモリ管理情報、アカウンティング情報、I/O状態情報)]]
+      - [[コンテキストスイッチ (Context Switch)]]
+   - **プロセススケジューリング (Process Scheduling)**
+      - [[スケジューリングの目的 (CPU使用率向上、スループット向上、ターンアラウンドタイム短縮、待ち時間短縮、応答時間短縮)]]
+      - **スケジューリングキュー (Scheduling Queues)**
+         - [[ジョブキュー (Job Queue)]]
+         - [[レディキュー (Ready Queue)]]
+         - [[デバイスキュー (Device Queue)]]
+      - **スケジューラ (Scheduler)**
+         - [[長期スケジューラ (Long-term Scheduler / Job Scheduler)]]
+         - [[短期スケジューラ (Short-term Scheduler / CPU Scheduler)]]
+         - [[中期スケジューラ (Medium-term Scheduler / Swapper)]] (スワッピング)
+      - **ディスパッチャ (Dispatcher)**
+      - **スケジューリング基準 (Scheduling Criteria)**
+      - **[[CPUスケジューリングアルゴリズム MOC]]**
+         - **非プリエンプティブスケジューリング (Non-preemptive Scheduling)**
+            - [[先着順スケジューリング (FCFS - First-Come, First-Served)]]
+               - [[FCFSの convoy effect (護送効果)]]
+            - [[最短ジョブ優先スケジューリング (SJF - Shortest Job First)]] (非プリエンプティブ版)
+               - [[SJFの最適性とCPUバースト長の予測問題]]
+         - **プリエンプティブスケジューリング (Preemptive Scheduling)**
+            - [[最短残り時間優先スケジューリング (SRTF - Shortest Remaining Time First)]] (SJFのプリエンプティブ版)
+            - [[優先度スケジューリング (Priority Scheduling)]]
+               - [[静的優先度と動的優先度]]
+               - [[スターベーション (Starvation) とエイジング (Aging)]]
+            - [[ラウンドロビンスケジューリング (RR - Round Robin)]]
+               - [[タイムクォンタム (Time Quantum / Time Slice) の重要性]]
+            - [[多段キュー スケジューリング (Multilevel Queue Scheduling)]]
+            - [[多段フィードバックキュー スケジューリング (Multilevel Feedback Queue Scheduling)]]
+         - [[(オプション) リアルタイムスケジューリングアルゴリズム]] (Rate Monotonic, Earliest Deadline First)
+         - [[(オプション) マルチプロセッサスケジューリング]] (対称型/非対称型、プロセッサアフィニティ、負荷分散)
+   - **プロセス生成と終了**
+      - [[プロセス生成 (fork, exec システムコール - UNIX系)]]
+         - [[親子プロセス関係、プロセスツリー]]
+      - [[プロセス終了 (exit システムコール、シグナル)]]
+         - [[ゾンビプロセス (Zombie Process) と孤児プロセス (Orphan Process)]]
+   - **[[プロセス間通信 (IPC - Inter-Process Communication) MOC]]**
+      - [[IPCの必要性 (情報共有、計算の高速化、モジュール性、利便性)]]
+      - **共有メモリシステム (Shared Memory Systems)**
+         - [[共有メモリの仕組みと同期の必要性]]
+      - **メッセージパッシングシステム (Message Passing Systems)**
+         - [[直接通信 (Direct Communication) と間接通信 (Indirect Communication - メールボックス/ポート)]]
+         - [[同期型メッセージパッシング (ブロッキング) と非同期型メッセージパッシング (ノンブロッキング)]]
+         - [[メッセージのバッファリング (ゼロ容量、有限容量、無限容量)]]
+      - **[[(オプション) パイプ (Pipes)]]** (UNIX系)
+         - [[無名パイプと名前付きパイプ (FIFO)]]
+      - **[[(オプション) ソケット (Sockets)]]** (ネットワークIPC)
+      - **[[(オプション) Remote Procedure Call (RPC)]]**
+   - **[[スレッド (Threads) MOC]]**
+      - [[スレッドの定義 (プロセス内の実行単位、Lightweight Process - LWP)]]
+      - [[スレッドの利点 (応答性向上、リソース共有、経済性、スケーラビリティ)]]
+      - [[シングルスレッドプロセスとマルチスレッドプロセス]]
+      - **ユーザースレッド (User Threads) とカーネルスレッド (Kernel Threads)**
+         - [[ユーザースレッドの利点と欠点]]
+         - [[カーネルスレッドの利点と欠点]]
+      - **マルチスレッディングモデル**
+         - [[多対一モデル (Many-to-One Model)]]
+         - [[一対一モデル (One-to-One Model)]]
+         - [[多対多モデル (Many-to-Many Model)]] (および2レベルモデル)
+      - [[スレッドライブラリ (Pthreads, Java Threads, Windows Threads)]]
+      - [[スレッドプール (Thread Pool)]]
+      - [[(オプション) ファイバー (Fibers / Coroutines)]]
+
+## 3. [[プロセス同期 (Process Synchronization) MOC]]
+   - **同期の必要性**
+      - [[競合状態 (Race Condition)]]
+      - [[クリティカルセクション (Critical Section)]]
+   - **[[クリティカルセクション問題 (Critical Section Problem)]]**
+      - [[解決策の要件 (相互排除、進行、有限の待ち時間)]]
+   - **ソフトウェアベースの解決策**
+      - [[Petersonの解決策 (2プロセスのクリティカルセクション問題)]]
+   - **ハードウェアサポートによる解決策**
+      - [[メモリバリア (Memory Barrier)]]
+      - [[不可分操作 (Atomic Operations)]]
+         - [[TestAndSet命令]]
+         - [[CompareAndSwap (CAS) 命令 / Swap命令]]
+   - **同期ツール**
+      - **[[セマフォ (Semaphore)]]**
+         - [[カウンティングセマフォとバイナリセマフォ]]
+         - [[セマフォの操作 (wait/P/acquire, signal/V/release)]]
+         - [[セマフォによるクリティカルセクション問題の解決]]
+         - [[セマフォによる生産者消費者問題の解決]]
+         - [[セマフォによるリーダーライター問題の解決]]
+         - [[セマフォによる食事する哲学者の問題の解決]]
+         - [[セマフォのデッドロックとスターベーション]]
+      - **[[ミューテックス (Mutex / Mutual Exclusion Lock)]]**
+         - [[ミューテックスとバイナリセマフォの違い]]
+         - [[ミューテックスの取得と解放]]
+      - **[[モニター (Monitor)]]** (高水準同期構成体)
+         - [[モニターの仕組み (相互排除、条件変数)]]
+         - **[[条件変数 (Condition Variables)]]** (wait, signal, broadcast)
+      - **[[(オプション) バリア (Barrier)]]**
+      - **[[(オプション) リーダーライターロック (Readers-Writer Lock)]]**
+   - **デッドロック (Deadlocks)**
+      - [[デッドロックの定義 (複数のプロセスが互いに待ち状態)]]
+      - [[システムモデル (リソースの種類、要求・使用・解放)]]
+      - **デッドロック発生の4条件 (Coffman conditions)**
+         - [[相互排除 (Mutual Exclusion)]]
+         - [[占有と待機 (Hold and Wait)]]
+         - [[非横取り (No Preemption)]]
+         - [[循環待ち (Circular Wait)]]
+      - **[[リソースアロケーショングラフ (Resource-Allocation Graph)]]**
+      - **デッドロックの取り扱い方法**
+         - **[[デッドロック予防 (Deadlock Prevention)]]** (4条件のいずれかを破壊)
+         - **[[デッドロック回避 (Deadlock Avoidance)]]**
+            - [[安全状態 (Safe State) と不安全状態 (Unsafe State)]]
+            - [[リソースアロケーショングラフアルゴリズム (単一インスタンスリソース)]]
+            - [[銀行家のアルゴリズム (Banker's Algorithm)]] (複数インスタンスリソース)
+         - **[[デッドロック検出 (Deadlock Detection)]]**
+            - [[単一インスタンスリソースのデッドロック検出 (待機グラフ)]]
+            - [[複数インスタンスリソースのデッドロック検出]]
+            - [[検出アルゴリズムの使用頻度]]
+         - **[[デッドロックからの回復 (Recovery from Deadlock)]]**
+            - [[プロセスの強制終了]]
+            - [[リソースの横取り]]
+
+## 4. [[メモリ管理 (Memory Management) MOC]]
+   - **基本概念**
+      - [[メモリアドレス空間 (Address Space)]]
+      - [[論理アドレス (Logical Address / Virtual Address) と物理アドレス (Physical Address)]]
+      - [[アドレス束縛 (Address Binding)]] (コンパイル時、ロード時、実行時)
+      - **[[メモリ管理ユニット (MMU - Memory Management Unit)]]**
+   - **単純なメモリ管理**
+      - [[単一連続割り当て (Single Contiguous Allocation)]] (ベアメタル、初期OS)
+      - [[固定区画方式 (Fixed Partitioning)]]
+         - [[内部断片化 (Internal Fragmentation)]]
+      - [[可変区画方式 (Variable Partitioning / Dynamic Partitioning)]]
+         - [[外部断片化 (External Fragmentation)]]
+         - [[コンパクション (Compaction / Memory Compaction)]]
+         - [[動的記憶域割り当て問題 (ホール配置アルゴリズム)]] (First-fit, Best-fit, Worst-fit)
+   - **スワッピング (Swapping)**
+      - [[スワッピングの仕組み (主記憶と補助記憶間のプロセス移動)]]
+      - [[スワップ空間 (Swap Space / Backing Store)]]
+   - **[[ページング (Paging) MOC]]**
+      - [[ページングの基本概念 (固定サイズのページとフレーム)]]
+      - [[ページ (Page) とページフレーム (Page Frame)]]
+      - **[[ページテーブル (Page Table)]]**
+         - [[ページテーブルエントリ (PTE)]] (フレーム番号、有効ビット、保護ビット、参照ビット、ダーティビットなど)
+         - [[ページテーブルの配置場所 (主記憶)]]
+         - [[ページテーブルベースレジスタ (PTBR)]]
+      - [[ページングにおけるアドレス変換の仕組み]]
+      - [[ページングにおける内部断片化 (最終ページ)]]
+      - **ページテーブルの構造**
+         - [[階層的ページング (Hierarchical Paging / Multi-level Page Tables)]] (2レベル、3レベルページテーブル)
+         - [[ハッシュ化ページテーブル (Hashed Page Tables)]]
+         - [[逆引きページテーブル (Inverted Page Tables)]]
+      - **[[TLB (Translation Lookaside Buffer) / 連想メモリ (Associative Memory)]]**
+         - [[TLBの役割 (ページテーブルのキャッシュ)]]
+         - [[TLBヒットとTLBミス]]
+         - [[有効なメモリアクセス時間 (EAT - Effective Access Time)]]
+      - [[共有ページ (Shared Pages)]]
+      - [[コピーオンライト (Copy-on-Write - COW)]]
+   - **[[セグメンテーション (Segmentation) MOC]]**
+      - [[セグメンテーションの基本概念 (可変長の論理単位セグメント)]]
+      - [[セグメント (Segment) とセグメントテーブル (Segment Table)]]
+      - [[セグメンテーションにおけるアドレス変換]]
+      - [[セグメンテーションの利点 (論理的構造、保護、共有)]]
+      - [[セグメンテーションにおける外部断片化]]
+   - **[[セグメンテーションとページングの組み合わせ MOC]]** (例: Intel x86)
+   - **[[仮想記憶 (Virtual Memory) MOC]]**
+      - [[仮想記憶の概念と利点 (大容量アドレス空間、プロセス分離、効率的なプロセス生成)]]
+      - **[[デマンドページング (Demand Paging)]]**
+         - [[デマンドページングの仕組み (必要になるまでページをロードしない)]]
+         - [[ページフォールト (Page Fault)]]
+         - [[ページフォールト処理の手順]]
+         - [[純粋デマンドページング (Pure Demand Paging)]]
+      - **[[ページ置き換えアルゴリズム (Page Replacement Algorithms)]]** (ページフォールト発生時)
+         - [[ページ置き換えの目的 (犠牲フレームの選択)]]
+         - [[参照文字列 (Reference String)]]
+         - **[[FIFOページ置き換えアルゴリズム (First-In, First-Out)]]**
+            - [[Beladyの異常 (Belady's Anomaly)]]
+         - **[[最適ページ置き換えアルゴリズム (OPT / MIN)]]** (理論的な最良、実装不能)
+         - **[[LRUページ置き換えアルゴリズム (Least Recently Used)]]**
+            - [[LRUの実装方法 (カウンタ、スタック)]] (高コスト)
+         - **LRU近似アルゴリズム**
+            - [[参照ビット (Reference Bit) を用いたアルゴリズム]]
+            - [[セカンドチャンスアルゴリズム (Second-Chance Algorithm / Clock Algorithm)]]
+            - [[拡張セカンドチャンスアルゴリズム (Enhanced Second-Chance Algorithm)]] (参照ビットとダーティビット)
+         - **[[(オプション) LFUページ置き換えアルゴリズム (Least Frequently Used)]]**
+         - **[[(オプション) MFUページ置き換えアルゴリズム (Most Frequently Used)]]**
+      - **フレーム割り当て (Allocation of Frames)**
+         - [[最小フレーム数]]
+         - [[均等割り当て (Equal Allocation)]]
+         - [[比例割り当て (Proportional Allocation)]]
+         - [[グローバル置き換え (Global Replacement) とローカル置き換え (Local Replacement)]]
+      - **[[スラッシング (Thrashing)]]**
+         - [[スラッシングの原因と影響 (ページフォールト多発による性能低下)]]
+         - [[ワーキングセットモデル (Working-Set Model)]]
+         - [[ページフォールト頻度 (PFF - Page-Fault Frequency) による制御]]
+      - **[[(オプション) メモリマップドファイル (Memory-Mapped Files)]]**
+      - **[[(オプション) カーネルメモリ割り当て (Kernel Memory Allocation)]]** (Buddy System, Slab Allocation)
+
+## 5. [[ストレージ管理 (Storage Management) / ファイルシステム (File System) MOC]]
+   - **ファイルシステムの概要**
+      - [[ファイルシステムとは (補助記憶装置上のデータ管理)]]
+      - [[ファイルシステムの機能 (ファイル作成・削除・操作、ディレクトリ管理、アクセス制御)]]
+   - **ファイル概念 (File Concept)**
+      - [[ファイルとは (名前付きの関連情報の集まり)]]
+      - **ファイル属性 (File Attributes)** (名前、識別子、種類、場所、サイズ、保護、タイムスタンプなど)
+      - **ファイル操作 (File Operations)** (作成、書き込み、読み出し、シーク、削除、切り詰めなど)
+      - **ファイルタイプ (File Types)** (実行ファイル、テキストファイル、オブジェクトファイル、ソースファイルなど)
+      - **ファイル構造 (File Structure)** (バイトシーケンス、レコードシーケンス、木構造など)
+   - **アクセス方法 (Access Methods)**
+      - [[シーケンシャルアクセス (Sequential Access)]]
+      - [[ダイレクトアクセス (Direct Access / Relative Access)]]
+      - [[インデックスアクセス (Indexed Access)]]
+   - **ディレクトリ構造 (Directory Structure)**
+      - **[[単一レベルディレクトリ (Single-Level Directory)]]**
+      - **[[2レベルディレクトリ (Two-Level Directory)]]**
+      - **[[木構造ディレクトリ (Tree-Structured Directory)]]**
+         - [[パス名 (絶対パス、相対パス)]]
+         - [[カレントディレクトリ、ホームディレクトリ]]
+      - **[[非循環グラフディレクトリ (Acyclic-Graph Directory)]]** (共有ファイル、リンク)
+         - [[ハードリンク (Hard Link) とソフトリンク (Soft Link / Symbolic Link)]]
+      - **[[一般グラフディレクトリ (General Graph Directory)]]** (循環の可能性と対処)
+   - **ファイルシステムマウント (File System Mounting)**
+   - **ファイル共有と保護 (File Sharing and Protection)**
+      - [[複数ユーザー環境でのファイル共有]]
+      - [[アクセス制御 (Access Control)]]
+         - [[アクセス権 (読み取り、書き込み、実行)]]
+         - [[アクセス制御リスト (ACL - Access Control List)]]
+         - [[ユーザーグループ (オーナー、グループ、その他 - UNIX系)]]
+   - **ファイルシステムの実装**
+      - **[[ファイルシステム構造 (File System Structure)]]** (ブート制御ブロック、ボリューム制御ブロック、ディレクトリ構造、ファイル制御ブロック - FCB / i-node)
+      - **[[オンディスク構造とインメモリ構造]]**
+      - **[[仮想ファイルシステム (VFS - Virtual File System)]]**
+      - **ディレクトリの実装**
+         - [[線形リスト (Linear List) によるディレクトリ]]
+         - [[ハッシュテーブル (Hash Table) によるディレクトリ]]
+      - **[[ファイル割り当て方法 (File Allocation Methods)]]**
+         - **[[連続割り当て (Contiguous Allocation)]]**
+            - [[連続割り当ての利点と欠点 (外部断片化)]]
+         - **[[リンク割り当て (Linked Allocation)]]**
+            - [[リンク割り当ての利点と欠点 (ダイレクトアクセス不可、信頼性)]]
+            - [[ファイルアロケーションテーブル (FAT - File Allocation Table)]]
+         - **[[インデックス割り当て (Indexed Allocation)]]**
+            - [[インデックスブロック (Index Block)]]
+            - [[インデックス割り当ての利点と欠点 (ブロックの無駄、ブロック数制限)]]
+            - [[マルチレベルインデックス (UNIXのi-node)]]
+      - **[[空き領域管理 (Free-Space Management)]]**
+         - [[ビットベクタ (Bit Vector / Bitmap)]]
+         - [[リンクドリスト (Linked List / Free List)]]
+         - [[グルーピング (Grouping)]]
+         - [[カウンティング (Counting)]]
+   - **効率と性能**
+      - [[ディスクキャッシュ (バッファキャッシュ)]]
+      - [[リカバリ (Recovery)]]
+         - [[整合性チェッカ (fsck, chkdsk)]]
+         - **[[ジャーナリングファイルシステム (Journaling File System)]]** (例: ext3, ext4, NTFS, XFS)
+         - **[[ログ構造ファイルシステム (LFS - Log-structured File System)]]**
+         - **[[(オプション) コピーオンライトファイルシステム (CoW File System)]]** (例: ZFS, Btrfs)
+   - **ディスク構造とスケジューリング**
+      - **[[ディスク構造 (Disk Structure)]]** (プラッタ、サーフェス、トラック、セクタ、シリンダ)
+      - **[[ディスクアクセス時間 (シークタイム、回転遅延、転送時間)]]**
+      - **[[ディスクスケジューリングアルゴリズム MOC]]**
+         - [[FCFS (First-Come, First-Served) ディスクスケジューリング]]
+         - [[SSTF (Shortest Seek Time First) ディスクスケジューリング]]
+         - [[SCAN (Elevator Algorithm) ディスクスケジューリング]]
+         - [[C-SCAN (Circular SCAN) ディスクスケジューリング]]
+         - [[LOOK / C-LOOK ディスクスケジューリング]]
+         - [[ディスクスケジューリングアルゴリズムの選択]]
+      - **[[ディスクフォーマット (Disk Formatting)]]** (ローレベルフォーマット、パーティショニング、ハイレベルフォーマット)
+      - **[[ブートブロック (Boot Block)]]**
+      - **[[不良ブロック (Bad Blocks) の管理]]**
+   - **[[RAID構造 (Redundant Array of Independent Disks) MOC]]**
+      - [[RAIDの目的 (性能向上、信頼性向上)]]
+      - [[RAIDレベル (RAID 0, RAID 1, RAID 2, RAID 3, RAID 4, RAID 5, RAID 6, RAID 1+0, RAID 0+1)]]
+      - [[各RAIDレベルの特徴とトレードオフ]]
+   - **[[(オプション) ネットワークファイルシステム (NFS, CIFS/SMB)]]**
+   - **[[(オプション) 分散ファイルシステム (DFS, GFS, HDFS)]]**
+
+## 6. [[入出力 (I/O) システム管理 MOC]]
+   - **I/Oハードウェアの概要** (再掲・OS視点)
+      - [[I/Oデバイスの種類と特性 (ブロックデバイス、キャラクタデバイス、ネットワークデバイス)]]
+      - [[デバイスコントローラ (Device Controller)]]
+      - [[I/Oポート、メモリマップドI/O]]
+      - [[バス構造 (Bus Architecture)]] (PCI, PCIe, USBなど)
+   - **アプリケーションI/Oインターフェース**
+      - [[I/Oシステムコール (open, close, read, write, ioctl)]]
+      - [[ブロッキングI/O (Blocking I/O) とノンブロッキングI/O (Non-blocking I/O)]]
+      - [[非同期I/O (Asynchronous I/O)]]
+   - **カーネルI/Oサブシステム**
+      - **[[I/Oスケジューリング (I/O Scheduling)]]** (ディスクスケジューリングなど)
+      - **[[バッファリング (Buffering)]]**
+         - [[シングルバッファ、ダブルバッファ、サーキュラーバッファ]]
+      - **[[キャッシング (Caching)]]** (ディスクキャッシュ/バッファキャッシュ)
+      - **[[スプーリング (Spooling)]]** (例: プリンタスプーラ)
+      - **[[エラー処理 (Error Handling)]]**
+      - **[[I/O保護 (I/O Protection)]]** (特権命令、メモリマップドI/O領域保護)
+   - **I/O要求からハードウェア操作への変換**
+   - **性能**
+      - [[I/Oがシステム性能に与える影響]]
+      - [[パフォーマンス改善のためのテクニック]]
+
+## 7. [[セキュリティと保護 (Security and Protection) MOC]]
+   - **保護 (Protection) の目標と原則**
+      - [[保護とは (リソースへのアクセス制御)]]
+      - [[保護の原則 (最小権限の原則 - Principle of Least Privilege)]]
+      - [[ニーズツーノーの原則 (Need-to-Know Principle)]]
+   - **保護のドメイン (Domain of Protection)**
+      - [[ドメインの概念 (アクセス権の集合)]]
+      - [[UNIXにおけるドメイン (ユーザーID、グループID)]]
+   - **アクセス制御マトリクス (Access Matrix)**
+      - [[アクセス制御マトリクスのモデル (オブジェクト、サブジェクト、アクセス権)]]
+      - [[アクセス制御マトリクスの実装方法]]
+         - **[[アクセス制御リスト (ACL - Access Control List)]]** (オブジェクトに紐付け)
+         - **[[ケーパビリティリスト (Capability List)]]** (サブジェクトに紐付け)
+         - **[[(オプション) ロック/キーメカニズム (Lock-Key Mechanism)]]**
+   - **セキュリティ (Security) の問題**
+      - [[セキュリティとは (不正アクセスや破壊からの保護)]]
+      - **脅威の種類 (Threats)**
+         - [[マルウェア (Malware)]] (ウイルス、ワーム、トロイの木馬、ランサムウェア、スパイウェア)
+         - [[不正アクセス (Unauthorized Access)]]
+         - [[サービス妨害攻撃 (DoS - Denial of Service) / 分散サービス妨害攻撃 (DDoS)]]
+         - [[盗聴 (Eavesdropping)]]
+         - [[なりすまし (Masquerading / Spoofing)]]
+   - **システムレベルのセキュリティ**
+      - [[ユーザー認証 (User Authentication)]]
+         - [[パスワードベース認証とその脆弱性]]
+         - [[多要素認証 (MFA - Multi-Factor Authentication)]]
+         - [[生体認証 (Biometrics)]]
+      - [[プログラムの脅威 (Program Threats)]] (トロイの木馬、バックドア、論理爆弾)
+      - [[システム/ネットワークの脅威 (System/Network Threats)]] (ワーム、ポートスキャン、DoS)
+   - **セキュリティ対策**
+      - [[暗号化 (Cryptography) の基本]] (OSの役割は限定的だが関連知識として)
+         - [[共通鍵暗号方式 (Symmetric Encryption)]]
+         - [[公開鍵暗号方式 (Asymmetric Encryption / Public-Key Cryptography)]]
+         - [[デジタル署名 (Digital Signature)]]
+      - [[侵入検知システム (IDS - Intrusion Detection System)]]
+      - [[ファイアウォール (Firewall)]]
+      - [[セキュリティ監査 (Security Auditing)]]
+      - [[セキュアコーディングとOSの脆弱性]]
+   - **[[(オプション) Trusted Computing Base (TCB)]]**
+
+## 8. [[(概要) 分散システム (Distributed Systems) MOC]] (OSの視点から)
+   - [[分散システムとは (複数の独立したコンピュータが協調動作)]]
+   - [[分散システムの利点 (リソース共有、計算の高速化、信頼性向上、スケーラビリティ)]]
+   - [[分散システムの課題 (複雑性、ネットワーク依存、セキュリティ)]]
+   - **ネットワークOS (Network Operating System) vs 分散OS (Distributed Operating System)**
+   - **通信**
+      - [[Remote Procedure Call (RPC)]]
+      - [[Remote Method Invocation (RMI)]] (Java)
+      - [[メッセージ指向ミドルウェア (MOM - Message-Oriented Middleware)]]
+   - **[[(概要) 一貫性とレプリケーション (Consistency and Replication)]]**
+   - **[[(概要) フォールトトレランス (Fault Tolerance)]]**
+   - **[[(概要) 分散ファイルシステム (Distributed File System - DFS)]]** (NFS, AFS, GFS, HDFSなど)
+
+## 9. [[(概要) 仮想化 (Virtualization) MOC]] (OSの視点から)
+   - [[仮想化とは (物理リソースの論理的表現)]]
+   - [[仮想化の利点 (リソース効率向上、分離、移植性、サーバー統合)]]
+   - **仮想化の種類**
+      - [[完全仮想化 (Full Virtualization)]]
+      - [[準仮想化 (Para-virtualization)]]
+      - [[OSレベル仮想化 (コンテナ技術 - Docker, LXC)]]
+   - **[[仮想マシン (VM - Virtual Machine)]]**
+   - **[[ハイパーバイザ (Hypervisor / Virtual Machine Monitor - VMM)]]**
+      - [[タイプ1ハイパーバイザ (ベアメタル型)]] (VMware ESXi, Xen, Hyper-V)
+      - [[タイプ2ハイパーバイザ (ホスト型)]] (VMware Workstation, VirtualBox, Parallels)
+   - **[[(概要) ハードウェア仮想化支援機能]]** (Intel VT-x, AMD-V)
+
+## 10. [[具体的なOSのケーススタディ MOC]] (主要な特徴や設計思想)
+   - **[[UNIX / Linux MOC]]**
+      - [[UNIXの設計思想 (Everything is a file, Small tools, Shell scripting)]]
+      - [[Linuxカーネルのアーキテクチャ]]
+      - [[Linuxのプロセス管理、メモリ管理、ファイルシステム(ext4, XFSなど)]]
+   - **[[Windows MOC]]**
+      - [[Windows NTアーキテクチャ (HAL, カーネル, Executive)]]
+      - [[Windowsのプロセスとスレッド管理 (Jobオブジェクト)]]
+      - [[Windowsのメモリ管理 (Virtual Memory Manager)]]
+      - [[NTFSファイルシステム]]
+   - **[[macOS MOC]]**
+      - [[macOSのアーキテクチャ (XNUカーネル - Mach + BSD)]]
+      - [[Cocoa, Carbon API]]
+      - [[APFS (Apple File System)]]
+   - **[[モバイルOS (Android / iOS) MOC]]**
+      - [[Androidアーキテクチャ (Linuxカーネルベース, ART)]]
+      - [[iOSアーキテクチャ (XNUカーネルベース)]]
+      - [[モバイルOSにおける電力管理とセキュリティ]]
+
+## 11. [[現代のOSのトピックと将来展望 MOC]]
+   - [[クラウドコンピューティングとOS (IaaS, PaaS, SaaSにおけるOSの役割)]]
+   - [[モノリシックカーネルからマイクロサービスアーキテクチャへのOS機能の移行トレンド？]]
+   - [[IoT (Internet of Things) デバイス向けOS (Contiki, Zephyr, FreeRTOS)]]
+      - [[IoT OSの要件 (省電力、軽量、リアルタイム性、セキュリティ)]]
+   - [[リアルタイムOS (RTOS) の進化と応用分野 (自動運転、産業制御)]]
+   - [[AI/MLワークロードのためのOS最適化]]
+   - [[OSにおけるセキュリティとプライバシーの継続的な課題]]
+   - [[Unikernelの概念と可能性]]

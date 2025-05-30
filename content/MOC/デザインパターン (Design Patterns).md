@@ -1,0 +1,490 @@
+---
+tags:
+  - moc
+enableToc: "true"
+draft: "false"
+permalink: moc/design-patterns
+---
+## 1. [[デザインパターン入門 MOC]]
+   - **デザインパターンとは**
+      - [[デザインパターンの定義 (特定コンテキストにおける問題への再利用可能な解決策)]]
+      - [[デザインパターンの歴史 (建築分野からの影響、クリストファー・アレグザンダー)]]
+      - **[[Gang of Four (GoF) とその著書『オブジェクト指向における再利用のためのデザインパターン』]]**
+      - [[デザインパターンの構成要素 (パターン名、問題、解決策、結果)]] (GoFフォーマット)
+   - **デザインパターンの利点**
+      - [[共通の設計語彙の提供 (コミュニケーションの円滑化)]]
+      - [[設計の再利用性と生産性の向上]]
+      - [[システムの柔軟性、拡張性、保守性の向上]]
+      - [[実績のある解決策による品質の向上]]
+      - [[設計経験の少ない開発者への指針]]
+   - **デザインパターンの課題と誤用**
+      - [[過度な適用 (オーバーエンジニアリング、不要な複雑化)]]
+      - [[パターンを盲目的に適用することの危険性 (銀の弾丸ではない)]]
+      - [[パターンの選択ミス]]
+      - [[パターン強迫症候群 (Pattern Obsession Disorder)]]
+   - **デザインパターンの分類 (GoF)**
+      - `[[生成に関するパターン (Creational Patterns) の概要]]`
+      - `[[構造に関するパターン (Structural Patterns) の概要]]`
+      - `[[振る舞いに関するパターン (Behavioral Patterns) の概要]]`
+   - **デザインパターンと他の設計概念との関係**
+      - `[[デザインパターンと設計原則 (SOLID, DRY, KISSなど) の関係]]`
+      - `[[デザインパターンとアーキテクチャパターン (MVC, Microservicesなど) の違い]]`
+      - `[[デザインパターンとイディオム (Idioms) の違い]]`
+   - **デザインパターンの学習方法と活用**
+      - [[パターンカタログの読み方と理解の深化]]
+      - [[実際のコードにおけるパターンの発見と適用]]
+      - [[リファクタリングへのパターンの活用]]
+
+## 2. [[生成に関するパターン (Creational Patterns) MOC]]
+   - [[生成パターンの目的 (オブジェクト生成プロセスの抽象化と柔軟性の向上)]]
+   - ---
+   - **[[Abstract Factory パターン MOC]]**
+      - [[Abstract Factory: 目的と動機 (関連するオブジェクト群を具象クラスを意識せずに生成)]]
+      - [[Abstract Factory: 解決する問題 (製品ファミリーの切り替え)]]
+      - [[Abstract Factory: 適用可能性 (具体的な製品に依存しないクライアント、複数の製品ファミリー)]]
+      - [[Abstract Factory: 構造 (UMLクラス図、シーケンス図)]]
+      - [[Abstract Factory: 登場人物 (AbstractFactory, ConcreteFactory, AbstractProduct, ConcreteProduct, Client)]]
+      - [[Abstract Factory: 協調動作 (ClientがAbstractFactory経由で製品群を生成)]]
+      - [[Abstract Factory: 結果 (利点: クライアントと具象クラスの分離、製品ファミリーの一貫性 / 欠点: 新しい種類の製品追加の困難さ)]]
+      - [[Abstract Factory: 実装のポイント]]
+         - [[ファクトリをSingletonとして実装する]]
+         - [[プロトタイプを利用して製品を生成する]]
+         - [[言語機能による抽象化 (例: Javaのinterface, C++の純粋仮想関数)]]
+      - [[Abstract Factory: Javaでの実装例]]
+      - [[Abstract Factory: C++での実装例]]
+      - [[Abstract Factory: Pythonでの実装例]]
+      - [[Abstract Factory: C#での実装例]]
+      - [[Abstract Factory: 実際の利用例 (GUIツールキットのLook&Feel、データベースアクセスライブラリ)]]
+      - [[Abstract Factory: 関連パターン (Factory Method, Prototype, Singleton)]]
+   - ---
+   - **[[Builder パターン MOC]]**
+      - [[Builder: 目的と動機 (複雑なオブジェクトをその構築プロセスから分離)]]
+      - [[Builder: 解決する問題 (多くのパラメータを持つコンストラクタ、可変なオブジェクト表現)]]
+      - [[Builder: 適用可能性 (オブジェクト生成手順が複雑、異なる表現が必要)]]
+      - [[Builder: 構造 (UMLクラス図)]]
+      - [[Builder: 登場人物 (Builder, ConcreteBuilder, Director, Product)]]
+      - [[Builder: 協調動作 (DirectorがBuilderのステップを制御し、Productを構築)]]
+      - [[Builder: 結果 (利点: 生成プロセスの詳細制御、異なる表現の生成 / 欠点: クラス数の増加)]]
+      - [[Builder: 実装のポイント]]
+         - [[Fluent Interface (流れるようなインターフェース) との組み合わせ]]
+         - [[Directorクラスの省略 (クライアントが直接Builderを操作)]]
+      - [[Builder: Javaでの実装例 (Lombokの@Builderなど)]]
+      - [[Builder: C++での実装例]]
+      - [[Builder: Pythonでの実装例]]
+      - [[Builder: C#での実装例 (Fluent Builder)]]
+      - [[Builder: 実際の利用例 (ドキュメントコンバータ、SQLクエリビルダ)]]
+      - [[Builder: 関連パターン (Abstract Factory, Composite)]]
+   - ---
+   - **[[Factory Method パターン MOC]]** (仮想コンストラクタ)
+      - [[Factory Method: 目的と動機 (オブジェクト生成をサブクラスに委譲)]]
+      - [[Factory Method: 解決する問題 (インスタンス化するクラスを実行時に決定)]]
+      - [[Factory Method: 適用可能性 (生成するオブジェクトの種類がサブクラスによって異なる場合)]]
+      - [[Factory Method: 構造 (UMLクラス図)]]
+      - [[Factory Method: 登場人物 (Product, ConcreteProduct, Creator, ConcreteCreator)]]
+      - [[Factory Method: 協調動作 (Creatorがファクトリメソッドを定義し、ConcreteCreatorがそれを実装)]]
+      - [[Factory Method: 結果 (利点: サブクラスの柔軟性向上、具象クラスとの疎結合 / 欠点: クラス階層の複雑化)]]
+      - [[Factory Method: 実装のポイント]]
+         - [[パラメータ化されたファクトリメソッド]]
+         - [[デフォルト実装の提供]]
+      - [[Factory Method: Javaでの実装例 (java.util.Calendar#getInstance())]]
+      - [[Factory Method: C++での実装例]]
+      - [[Factory Method: Pythonでの実装例]]
+      - [[Factory Method: C#での実装例]]
+      - [[Factory Method: 実際の利用例 (フレームワーク、アプリケーションのプラグイン機構)]]
+      - [[Factory Method: 関連パターン (Abstract Factory, Template Method, Prototype)]]
+   - ---
+   - **[[Prototype パターン MOC]]**
+      - [[Prototype: 目的と動機 (既存のオブジェクトをコピーして新しいオブジェクトを生成)]]
+      - [[Prototype: 解決する問題 (生成コストが高いオブジェクト、クラス階層からの独立)]]
+      - [[Prototype: 適用可能性 (動的に生成するオブジェクトの種類を指定したい場合)]]
+      - [[Prototype: 構造 (UMLクラス図)]]
+      - [[Prototype: 登場人物 (Prototype, ConcretePrototype, Client)]]
+      - [[Prototype: 協調動作 (ClientがPrototypeにcloneを要求)]]
+      - [[Prototype: 結果 (利点: 生成する具象クラスの削減、実行時のオブジェクト追加・削除 / 欠点: clone処理の複雑さ)]]
+      - [[Prototype: 実装のポイント]]
+         - [[浅いコピー (Shallow Copy) vs. 深いコピー (Deep Copy)]]
+         - [[プロトタイプマネージャ (Prototype Manager)]]
+      - [[Prototype: Javaでの実装例 (Cloneableインターフェースとclone()メソッド)]]
+      - [[Prototype: C++での実装例 (コピーコンストラクタ/代入演算子、仮想コンストラクタパターン)]]
+      - [[Prototype: Pythonでの実装例 (copyモジュール)]]
+      - [[Prototype: C#での実装例 (ICloneableインターフェース)]]
+      - [[Prototype: 実際の利用例 (グラフィックエディタの図形複製、ゲームのユニット生成)]]
+      - [[Prototype: 関連パターン (Abstract Factory, Factory Method, Composite)]]
+   - ---
+   - **[[Singleton パターン MOC]]**
+      - [[Singleton: 目的と動機 (クラスのインスタンスが1つだけであることを保証)]]
+      - [[Singleton: 解決する問題 (グローバルなアクセスポイントの提供、リソースの唯一性確保)]]
+      - [[Singleton: 適用可能性 (ログ機能、設定管理、データベース接続プールなど)]]
+      - [[Singleton: 構造 (UMLクラス図)]]
+      - [[Singleton: 登場人物 (Singleton)]]
+      - [[Singleton: 協調動作 (静的メソッド経由での唯一のインスタンスアクセス)]]
+      - [[Singleton: 結果 (利点: インスタンスの唯一性保証、グローバルアクセス / 欠点: テストの困難さ、グローバル状態の隠蔽、DI原則違反の可能性)]]
+      - **[[Singleton: 実装のバリエーションと注意点]]**
+         - [[遅延初期化 (Lazy Initialization)]]
+         - [[スレッドセーフなSingletonの実装 (Double-Checked Lockingなど)]]
+         - [[Eager Initialization]]
+         - [[Enum Singleton (Java)]]
+         - [[Singletonと依存性注入 (Dependency Injection) の関係]]
+      - [[Singleton: Javaでの実装例]]
+      - [[Singleton: C++での実装例 (Meyers' Singletonなど)]]
+      - [[Singleton: Pythonでの実装例 (モジュールレベル、デコレータ、メタクラス)]]
+      - [[Singleton: C#での実装例 (Lazy<T>など)]]
+      - [[Singleton: 実際の利用例とアンチパターンとしての議論]]
+      - [[Singleton: 関連パターン (Abstract Factory, Builder, Facade, Object Pool)]]
+
+## 3. [[構造に関するパターン (Structural Patterns) MOC]]
+   - [[構造パターンの目的 (クラスやオブジェクトを組み合わせてより大きな構造を作る)]]
+   - ---
+   - **[[Adapter パターン MOC]]** (Wrapper)
+      - [[Adapter: 目的と動機 (互換性のないインターフェース間を適合させる)]]
+      - [[Adapter: 解決する問題 (既存クラスの再利用、インターフェースの不整合)]]
+      - [[Adapter: 適用可能性 (既存クラスを新しいインターフェースで利用したい場合)]]
+      - [[Adapter: 構造 (UMLクラス図 - クラスアダプタとオブジェクトアダプタ)]]
+      - [[Adapter: 登場人物 (Target, Adaptee, Adapter, Client)]]
+      - **[[クラスアダプタ (Class Adapter) vs. オブジェクトアダプタ (Object Adapter)]]** (継承 vs. 委譲)
+      - [[Adapter: 結果 (利点: 既存コードの再利用、疎結合 / 欠点: アダプタクラスの増加)]]
+      - [[Adapter: 実装のポイント]]
+      - [[Adapter: Javaでの実装例 (java.util.Arrays#asList())]]
+      - [[Adapter: C++での実装例]]
+      - [[Adapter: Pythonでの実装例]]
+      - [[Adapter: C#での実装例]]
+      - [[Adapter: 実際の利用例 (レガシーシステム連携、外部ライブラリのラップ)]]
+      - [[Adapter: 関連パターン (Bridge, Decorator, Proxy)]]
+   - ---
+   - **[[Bridge パターン MOC]]**
+      - [[Bridge: 目的と動機 (抽象とその実装を分離し、それぞれを独立に拡張可能にする)]]
+      - [[Bridge: 解決する問題 (クラス階層の爆発的な増加、実装の動的切り替え)]]
+      - [[Bridge: 適用可能性 (抽象と実装の両方を独立に拡張したい場合)]]
+      - [[Bridge: 構造 (UMLクラス図)]]
+      - [[Bridge: 登場人物 (Abstraction, RefinedAbstraction, Implementor, ConcreteImplementor)]]
+      - [[Bridge: 結果 (利点: 抽象と実装の分離、拡張性の向上 / 欠点: 設計の複雑化)]]
+      - [[Bridge: 実装のポイント]]
+      - [[Bridge: Javaでの実装例 (JDBCドライバなど)]]
+      - [[Bridge: C++での実装例]]
+      - [[Bridge: Pythonでの実装例]]
+      - [[Bridge: C#での実装例]]
+      - [[Bridge: 実際の利用例 (GUIのウィンドウシステム、異なるプラットフォーム対応)]]
+      - [[Bridge: 関連パターン (Abstract Factory, Adapter, Strategy)]]
+   - ---
+   - **[[Composite パターン MOC]]**
+      - [[Composite: 目的と動機 (部分-全体階層を表現し、個々のオブジェクトとオブジェクトの集合を同じように扱えるようにする)]]
+      - [[Composite: 解決する問題 (再帰的なデータ構造の操作)]]
+      - [[Composite: 適用可能性 (木構造の表現、クライアントが個物と集合を区別しない場合)]]
+      - [[Composite: 構造 (UMLクラス図)]]
+      - [[Composite: 登場人物 (Component, Leaf, Composite, Client)]]
+      - [[Composite: 結果 (利点: 単純なクライアントコード、新しい種類の要素追加の容易さ / 欠点: Leafに不適切な操作定義の可能性)]]
+      - [[Composite: 実装のポイント]]
+         - [[安全性 (Safety) vs. 透明性 (Transparency) のトレードオフ]]
+         - [[子要素の管理]]
+      - [[Composite: Javaでの実装例 (java.awt.Component)]]
+      - [[Composite: C++での実装例]]
+      - [[Composite: Pythonでの実装例]]
+      - [[Composite: C#での実装例]]
+      - [[Composite: 実際の利用例 (グラフィック描画、ファイルシステム、UIコンポーネント)]]
+      - [[Composite: 関連パターン (Decorator, Iterator, Visitor, Flyweight)]]
+   - ---
+   - **[[Decorator パターン MOC]]** (Wrapper)
+      - [[Decorator: 目的と動機 (オブジェクトに動的に新しい機能を追加)]]
+      - [[Decorator: 解決する問題 (サブクラス化による機能追加の爆発、実行時の機能追加)]]
+      - [[Decorator: 適用可能性 (個々のオブジェクトに柔軟に機能を追加・削除したい場合)]]
+      - [[Decorator: 構造 (UMLクラス図)]]
+      - [[Decorator: 登場人物 (Component, ConcreteComponent, Decorator, ConcreteDecorator)]]
+      - [[Decorator: 結果 (利点: 柔軟な機能拡張、継承より優れた柔軟性 / 欠点: 小さなオブジェクトが多数生成される可能性)]]
+      - [[Decorator: 実装のポイント]]
+         - [[インターフェースの一貫性維持]]
+         - [[デコレータの連鎖]]
+      - [[Decorator: Javaでの実装例 (java.ioパッケージのストリームクラス)]]
+      - [[Decorator: C++での実装例]]
+      - [[Decorator: Pythonでの実装例 (デコレータ構文との関連)]]
+      - [[Decorator: C#での実装例 (Streamクラスなど)]]
+      - [[Decorator: 実際の利用例 (GUIコンポーネントの装飾、データ圧縮・暗号化)]]
+      - [[Decorator: 関連パターン (Adapter, Composite, Strategy, Proxy)]]
+   - ---
+   - **[[Facade パターン MOC]]**
+      - [[Facade: 目的と動機 (複雑なサブシステムへのシンプルなインターフェースを提供)]]
+      - [[Facade: 解決する問題 (サブシステムとの密結合、利用の複雑さ)]]
+      - [[Facade: 適用可能性 (サブシステムをより使いやすくしたい場合、サブシステム間の依存関係を減らしたい場合)]]
+      - [[Facade: 構造 (UMLクラス図)]]
+      - [[Facade: 登場人物 (Facade, Subsystem classes)]]
+      - [[Facade: 結果 (利点: サブシステムの単純化、疎結合 / 欠点: FacadeがGod Objectになる可能性)]]
+      - [[Facade: 実装のポイント]]
+      - [[Facade: Javaでの実装例]]
+      - [[Facade: C++での実装例]]
+      - [[Facade: Pythonでの実装例]]
+      - [[Facade: C#での実装例]]
+      - [[Facade: 実際の利用例 (コンパイラ、大規模ライブラリの単純なAPI)]]
+      - [[Facade: 関連パターン (Abstract Factory, Mediator)]]
+   - ---
+   - **[[Flyweight パターン MOC]]**
+      - [[Flyweight: 目的と動機 (多数の小さなオブジェクトを効率的に共有し、メモリ使用量を削減)]]
+      - [[Flyweight: 解決する問題 (オブジェクト数が多くメモリを圧迫する場合)]]
+      - [[Flyweight: 適用可能性 (多数の類似オブジェクト、オブジェクトの状態が内部状態と外部状態に分離可能)]]
+      - [[Flyweight: 構造 (UMLクラス図)]]
+      - [[Flyweight: 登場人物 (Flyweight, ConcreteFlyweight, UnsharedConcreteFlyweight, FlyweightFactory, Client)]]
+      - [[Flyweight: 結果 (利点: メモリ削減、オブジェクト数の削減 / 欠点: 内部状態と外部状態の分離による複雑化)]]
+      - [[Flyweight: 実装のポイント]]
+         - [[Flyweight Factoryによるインスタンス管理]]
+         - [[内部状態 (Intrinsic) と外部状態 (Extrinsic) の分離]]
+      - [[Flyweight: Javaでの実装例 (java.lang.Stringの文字列プール, java.lang.Integer#valueOf())]]
+      - [[Flyweight: C++での実装例]]
+      - [[Flyweight: Pythonでの実装例]]
+      - [[Flyweight: C#での実装例]]
+      - [[Flyweight: 実際の利用例 (文字オブジェクト、グラフィックのアイコン、ゲームのタイル)]]
+      - [[Flyweight: 関連パターン (Composite, Factory Method, State)]]
+   - ---
+   - **[[Proxy パターン MOC]]**
+      - [[Proxy: 目的と動機 (他のオブジェクトへのアクセスを制御するための代理オブジェクトを提供)]]
+      - [[Proxy: 解決する問題 (直接アクセスできない/したくないオブジェクトへのアクセス制御)]]
+      - [[Proxy: 適用可能性 (遅延初期化、アクセス制御、ロギング、リモートオブジェクト)]]
+      - [[Proxy: 構造 (UMLクラス図)]]
+      - [[Proxy: 登場人物 (Subject, RealSubject, Proxy)]]
+      - **[[Proxyパターンの種類]]**
+         - [[Virtual Proxy (仮想プロキシ)]] (遅延初期化)
+         - [[Remote Proxy (リモートプロキシ)]] (異なるアドレス空間のオブジェクトへのアクセス)
+         - [[Protection Proxy (保護プロキシ)]] (アクセス制御)
+         - [[Smart Proxy / Smart Reference (スマートプロキシ)]] (追加処理、参照カウントなど)
+      - [[Proxy: 結果 (利点: アクセス制御、パフォーマンス改善、実装の隠蔽 / 欠点: 応答時間の増加、複雑性の増加)]]
+      - [[Proxy: 実装のポイント]]
+      - [[Proxy: Javaでの実装例 (java.lang.reflect.Proxy, RMI)]]
+      - [[Proxy: C++での実装例 (スマートポインタ)]]
+      - [[Proxy: Pythonでの実装例]]
+      - [[Proxy: C#での実装例 (System.Runtime.Remoting.Proxies.RealProxy)]]
+      - [[Proxy: 実際の利用例 (ORMの遅延ロード、画像ビューア、RPC)]]
+      - [[Proxy: 関連パターン (Adapter, Decorator)]]
+
+## 4. [[振る舞いに関するパターン (Behavioral Patterns) MOC]]
+   - [[振る舞いパターンの目的 (オブジェクト間の協調動作や責任分担のパターン化)]]
+   - ---
+   - **[[Chain of Responsibility パターン MOC]]**
+      - [[Chain of Responsibility: 目的と動機 (リクエストの送信者と受信者を分離し、複数のオブジェクトに処理の機会を与える)]]
+      - [[Chain of Responsibility: 解決する問題 (リクエストの処理者が動的に変わる、処理者が複数存在する)]]
+      - [[Chain of Responsibility: 適用可能性 (GUIのイベント処理、ロギングフィルタ)]]
+      - [[Chain of Responsibility: 構造 (UMLクラス図)]]
+      - [[Chain of Responsibility: 登場人物 (Handler, ConcreteHandler, Client)]]
+      - [[Chain of Responsibility: 結果 (利点: 送信者と受信者の疎結合、柔軟な責任割り当て / 欠点: リクエストが処理されない可能性)]]
+      - [[Chain of Responsibility: 実装のポイント]]
+      - [[Chain of Responsibility: Javaでの実装例 (Servlet Filter, Log4j/SLF4JのAppender)]]
+      - [[Chain of Responsibility: C++での実装例]]
+      - [[Chain of Responsibility: Pythonでの実装例]]
+      - [[Chain of Responsibility: C#での実装例 (ASP.NET Core Middleware)]]
+      - [[Chain of Responsibility: 実際の利用例 (例外処理、ヘルプシステム)]]
+      - [[Chain of Responsibility: 関連パターン (Composite, Command)]]
+   - ---
+   - **[[Command パターン MOC]]** (Action, Transaction)
+      - [[Command: 目的と動機 (リクエストをオブジェクトとしてカプセル化)]]
+      - [[Command: 解決する問題 (リクエストのパラメータ化、キューイング、アンドゥ/リドゥ)]]
+      - [[Command: 適用可能性 (操作の取り消し、マクロ記録、非同期実行)]]
+      - [[Command: 構造 (UMLクラス図)]]
+      - [[Command: 登場人物 (Command, ConcreteCommand, Client, Invoker, Receiver)]]
+      - [[Command: 結果 (利点: 呼び出し元と処理の分離、操作の拡張性、アンドゥ/リドゥ機能 / 欠点: コマンドクラスの増加)]]
+      - [[Command: 実装のポイント]]
+         - [[アンドゥ操作の実装]]
+         - [[マクロコマンド (MacroCommand)]]
+      - [[Command: Javaでの実装例 (Runnableインターフェース、SwingのAction)]]
+      - [[Command: C++での実装例]]
+      - [[Command: Pythonでの実装例]]
+      - [[Command: C#での実装例 (ICommandインターフェース)]]
+      - [[Command: 実際の利用例 (GUIボタン、メニューアイテム、エディタの操作)]]
+      - [[Command: 関連パターン (Composite, Memento, Prototype)]]
+   - ---
+   - **[[Interpreter パターン MOC]]**
+      - [[Interpreter: 目的と動機 (言語の文法を定義し、その文法に基づいて文を解釈するインタープリタを提供)]]
+      - [[Interpreter: 解決する問題 (単純な言語の処理、特定ドメインの表現)]]
+      - [[Interpreter: 適用可能性 (繰り返し発生する問題が単純な言語で表現できる場合)]]
+      - [[Interpreter: 構造 (UMLクラス図)]]
+      - [[Interpreter: 登場人物 (AbstractExpression, TerminalExpression, NonterminalExpression, Context, Client)]]
+      - [[Interpreter: 結果 (利点: 文法の変更・拡張が容易、実装が容易 / 欠点: 複雑な文法には不向き、パフォーマンス)]]
+      - [[Interpreter: 実装のポイント]]
+         - [[構文木の表現]]
+      - [[Interpreter: Javaでの実装例 (java.util.regex.Pattern)]]
+      - [[Interpreter: C++での実装例]]
+      - [[Interpreter: Pythonでの実装例]]
+      - [[Interpreter: C#での実装例]]
+      - [[Interpreter: 実際の利用例 (正規表現エンジン、SQLパーサ、設定ファイルパーサ)]]
+      - [[Interpreter: 関連パターン (Composite, Visitor, Flyweight)]]
+   - ---
+   - **[[Iterator パターン MOC]]** (Cursor)
+      - [[Iterator: 目的と動機 (集合オブジェクトの内部表現を公開せずに要素に順次アクセスする方法を提供)]]
+      - [[Iterator: 解決する問題 (様々な種類の集合に対する統一的なアクセス方法)]]
+      - [[Iterator: 適用可能性 (集合の内部構造を隠蔽したい、複数の走査方法を提供したい)]]
+      - [[Iterator: 構造 (UMLクラス図)]]
+      - [[Iterator: 登場人物 (Iterator, ConcreteIterator, Aggregate, ConcreteAggregate)]]
+      - [[Iterator: 結果 (利点: 集合の内部構造の隠蔽、複数の走査方法のサポート / 欠点: 単純な走査には冗長な場合も)]]
+      - [[Iterator: 実装のポイント]]
+         - [[外部イテレータ vs. 内部イテレータ]]
+         - [[イテレータの堅牢性 (Robustness)]]
+      - [[Iterator: Javaでの実装例 (java.util.Iterator, java.util.Iterable)]]
+      - [[Iterator: C++での実装例 (STLイテレータ)]]
+      - [[Iterator: Pythonでの実装例 (イテレータプロトコル, `__iter__`, `__next__`)]]
+      - [[Iterator: C#での実装例 (IEnumerable, IEnumerator, `yield return`)]]
+      - [[Iterator: 実際の利用例 (コレクションライブラリ)]]
+      - [[Iterator: 関連パターン (Composite, Factory Method, Memento)]]
+   - ---
+   - **[[Mediator パターン MOC]]**
+      - [[Mediator: 目的と動機 (オブジェクト間の複雑な相互作用をカプセル化し、結合度を下げる)]]
+      - [[Mediator: 解決する問題 (多数のオブジェクトが互いに直接参照し合う状況)]]
+      - [[Mediator: 適用可能性 (オブジェクト間の通信が複雑で多対多の場合)]]
+      - [[Mediator: 構造 (UMLクラス図)]]
+      - [[Mediator: 登場人物 (Mediator, ConcreteMediator, Colleague, ConcreteColleague)]]
+      - [[Mediator: 結果 (利点: オブジェクト間の結合度の低減、相互作用の集中管理 / 欠点: MediatorがGod Objectになる可能性)]]
+      - [[Mediator: 実装のポイント]]
+      - [[Mediator: Javaでの実装例 (java.util.Timer (内部的に), GUIのダイアログ管理)]]
+      - [[Mediator: C++での実装例]]
+      - [[Mediator: Pythonでの実装例]]
+      - [[Mediator: C#での実装例]]
+      - [[Mediator: 実際の利用例 (チャットシステム、航空管制システム)]]
+      - [[Mediator: 関連パターン (Observer, Facade)]]
+   - ---
+   - **[[Memento パターン MOC]]** (Token)
+      - [[Memento: 目的と動機 (オブジェクトの状態をカプセル化し、後で復元できるようにする)]]
+      - [[Memento: 解決する問題 (アンドゥ/リドゥ機能、状態の保存と復元)]]
+      - [[Memento: 適用可能性 (オブジェクトの内部状態を外部に公開せずに保存・復元したい場合)]]
+      - [[Memento: 構造 (UMLクラス図)]]
+      - [[Memento: 登場人物 (Memento, Originator, Caretaker)]]
+      - [[Memento: 結果 (利点: オブジェクトのカプセル化の維持、状態復元の単純化 / 欠点: メモリ消費量の増加)]]
+      - [[Memento: 実装のポイント]]
+         - [[Mementoのインターフェース (Narrow vs. Wide)]]
+      - [[Memento: Javaでの実装例]]
+      - [[Memento: C++での実装例]]
+      - [[Memento: Pythonでの実装例]]
+      - [[Memento: C#での実装例]]
+      - [[Memento: 実際の利用例 (テキストエディタのアンドゥ、データベースのトランザクションロールバック)]]
+      - [[Memento: 関連パターン (Command, Iterator)]]
+   - ---
+   - **[[Observer パターン MOC]]** (Dependents, Publish-Subscribe)
+      - [[Observer: 目的と動機 (オブジェクト間で一対多の依存関係を定義し、あるオブジェクトの状態変化を他の全依存オブジェクトに自動通知・更新させる)]]
+      - [[Observer: 解決する問題 (状態変化の通知、疎結合なイベント処理)]]
+      - [[Observer: 適用可能性 (あるオブジェクトの変更が他のオブジェクトに影響を与える場合)]]
+      - [[Observer: 構造 (UMLクラス図)]]
+      - [[Observer: 登場人物 (Subject/Observable, Observer/Subscriber, ConcreteSubject, ConcreteObserver)]]
+      - **[[Observerパターンの実装方法 (Pushモデル vs. Pullモデル)]]**
+      - [[Observer: 結果 (利点: SubjectとObserverの疎結合、動的なObserverの追加・削除 / 欠点: 通知順序の不定性、予期せぬ更新連鎖)]]
+      - [[Observer: 実装のポイント]]
+      - [[Observer: Javaでの実装例 (java.util.Observer/Observable (deprecated), PropertyChangeListener, イベントリスナ)]]
+      - [[Observer: C++での実装例]]
+      - [[Observer: Pythonでの実装例]]
+      - [[Observer: C#での実装例 (イベントとデリゲート, IObservable/IObserver)]]
+      - [[Observer: 実際の利用例 (GUIのイベント処理、MVCアーキテクチャのModel-View間)]]
+      - [[Observer: 関連パターン (Mediator, Singleton)]]
+   - ---
+   - **[[State パターン MOC]]** (Objects for States)
+      - [[State: 目的と動機 (オブジェクトの内部状態に応じて振る舞いを変更させる)]]
+      - [[State: 解決する問題 (多数の条件分岐による状態管理の複雑化)]]
+      - [[State: 適用可能性 (オブジェクトが多くの状態を持ち、状態によって振る舞いが大きく変わる場合)]]
+      - [[State: 構造 (UMLクラス図)]]
+      - [[State: 登場人物 (Context, State, ConcreteState)]]
+      - [[State: 結果 (利点: 状態遷移の明確化、状態固有の振る舞いの局所化 / 欠点: 状態クラスの増加)]]
+      - [[State: 実装のポイント]]
+         - [[状態遷移の責任 (Context vs. Stateクラス)]]
+         - [[Stateオブジェクトの共有 (Flyweightとの組み合わせ)]]
+      - [[State: Javaでの実装例]]
+      - [[State: C++での実装例]]
+      - [[State: Pythonでの実装例]]
+      - [[State: C#での実装例]]
+      - [[State: 実際の利用例 (ネットワーク接続状態、ゲームキャラクターの状態、自動販売機)]]
+      - [[State: 関連パターン (Strategy, Flyweight, Interpreter)]]
+   - ---
+   - **[[Strategy パターン MOC]]** (Policy)
+      - [[Strategy: 目的と動機 (アルゴリズム群を定義し、それぞれをカプセル化して交換可能にする)]]
+      - [[Strategy: 解決する問題 (アルゴリズムの動的な切り替え、クライアントからのアルゴリズム実装の分離)]]
+      - [[Strategy: 適用可能性 (多くの関連クラスが振る舞いのみ異なる場合、複数のアルゴリズムがあり動的に選択したい場合)]]
+      - [[Strategy: 構造 (UMLクラス図)]]
+      - [[Strategy: 登場人物 (Strategy, ConcreteStrategy, Context)]]
+      - [[Strategy: 結果 (利点: アルゴリズムの追加・変更の容易さ、条件分岐の排除 / 欠点: Strategyクラスの増加、クライアントがStrategyの違いを意識する必要)]]
+      - [[Strategy: 実装のポイント]]
+         - [[Strategyオブジェクトの受け渡し方法]]
+         - [[関数型言語での高階関数による実現]]
+      - [[Strategy: Javaでの実装例 (java.util.Comparator, レイアウトマネージャ)]]
+      - [[Strategy: C++での実装例 (関数ポインタ、関数オブジェクト)]]
+      - [[Strategy: Pythonでの実装例 (第一級関数)]]
+      - [[Strategy: C#での実装例 (デリゲート)]]
+      - [[Strategy: 実際の利用例 (ソートアルゴリズムの切り替え、検証ロジックの切り替え、圧縮アルゴリズムの選択)]]
+      - [[Strategy: 関連パターン (State, Bridge, Template Method, Flyweight)]]
+   - ---
+   - **[[Template Method パターン MOC]]**
+      - [[Template Method: 目的と動機 (アルゴリズムの骨格をスーパークラスで定義し、一部のステップをサブクラスに委譲)]]
+      - [[Template Method: 解決する問題 (アルゴリズムの共通部分と可変部分の分離)]]
+      - [[Template Method: 適用可能性 (アルゴリズムの特定ステップをサブクラスで変更可能にしたい場合)]]
+      - [[Template Method: 構造 (UMLクラス図)]]
+      - [[Template Method: 登場人物 (AbstractClass, ConcreteClass)]]
+      - **[[フックメソッド (Hook Method)]]** (サブクラスが任意でオーバーライドできるメソッド)
+      - [[Template Method: 結果 (利点: コードの再利用、アルゴリズムの骨格の固定 / 欠点: スーパークラスとサブクラスの密結合)]]
+      - [[Template Method: 実装のポイント]]
+      - [[Template Method: Javaでの実装例 (Abstractクラスの利用, サーブレットのdoGet/doPost)]]
+      - [[Template Method: C++での実装例 (純粋仮想関数/仮想関数)]]
+      - [[Template Method: Pythonでの実装例]]
+      - [[Template Method: C#での実装例 (abstract/virtualメソッド)]]
+      - [[Template Method: 実際の利用例 (フレームワーク、ドキュメント処理)]]
+      - [[Template Method: 関連パターン (Factory Method, Strategy)]]
+   - ---
+   - **[[Visitor パターン MOC]]**
+      - [[Visitor: 目的と動機 (オブジェクト構造と操作を分離し、構造を変更せずに新しい操作を追加可能にする)]]
+      - [[Visitor: 解決する問題 (オブジェクト構造に操作を追加するたびにクラスを変更する必要がある)]]
+      - [[Visitor: 適用可能性 (オブジェクト構造に対する多くの異なる操作が必要、クラス階層が比較的安定している)]]
+      - [[Visitor: 構造 (UMLクラス図)]]
+      - [[Visitor: 登場人物 (Visitor, ConcreteVisitor, Element, ConcreteElement, ObjectStructure)]]
+      - **[[ダブルディスパッチ (Double Dispatch)]]** (Visitorパターンの核心)
+      - [[Visitor: 結果 (利点: 新しい操作の追加容易性、関連する操作の集約 / 欠点: 新しいElementクラスの追加の困難さ、カプセル化の破壊)]]
+      - [[Visitor: 実装のポイント]]
+      - [[Visitor: Javaでの実装例]]
+      - [[Visitor: C++での実装例]]
+      - [[Visitor: Pythonでの実装例]]
+      - [[Visitor: C#での実装例]]
+      - [[Visitor: 実際の利用例 (コンパイラの構文木処理、複雑なオブジェクト構造のレポート生成)]]
+      - [[Visitor: 関連パターン (Composite, Interpreter, Iterator)]]
+
+## 5. [[(オプション) その他のデザインパターン MOC]]
+   - **[[Null Object パターン MOC]]**
+      - [[Null Object: 目的 (nullチェックの排除、デフォルトの何もしない振る舞いの提供)]]
+      - [[Null Object: 構造と実装例]]
+   - **[[Dependency Injection (DI) パターン / Inversion of Control (IoC) MOC]]**
+      - [[DI/IoC: 目的 (オブジェクト間の依存関係の疎結合化)]]
+      - [[DIの種類 (コンストラクタ注入、セッター注入、インターフェース注入)]]
+      - [[DIコンテナ (Spring, Guice, .NET Core DIなど)]]
+   - **[[Service Locator パターン MOC]]**
+      - [[Service Locator: 目的 (サービスへのグローバルアクセスポイント提供)]]
+      - [[Service Locator vs. Dependency Injection]]
+   - **[[Lazy Initialization パターン MOC]]**
+      - [[Lazy Initialization: 目的 (オブジェクトの初期化を実際に必要になるまで遅延させる)]]
+   - **[[Object Pool パターン MOC]]**
+      - [[Object Pool: 目的 (生成コストの高いオブジェクトの再利用)]]
+   - **[[Specification パターン MOC]]**
+      - [[Specification: 目的 (ビジネスルールをカプセル化し、組み合わせ可能にする)]]
+   - **[[(概要) イベントソーシング (Event Sourcing) パターン MOC]]**
+   - **[[(概要) CQRS (Command Query Responsibility Segregation) パターン MOC]]**
+   - **[[(概要) リアクティブデザインパターン MOC]]** (例: Circuit Breaker, Bulkhead)
+   - **[[(概要) クラウドデザインパターン MOC]]** (例: Retry, Cache-Aside)
+   - **[[(概要) マイクロサービスアーキテクチャパターン MOC]]** (例: API Gateway, Service Discovery)
+
+## 6. [[デザインパターンの適用とベストプラクティス MOC]]
+   - **[[いつデザインパターンを使うべきか (問題の特定とパターンの適合性)]]**
+   - **[[デザインパターンの誤用を避けるために]]**
+   - **[[複数のデザインパターンの組み合わせ (Compound Patterns)]]** (例: MVCはStrategy, Composite, Observerの組み合わせ)
+   - **[[リファクタリングとデザインパターン (既存コードへのパターンの適用)]]**
+   - **[[デザインパターンとテスト容易性]]**
+   - **[[言語ごとのデザインパターンの表現の違い]]** (関数型言語での代替など)
+   - **[[自分自身のパターンを発見し、カタログ化する]]**
+
+## 7. [[アンチパターン (Anti-Patterns) MOC]]
+   - **アンチパターンとは**
+      - [[アンチパターンの定義 (よくある悪い解決策とその典型的な症状、結果、改善策)]]
+   - **ソフトウェア開発におけるアンチパターン**
+      - `[[神クラス (God Class / God Object)]]`
+      - `[[スパゲッティコード (Spaghetti Code)]]`
+      - `[[ラザニアコード (Lasagna Code)]]` (過度なレイヤー化)
+      - `[[Lava Flow (溶岩流)]]` (使われていない古いコードの放置)
+      - `[[金のハンマー (Golden Hammer)]]` (一つの技術やパターンをあらゆる問題に適用)
+      - `[[車輪の再発明 (Reinventing the Wheel)]]`
+      - `[[デッドコード (Dead Code)]]`
+      - `[[マジックナンバー (Magic Number) / 文字列リテラル]]`
+      - `[[コピー&ペーストプログラミング (Copy and Paste Programming)]]`
+      - `[[分析麻痺 (Analysis Paralysis)]]`
+      - `[[自転車置き場の議論 (Bike Shedding)]]`
+   - **設計に関するアンチパターン**
+      - `[[貧血ドメインモデル (Anemic Domain Model)]] `
+      - `[[循環依存 (Circular Dependency)]]`
+      - `[[巨大なコミット (Large Commits)]]` (バージョン管理における)
+   - **組織・プロセスに関するアンチパターン** (概要)
+      - `[[デスマーチ (Death March)]]`
+      - `[[サイロ化 (Silos)]]`
+   - **アンチパターンの特定と対処法**

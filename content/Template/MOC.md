@@ -1,6 +1,7 @@
 ---
 tags:
   - moc
-enableToc: "false"
+enableToc: "true"
 draft: "true"
+permalink: moc/999
 ---

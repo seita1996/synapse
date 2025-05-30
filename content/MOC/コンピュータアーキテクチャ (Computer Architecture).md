@@ -1,0 +1,387 @@
+---
+tags:
+  - moc
+enableToc: "true"
+draft: "false"
+permalink: moc/computer-architecture
+---
+## 1. [[コンピュータアーキテクチャの基本概念 MOC]]
+   - **定義と範囲**
+      - [[コンピュータアーキテクチャとは (プログラマから見えるシステムの属性)]]
+      - [[コンピュータ構成 (Computer Organization) との違い]] (アーキテクチャの実現方法)
+      - [[コンピュータ設計 (Computer Design) とは]]
+      - [[命令セットアーキテクチャ (ISA) の役割]]
+   - **歴史的背景と進化**
+      - [[初期の計算機 (機械式、リレー式)]]
+      - [[ENIACとEDVAC]]
+      - [[ノイマン型コンピュータ (プログラム内蔵方式)]]
+         - [[ノイマン・ボトルネックの問題]]
+      - [[ハーバードアーキテクチャ (命令とデータのバス分離)]]
+      - [[コンピュータの世代 (真空管、トランジスタ、集積回路 LSI/VLSI)]]
+      - [[ムーアの法則とその影響、そして現代の課題]]
+   - **性能評価**
+      - [[コンピュータの性能指標]]
+         - [[応答時間 (Response Time / Latency)]]
+         - [[スループット (Throughput)]]
+      - [[CPU性能の基本式 (CPU時間 = 命令数 × CPI × クロックサイクル時間)]]
+         - [[命令数 (Instruction Count)]]
+         - [[CPI (Cycles Per Instruction)]]
+         - [[クロックサイクル時間 (Clock Cycle Time) とクロック周波数 (Clock Rate)]]
+      - [[MIPS (Million Instructions Per Second)]]
+      - [[FLOPS (Floating-Point Operations Per Second)]]
+      - [[ベンチマークプログラムの役割 (SPEC, Linpackなど)]]
+      - [[アムダールの法則 (Amdahl's Law) と性能改善の限界]]
+
+---
+## 2. [[デジタル論理回路 (Digital Logic Circuits) MOC]]
+   - **数の表現と演算**
+      - [[コンピュータにおける数の表現]]
+         - [[2進数 (Binary Number System)]]
+         - [[8進数 (Octal) と16進数 (Hexadecimal Number System)]]
+         - [[固定小数点数 (Fixed-Point Number)]]
+         - [[浮動小数点数 (Floating-Point Number)]] (IEEE 754標準)
+            - [[符号部、指数部、仮数部]]
+            - [[正規化、非正規化数、NaN、無限大]]
+         - [[負数の表現 (符号と絶対値、1の補数、2の補数)]]
+      - [[2進数演算 (加算、減算、乗算、除算)]]
+      - [[論理演算 (AND, OR, NOT, XOR)]]
+   - **ブール代数と論理ゲート**
+      - [[ブール代数 (Boolean Algebra) の基本法則と定理]] (交換則、結合則、分配則、ド・モルガンの法則など)
+      - [[論理ゲート (Logic Gates)]]
+         - [[ANDゲート、ORゲート、NOTゲート (インバータ)]]
+         - [[NANDゲート、NORゲート (万能ゲート)]]
+         - [[XORゲート (排他的論理和)、XNORゲート]]
+      - [[真理値表 (Truth Table)]]
+      - [[論理関数の表現 (論理式、カルノー図による簡単化)]]
+   - **組み合わせ回路 (Combinational Circuits)**
+      - [[組み合わせ回路とは (出力が現在の入力のみで決まる)]]
+      - [[半加算器 (Half Adder) と全加算器 (Full Adder)]]
+      - [[リップルキャリー加算器 (Ripple Carry Adder)]]
+      - [[桁上げ先見加算器 (Carry Lookahead Adder)]]
+      - [[減算器 (Subtractor)]]
+      - [[デコーダ (Decoder)]]
+      - [[エンコーダ (Encoder)]]
+      - [[マルチプレクサ (Multiplexer - MUX)]]
+      - [[デマルチプレクサ (Demultiplexer - DEMUX)]]
+      - [[比較器 (Comparator)]]
+      - [[算術論理演算ユニット (ALU - Arithmetic Logic Unit) の基本設計]]
+   - **順序回路 (Sequential Circuits)**
+      - [[順序回路とは (出力が現在の入力と過去の状態に依存する)]]
+      - [[フリップフロップ (Flip-Flop)]]
+         - [[SRフリップフロップ]]
+         - [[JKフリップフロップ]]
+         - [[Dフリップフロップ (遅延フリップフロップ)]]
+         - [[Tフリップフロップ (トグルフリップフロップ)]]
+         - [[マスタースレーブ型フリップフロップ]]
+         - [[エッジトリガ型フリップフロップ]]
+      - [[ラッチ (Latch) とフリップフロップの違い]]
+      - [[レジスタ (Register)]]
+         - [[シフトレジスタ]]
+      - [[カウンタ (Counter)]] (同期式、非同期式)
+      - [[状態機械 (Finite State Machine - FSM)]]
+         - [[ミーリ型マシン (Mealy Machine)]]
+         - [[ムーア型マシン (Moore Machine)]]
+         - [[状態遷移図と状態遷移表]]
+
+---
+## 3. [[命令セットアーキテクチャ (Instruction Set Architecture - ISA) MOC]]
+   - **ISAの役割と分類**
+      - [[ISAとは (ハードウェアとソフトウェアのインターフェース)]]
+      - [[ISAが規定するもの (命令の種類、データ型、アドレッシングモード、レジスタなど)]]
+      - **設計思想による分類**
+         - [[CISC (Complex Instruction Set Computer)]]
+            - [[CISCの特徴と歴史 (例: x86)]]
+            - [[CISCの利点と欠点]]
+         - [[RISC (Reduced Instruction Set Computer)]]
+            - [[RISCの設計原則 (固定長命令、ロード/ストアアーキテクチャなど)]]
+            - [[RISCの特徴と歴史 (例: ARM, MIPS, RISC-V, PowerPC)]]
+            - [[RISCの利点と欠点]]
+         - [[CISCとRISCの比較]]
+      - [[(オプション) VLIW (Very Long Instruction Word)]]
+      - [[(オプション) EPIC (Explicitly Parallel Instruction Computing)]]
+   - **オペランドとデータ型**
+      - [[ISAで扱われるデータ型 (整数、浮動小数点数、文字、論理値など)]]
+      - [[エンディアン (Endianness): リトルエンディアンとビッグエンディアン]]
+   - **命令の種類**
+      - [[データ転送命令 (ロード、ストア、ムーブ)]]
+      - [[算術演算命令 (加算、減算、乗算、除算)]]
+      - [[論理演算命令 (AND, OR, XOR, NOT, シフト、ローテート)]]
+      - [[制御フロー命令 (分岐: 条件分岐/無条件分岐、ジャンプ、コール、リターン)]]
+      - [[入出力命令 (I/O命令)]] (メモリマップドI/O、ポートマップドI/O)
+      - [[(オプション) SIMD命令 (Single Instruction, Multiple Data)]]
+   - **アドレッシングモード (Addressing Modes)**
+      - [[アドレッシングモードとは (オペランドの有効アドレスを決定する方法)]]
+      - [[即値アドレッシング (Immediate Addressing)]]
+      - [[レジスタアドレッシング (Register Addressing)]]
+      - [[直接アドレッシング (Direct Addressing / Absolute Addressing)]]
+      - [[間接アドレッシング (Indirect Addressing)]]
+      - [[レジスタ間接アドレッシング (Register Indirect Addressing)]]
+      - [[ディスプレースメントアドレッシング (Displacement Addressing)]]
+         - [[相対アドレッシング (Relative Addressing)]] (PC相対など)
+         - [[ベースレジスタアドレッシング (Base Register Addressing)]]
+         - [[インデックスアドレッシング (Indexed Addressing)]]
+      - [[(オプション) スケールドインデックスアドレッシング]]
+      - [[(オプション) スタックアドレッシング]]
+   - **命令フォーマット**
+      - [[命令の構成要素 (オペコード、オペランド指定子など)]]
+      - [[固定長命令と可変長命令]]
+      - [[命令フォーマットの設計トレードオフ]]
+   - **代表的なISAの例**
+      - [[x86アーキテクチャの概要]]
+      - [[ARMアーキテクチャの概要 (ARMv7, ARMv8/AArch64)]]
+      - [[MIPSアーキテクチャの概要]]
+      - [[RISC-Vアーキテクチャの概要 (オープンソースISA)]]
+
+---
+## 4. [[中央処理装置 (CPU - Central Processing Unit) / プロセッサ MOC]]
+   - **CPUの基本構成要素**
+      - [[制御装置 (Control Unit - CU)]]
+         - [[制御信号の生成]]
+         - [[ハードワイヤード制御 (Hardwired Control)]]
+         - [[マイクロプログラム制御 (Microprogrammed Control)]]
+            - [[マイクロ命令、マイクロプログラム、制御記憶]]
+      - [[演算装置 (Arithmetic Logic Unit - ALU)]]
+         - [[算術演算、論理演算の実行]]
+      - [[レジスタ (Registers)]]
+         - [[汎用レジスタ (General-Purpose Registers)]]
+         - [[専用レジスタ]]
+            - [[プログラムカウンタ (PC / Instruction Pointer - IP)]]
+            - [[命令レジスタ (Instruction Register - IR)]]
+            - [[メモリアドレスレジスタ (Memory Address Register - MAR)]]
+            - [[メモリデータレジスタ (Memory Data Register - MDR / Memory Buffer Register - MBR)]]
+            - [[スタックポインタ (Stack Pointer - SP)]]
+            - [[フラグレジスタ (Flag Register / Status Register)]] (ゼロフラグ、キャリーフラグなど)
+   - **命令実行サイクル (Instruction Execution Cycle)**
+      - [[フェッチ (Fetch)]]
+      - [[デコード (Decode)]]
+      - [[実行 (Execute)]]
+      - [[(オプション) メモリアクセス (Memory Access)]]
+      - [[(オプション) ライトバック (Write Back)]]
+   - **データパス (Datapath) と制御**
+      - [[データパスとは (CPU内のデータの流れと処理要素)]]
+      - **単純なデータパス設計**
+         - [[単一サイクルプロセッサ (Single-Cycle Processor)]]
+            - [[単一サイクルプロセッサの設計と性能]]
+            - [[単一サイクルプロセッサの限界 (遅い命令に律速される)]]
+         - [[複数サイクルプロセッサ (Multi-Cycle Processor)]]
+            - [[複数サイクルプロセッサの設計と状態遷移]]
+            - [[複数サイクルプロセッサの利点 (命令ごとに異なるサイクル数)]]
+      - **パイプライン処理 (Pipelining)**
+         - [[パイプライン処理の基本概念 (スループット向上)]]
+         - [[パイプラインステージ (IF, ID, EX, MEM, WB)]]
+         - [[パイプラインの性能評価 (スピードアップ率)]]
+         - **パイプラインハザード (Pipeline Hazards)**
+            - [[構造ハザード (Structural Hazard)]] とその対策
+            - [[データハザード (Data Hazard)]] (RAW, WAR, WAW)
+               - [[フォワーディング (Forwarding / Bypassing)]]
+               - [[ストール (Stall / Bubble)]]
+               - [[命令スケジューリング (コンパイラによる最適化)]]
+            - [[制御ハザード (Control Hazard / Branch Hazard)]]
+               - [[分岐予測 (Branch Prediction)]] (静的予測、動的予測、分岐履歴テーブル BHT, 分岐ターゲットバッファ BTB)
+               - [[遅延分岐 (Delayed Branch)]]
+         - [[パイプラインの実装例 (MIPSパイプラインなど)]]
+         - [[スーパースカラーとVLIWにおけるパイプライン]]
+   - **命令レベル並列性 (Instruction-Level Parallelism - ILP)**
+      - [[ILPとは (複数の命令を同時に実行する技術)]]
+      - [[スーパースカラープロセッサ (Superscalar Processor)]]
+         - [[命令発行 (In-order / Out-of-order execution)]]
+         - [[レジスタリネーミング (Register Renaming)]]
+         - [[リオーダバッファ (Reorder Buffer - ROB)]]
+         - [[予約ステーション (Reservation Station)]]
+      - [[VLIWプロセッサ (Very Long Instruction Word Processor)]] (コンパイラが並列性をスケジューリング)
+   - **分岐予測の詳細**
+      - [[静的分岐予測 (Static Branch Prediction)]] (常に分岐する/しない、後方分岐はする等)
+      - [[動的分岐予測 (Dynamic Branch Prediction)]]
+         - [[1ビット分岐予測器]]
+         - [[2ビット飽和カウンタ分岐予測器 (Bimodal Predictor)]]
+         - [[ローカル分岐予測器 (Local Branch Predictor)]]
+         - [[グローバル分岐予測器 (Global Branch Predictor / Correlating Predictor)]]
+         - [[トーナメント分岐予測器 (Tournament Predictor)]]
+         - [[分岐ターゲットバッファ (Branch Target Buffer - BTB)]]
+   - **(オプション) マイクロアーキテクチャの例** (Intel Coreシリーズ, AMD Ryzenシリーズなど)
+
+---
+## 5. [[メモリシステム (Memory System) MOC]]
+   - **メモリの基本**
+      - [[メモリの役割と種類 (主記憶、補助記憶)]]
+      - [[メモリの性能指標 (アクセス時間、サイクル時間、バンド幅)]]
+   - **メモリ階層 (Memory Hierarchy)**
+      - [[メモリ階層の概念 (速度、容量、コストのトレードオフ)]]
+      - [[階層の構成 (レジスタ - キャッシュ - 主記憶 - 補助記憶)]]
+      - [[局所性の原則 (Principle of Locality)]]
+         - [[時間的局所性 (Temporal Locality)]]
+         - [[空間的局所性 (Spatial Locality)]]
+   - **キャッシュメモリ (Cache Memory)**
+      - [[キャッシュメモリの基本原理と動作]]
+      - [[キャッシュの構成要素 (キャッシュライン/ブロック、タグ、データ、有効ビット)]]
+      - **キャッシュマッピング方式 (Cache Mapping Schemes)**
+         - [[ダイレクトマップ方式 (Direct Mapped Cache)]]
+         - [[フルアソシアティブ方式 (Fully Associative Cache)]]
+         - [[セットアソシアティブ方式 (Set-Associative Cache)]] (Nウェイセットアソシアティブ)
+      - **キャッシュヒットとキャッシュミス (Cache Hit / Cache Miss)**
+         - [[ヒット率 (Hit Rate) とミス率 (Miss Rate)]]
+         - [[平均メモリアクセス時間 (Average Memory Access Time - AMAT)]]
+         - **キャッシュミスの種類 (3C)**
+            - [[コンパルソリミス (Compulsory Miss / Cold Start Miss)]]
+            - [[キャパシティミス (Capacity Miss)]]
+            - [[コンフリクトミス (Conflict Miss / Collision Miss)]]
+            - [[(オプション) コヒーレンスミス (Coherence Miss)]] (マルチプロセッサ環境)
+      - **キャッシュ置き換えアルゴリズム (Cache Replacement Algorithms)** (フル/セットアソシアティブの場合)
+         - [[LRU (Least Recently Used)]]
+         - [[FIFO (First-In, First-Out)]]
+         - [[LFU (Least Frequently Used)]]
+         - [[ランダム (Random)]]
+         - [[(オプション) PLRU (Pseudo-LRU)]]
+      - **キャッシュ書き込みポリシー (Cache Write Policies)**
+         - [[ライトスルー (Write-Through)]]
+            - [[ライトバッファ (Write Buffer)]]
+         - [[ライトバック (Write-Back)]]
+            - [[ダーティビット (Dirty Bit)]]
+         - [[(オプション) ライトアロケート (Write Allocate) とノーライトアロケート (No-Write Allocate / Write Around)]]
+      - **キャッシュの設計パラメータと性能への影響** (ブロックサイズ、キャッシュサイズ、結合度)
+      - **マルチレベルキャッシュ (Multi-level Caches)** (L1, L2, L3キャッシュ)
+         - [[インクルーシブキャッシュ (Inclusive Cache) とエクスクルーシブキャッシュ (Exclusive Cache)]]
+      - **命令キャッシュとデータキャッシュの分離 (Split Cache)**
+   - **主記憶装置 (Main Memory / Primary Storage)**
+      - [[RAM (Random Access Memory) の種類]]
+         - [[SRAM (Static RAM)]] (キャッシュに使われることが多い)
+         - [[DRAM (Dynamic RAM)]] (主記憶に使われることが多い)
+            - [[DRAMのセル構造とリフレッシュ動作]]
+            - [[DRAMのアクセスモード (RAS, CAS)]]
+            - [[SDRAM (Synchronous DRAM)]]
+            - [[DDR SDRAM (Double Data Rate SDRAM)]] (DDR, DDR2, DDR3, DDR4, DDR5)
+            - [[(オプション) RDRAM (Rambus DRAM)]]
+      - [[ROM (Read-Only Memory) の種類]] (PROM, EPROM, EEPROM, Flash Memory)
+      - [[メモリコントローラ (Memory Controller)]]
+   - **仮想記憶 (Virtual Memory)**
+      - [[仮想記憶の概念と目的 (メモリ容量の拡張、メモリ保護、プロセス分離)]]
+      - [[仮想アドレスと物理アドレス]]
+      - **ページング方式 (Paging)**
+         - [[ページ (Page) とページフレーム (Page Frame)]]
+         - [[ページテーブル (Page Table)]]
+            - [[ページテーブルエントリ (PTE)]] (有効ビット、保護ビット、参照ビット、ダーティビットなど)
+         - [[メモリアクセスとページフォールト (Page Fault)]]
+         - [[ページフォールト処理 (デマンドページング)]]
+         - [[ページ置き換えアルゴリズム (LRU, FIFO, クロックアルゴリズムなど)]] (OSの役割)
+         - [[ワーキングセットモデル (Working Set Model)]]
+         - [[スラッシング (Thrashing)]]
+      - **セグメンテーション方式 (Segmentation)** (ページングとの比較)
+      - **TLB (Translation Lookaside Buffer)**
+         - [[TLBの役割 (ページテーブルのキャッシュ)]]
+         - [[TLBヒットとTLBミス]]
+      - [[マルチレベルページテーブル (Multi-level Page Tables)]]
+      - [[インバーテッドページテーブル (Inverted Page Tables)]]
+   - **エラー検出と訂正 (Error Detection and Correction)**
+      - [[パリティビット (Parity Bit)]]
+      - [[ハミングコード (Hamming Code)]]
+      - [[ECCメモリ (Error-Correcting Code Memory)]]
+   - **補助記憶装置 (Secondary Storage)** (概要、主記憶との比較)
+      - [[HDD (Hard Disk Drive)]]
+      - [[SSD (Solid State Drive)]]
+
+---
+## 6. [[入出力 (I/O - Input/Output) システム MOC]]
+   - **I/Oの基本**
+      - [[I/Oデバイスの種類 (キーボード、マウス、ディスプレイ、ディスク、ネットワークインターフェース)]]
+      - [[I/Oモジュール (I/O Controller / Device Controller)]] の役割
+      - [[I/Oポートとデバイスレジスタ (データ、ステータス、制御)]]
+   - **I/O制御方式**
+      - **[[プログラムドI/O (Programmed I/O - PIO)]]**
+         - [[ポーリング (Polling)]]
+         - [[PIOの利点と欠点 (CPU負荷)]]
+      - **[[割り込み駆動I/O (Interrupt-driven I/O)]]**
+         - [[割り込み (Interrupt) のメカニズム (割り込み要求 IRQ, 割り込みベクタ, 割り込みハンドラ ISR)]]
+         - [[割り込みの種類 (ハードウェア割り込み、ソフトウェア割り込み)]]
+         - [[割り込み優先度と多重割り込み]]
+         - [[割り込み駆動I/Oの利点と欠点]]
+      - **[[DMA (Direct Memory Access)]]**
+         - [[DMAコントローラ (DMAC) の役割]]
+         - [[DMA転送のステップ (サイクルスチール、バースト転送)]]
+         - [[DMAの利点 (CPU負荷軽減)]]
+      - **[[(オプション) I/OチャネルとI/Oプロセッサ]]** (大規模システム)
+   - **データ転送のインターフェースとバス**
+      - [[バス (Bus) の基本 (アドレスバス、データバス、制御バス)]]
+      - [[バスアーキテクチャ (同期バス、非同期バス)]]
+      - [[バス調停 (Bus Arbitration)]] (デイジーチェーン、集中調停、分散調停)
+      - **代表的なバス規格**
+         - [[ISAバス (Industry Standard Architecture)]] (歴史的)
+         - [[PCIバス (Peripheral Component Interconnect)]]
+         - [[PCI Express (PCIe)]]
+         - [[USB (Universal Serial Bus)]]
+         - [[SATA (Serial ATA)]]
+         - [[SCSI (Small Computer System Interface)]] (歴史的、サーバー向け)
+         - [[(オプション) Thunderbolt]]
+         - [[(オプション) InfiniBand]] (HPC向け)
+   - **I/O性能**
+      - [[I/Oアクセス時間 (レイテンシ)]]
+      - [[I/Oスループット (データ転送レート)]]
+      - [[RAID (Redundant Array of Independent Disks)]] (概要)
+
+---
+## 7. [[並列処理とマルチコアアーキテクチャ MOC]]
+   - **並列処理の基本**
+      - [[並列処理の目的 (性能向上、スループット向上)]]
+      - [[並列性の種類 (命令レベル、データレベル、タスクレベル)]]
+   - **フリンの分類 (Flynn's Taxonomy)**
+      - [[SISD (Single Instruction, Single Data)]] (従来の逐次処理)
+      - [[SIMD (Single Instruction, Multiple Data)]]
+         - [[ベクトルプロセッサ (Vector Processor)]]
+         - [[アレイプロセッサ (Array Processor)]]
+         - [[GPUにおけるSIMD (SIMT - Single Instruction, Multiple Threads)]]
+      - [[MISD (Multiple Instruction, Single Data)]] (稀、パイプライン処理の一形態と解釈されることも)
+      - [[MIMD (Multiple Instruction, Multiple Data)]]
+         - [[共有メモリ型マルチプロセッサ (Shared Memory Multiprocessor)]]
+         - [[分散メモリ型マルチプロセッサ (Distributed Memory Multiprocessor / Multicomputer)]]
+   - **共有メモリ型マルチプロセッサ**
+      - **[[UMA (Uniform Memory Access)]]** (対称型マルチプロセッサ - SMP)
+      - **[[NUMA (Non-Uniform Memory Access)]]**
+      - **キャッシュコヒーレンス (Cache Coherence)**
+         - [[キャッシュコヒーレンス問題とは (複数キャッシュ間でのデータ不整合)]]
+         - [[スヌーピングプロトコル (Snooping Protocol)]] (MSI, MESI, MOESI)
+         - [[ディレクトリベースプロトコル (Directory-based Protocol)]]
+      - [[メモリ一貫性モデル (Memory Consistency Model)]] (逐次一貫性、緩和された一貫性など - 概要)
+      - [[同期プリミティブ (アトミック命令、ロック、セマフォなど - ハードウェアサポート)]]
+   - **分散メモリ型マルチプロセッサ**
+      - [[メッセージパッシング (Message Passing)]]
+      - [[インターコネクションネットワーク (Interconnection Network)]]
+         - [[ネットワークトポロジ (バス、リング、メッシュ、トーラス、ハイパーキューブなど)]]
+         - [[ルーティングアルゴリズム]]
+         - [[スイッチング技術 (ストア&フォワード、カットスルー)]]
+   - **マルチコアプロセッサ (Multicore Processors)**
+      - [[チップマルチプロセッサ (Chip Multiprocessor - CMP)]]
+      - [[マルチコアにおけるキャッシュ階層と共有キャッシュ]]
+      - [[コア間通信]]
+   - **同時マルチスレッディング (Simultaneous Multithreading - SMT)** (IntelのHyper-Threadingなど)
+   - **GPU (Graphics Processing Unit) と GPGPU (General-Purpose computing on GPUs)**
+      - [[GPUアーキテクチャの概要 (多数のコア、SIMT実行モデル)]]
+      - [[CUDA (NVIDIA) と OpenCL (Khronos Group)]] (プログラミングモデルの観点)
+   - **(オプション) データフローアーキテクチャ**
+   - **(オプション) シストリックアレイ**
+   - **(オプション) リコンフィギュラブルコンピューティングとFPGA**
+
+---
+## 8. [[現代のトピックと将来の展望 MOC]]
+   - **低消費電力設計 (Low-Power Design)**
+      - [[動的消費電力と静的消費電力 (リーク電流)]]
+      - [[クロックゲーティング (Clock Gating)]]
+      - [[パワーゲーティング (Power Gating)]]
+      - [[DVFS (Dynamic Voltage and Frequency Scaling)]]
+      - [[モバイルデバイス向けアーキテクチャ (例: ARM big.LITTLE)]]
+   - **ハードウェアセキュリティ**
+      - [[サイドチャネル攻撃 (Side-Channel Attack)]] (タイミング攻撃、電力解析攻撃など - 概要)
+      - [[Spectre と Meltdown の概要と対策]]
+      - [[ハードウェアセキュリティモジュール (HSM)]]
+      - [[物理的複製困難関数 (PUF - Physically Unclonable Function)]]
+      - [[信頼実行環境 (TEE - Trusted Execution Environment)]] (ARM TrustZoneなど)
+   - **アクセラレータとヘテロジニアスコンピューティング**
+      - [[特定用途向けアクセラレータ (ASIC, FPGAベース)]]
+      - [[ヘテロジニアスシステムアーキテクチャ (CPU + GPU + DSPなど)]]
+   - **[[(超概要) 量子コンピュータ (Quantum Computing)]]**
+      - [[量子ビット (Qubit)]]
+      - [[量子重ね合わせと量子もつれ]]
+      - [[量子ゲートと量子アルゴリズム (Shorのアルゴリズム、Groverのアルゴリズム)]]
+   - **[[(超概要) ニューロモーフィックコンピューティング (Neuromorphic Computing)]]**
+      - [[脳型コンピュータのコンセプト]]
+      - [[スパイキングニューラルネットワーク (SNN)]]
+   - **[[(超概要) メモリ中心コンピューティング (In-Memory Computing / Processing-In-Memory)]]**
+   - **[[(超概要) 光コンピューティング (Optical Computing)]]**
