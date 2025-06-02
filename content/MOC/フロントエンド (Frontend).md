@@ -1,0 +1,594 @@
+---
+tags:
+  - moc
+enableToc: "true"
+draft: "false"
+permalink: moc/frontend
+---
+## 1. [[フロントエンド開発入門 MOC]]
+   - **フロントエンドとは**
+      - [[フロントエンドの定義 (ユーザーが直接操作するWebページのクライアントサイド部分)]]
+      - [[フロントエンドの役割 (UI/UXの実現、ユーザーインタラクション処理、バックエンドとのデータ連携)]]
+      - [[バックエンド開発との違いと連携]]
+      - [[WebサイトとWebアプリケーションの違い]]
+   - **フロントエンド開発者に必要なスキルセット**
+      - `[[技術スキル (HTML, CSS, JavaScript, フレームワーク, ツールなど)]]`
+      - `[[ソフトスキル (コミュニケーション, 問題解決, UI/UXへの理解)]]`
+   - **フロントエンド技術の歴史と進化**
+      - `[[静的HTMLの時代から動的Web、Ajax、SPA、PWAへ]]`
+      - `[[主要な技術的ブレークスルーとトレンド]]`
+   - **モダンフロントエンド開発の概要**
+      - `[[コンポーネントベースアーキテクチャ]]`
+      - `[[宣言的UIプログラミング]]`
+      - `[[状態管理の重要性]]`
+      - `[[ビルドプロセスとモジュールバンドラ]]`
+      - `[[テスト自動化]]`
+      - `[[パフォーマンスとアクセシビリティへの意識]]`
+   - **フロントエンド開発の学習ロードマップ (例)**
+
+## 2. [[コア技術 MOC]]
+
+### 2.1. [[HTML (HyperText Markup Language) MOC]]
+   - **HTMLの基本**
+      - [[HTMLの定義と役割 (Webページの構造を定義)]]
+      - [[HTMLの歴史とバージョン (HTML4, XHTML, HTML5)]]
+      - [[HTMLドキュメントの基本構造 (`<!DOCTYPE html>`, `<html>`, `<head>`, `<body>`)]]
+      - [[要素 (Element)、タグ (Tag)、属性 (Attribute)]]
+   - **主要なHTML要素**
+      - `[[見出しタグ (`<h1>` - `<h6>`)]]`
+      - `[[段落タグ (`<p>`)]]`
+      - `[[リンクタグ (`<a>`)]]` (属性: `href`, `target`, `rel`)
+      - `[[画像タグ (`<img>`)]]` (属性: `src`, `alt`, `width`, `height`)
+      - `[[リストタグ (`<ul>`, `<ol>`, `<li>`, `<dl>`, `<dt>`, `<dd>`)]]`
+      - `[[テーブルタグ (`<table>`, `<tr>`, `<th>`, `<td>`, `<thead>`, `<tbody>`, `<tfoot>`)]]`
+      - `[[セクショニング要素 (`<header>`, `<footer>`, `<nav>`, `<article>`, `<section>`, `<aside>`, `<main>`)]]` (HTML5)
+      - `[[インライン要素とブロックレベル要素]]`
+      - `[[汎用要素 (`<div>`, `<span>`)]]`
+   - **[[セマンティックHTML (Semantic HTML) MOC]]**
+      - [[セマンティックHTMLの重要性 (SEO, アクセシビリティ, 保守性)]]
+      - [[適切なタグの選択]]
+   - **[[フォーム (Forms) MOC]]**
+      - `[[<form>`タグ (属性: `action`, `method`)]]
+      - `[[入力要素 (`<input>`) の種類]]` (`text`, `password`, `checkbox`, `radio`, `submit`, `button`, `file`, `date`, `email`, `number`など)
+      - `[[<label>`タグとアクセシビリティ]]
+      - `[[<textarea>`タグ]]
+      - `[[<select>`と`<option>`タグ]]
+      - `[[<button>`タグ]]
+      - `[[フォームバリデーション (HTML5属性: `required`, `pattern`, `min`, `max`など)]]`
+   - **マルチメディア要素**
+      - `[[<audio>`タグ]]
+      - `[[<video>`タグ]]
+      - `[[<canvas>`タグ]] (2Dグラフィックス)
+      - `[[<svg>`タグ]] (ベクターグラフィックス)
+   - **HTMLエンティティと特殊文字**
+   - **HTMLのベストプラクティスとアクセシビリティ考慮事項**
+      - `[[`alt`属性の適切な使用]]`
+      - `[[ランドマークロールの活用]]`
+      - `[[WAI-ARIA属性の基本]]` (詳細はアクセシビリティMOCで)
+   - **HTMLバリデーションツール**
+
+### 2.2. [[CSS (Cascading Style Sheets) MOC]]
+   - **CSSの基本**
+      - [[CSSの定義と役割 (Webページの見た目とスタイルを定義)]]
+      - [[CSSの歴史とバージョン (CSS1, CSS2, CSS3, CSS4(モジュールとして))]]
+      - [[CSSの適用方法 (インラインスタイル, 内部スタイルシート, 外部スタイルシート)]]
+      - [[CSSルールセット (セレクタ, プロパティ, 値)]]
+   - **[[セレクタ (Selectors) MOC]]**
+      - `[[基本セレクタ (全称, 型, クラス, ID, 属性)]]`
+      - `[[結合子 (子孫, 子, 隣接兄弟, 一般兄弟)]]`
+      - `[[擬似クラス (Pseudo-classes - `hover`, `focus`, `active`, `nth-child`など)]]`
+      - `[[擬似要素 (Pseudo-elements - `::before`, `::after`, `::first-line`など)]]`
+      - `[[セレクタの詳細度 (Specificity) とカスケーディング (Cascading)]]`
+      - `[[継承 (Inheritance)]]`
+   - **[[ボックスモデル (Box Model) MOC]]**
+      - `[[`content`, `padding`, `border`, `margin`]]`
+      - `[[`box-sizing`プロパティ (`content-box` vs. `border-box`)]]`
+   - **CSSの単位 (Units)**
+      - `[[絶対単位 (`px`, `pt`など)]]`
+      - `[[相対単位 (`em`, `rem`, `%`, `vw`, `vh`)]]`
+   - **CSSのプロパティ (主要カテゴリ別)**
+      - `[[テキスト関連 (`color`, `font-family`, `font-size`, `font-weight`, `text-align`, `line-height`など)]]`
+      - `[[背景関連 (`background-color`, `background-image`, `background-repeat`, `background-position`, `background-size`)]]`
+      - `[[表示 (`display`プロパティ: `block`, `inline`, `inline-block`, `none`, `flex`, `grid`)]]`
+      - `[[配置とレイアウト (`position`, `top/right/bottom/left`, `float`, `clear`, `z-index`)]]`
+      - `[[境界線 (`border`関連プロパティ)]]`
+      - `[[パディングとマージン (`padding`関連, `margin`関連)]]`
+      - `[[サイズ (`width`, `height`, `min-width`, `max-height`など)]]`
+      - `[[リスト関連 (`list-style-type`など)]]`
+      - `[[テーブル関連 (`border-collapse`など)]`
+   - **[[CSSレイアウト技術 MOC]]**
+      - **[[Flexbox (Flexible Box Layout) MOC]]**
+         - `[[FlexコンテナとFlexアイテム]]`
+         - `[[主要プロパティ (`display: flex`, `flex-direction`, `justify-content`, `align-items`, `flex-wrap`, `flex-grow`, `flex-shrink`, `flex-basis`)]]`
+      - **[[CSS Grid Layout MOC]]**
+         - `[[GridコンテナとGridアイテム]]`
+         - `[[主要プロパティ (`display: grid`, `grid-template-columns`, `grid-template-rows`, `grid-gap`, `grid-column`, `grid-row`)]]`
+      - `[[floatレイアウト (レガシーだが理解は必要)]]`
+      - `[[positionレイアウト (static, relative, absolute, fixed, sticky)]]`
+   - **[[レスポンシブWebデザイン (RWD) とCSS MOC]]**
+      - `[[メディアクエリ (`@media`)]]`
+      - `[[ビューポート (`<meta name="viewport">`)]]`
+      - `[[可変グリッド、可変画像]]`
+   - **CSSの高度なテクニック**
+      - `[[トランジション (`transition`)]]`
+      - `[[アニメーション (`@keyframes`, `animation`)]]`
+      - `[[変数 (カスタムプロパティ - CSS Custom Properties)]]`
+      - `[[計算関数 (`calc()`)]]`
+      - `[[擬似要素の活用]]`
+      - `[[CSSフィルタ (`filter`)]]`
+      - `[[ブレンドモード (`mix-blend-mode`, `background-blend-mode`)]]`
+   - **[[CSSプリプロセッサ (CSS Preprocessors) MOC]]**
+      - `[[Sass/SCSS の特徴と構文 (変数, ネスト, Mixin, 継承, 関数)]]`
+      - `[[Less の特徴と構文]]`
+      - `[[Stylus の特徴と構文]]`
+      - [[プリプロセッサのコンパイルとビルドツール連携]]
+   - **CSSフレームワーク/ライブラリ**
+      - `[[Bootstrap の概要と利用]]`
+      - `[[Tailwind CSS (ユーティリティファースト) の概要と利用]]`
+      - `[[Materialize, Bulmaなど]]`
+   - **CSS設計手法/命名規則**
+      - `[[BEM (Block, Element, Modifier)]]`
+      - `[[OOCSS (Object-Oriented CSS)]]`
+      - `[[SMACSS (Scalable and Modular Architecture for CSS)]]`
+      - `[[Atomic Design (CSSへの応用)]]`
+      - `[[CSS Modules]]`
+      - `[[CSS-in-JS (Styled Components, Emotionなど)]]` (フレームワーク文脈で詳述)
+   - **CSSのデバッグ** (ブラウザ開発者ツール)
+   - **CSSのパフォーマンス最適化** (セレクタの効率、プロパティの描画コストなど)
+
+### 2.3. [[JavaScript (JS) MOC]]
+   - **JavaScriptの基本**
+      - [[JavaScriptの定義と役割 (Webページに動的な機能を追加するプログラミング言語)]]
+      - [[ECMAScript標準とバージョンの変遷 (ES5, ES6/ES2015, ESNext)]]
+      - [[JavaScriptエンジンの概要 (V8, SpiderMonkey, JavaScriptCore)]]
+      - [[クライアントサイドJavaScriptとNode.js (サーバサイドJavaScript)]]
+   - **基本構文**
+      - `[[変数宣言 (`var`(非推奨), `let`, `const`)]]`
+      - `[[データ型 (プリミティブ型: String, Number, Boolean, Null, Undefined, Symbol, BigInt / オブジェクト型)]]`
+      - `[[演算子 (算術, 比較, 論理, 代入, 条件, ビットなど)]]`
+      - `[[制御構文 (if/else, switch, for, while, do/while, for...in, for...of)]]`
+      - `[[関数 (Function)]]` (宣言、式、アロー関数)
+      - `[[スコープ (グローバル, ローカル, ブロック, レキシカル)]]`
+      - `[[クロージャ (Closure)]]`
+      - `[[thisキーワードの挙動]]` (呼び出し元による変化)
+      - `[[プロトタイプとプロトタイプチェーン (Prototype-based Inheritance)]]`
+      - `[[クラス構文 (ES6 - class, constructor, extends, super)]]`
+      - `[[モジュール (ES6 Modules - import, export)]]`
+      - `[[エラーハンドリング (`try...catch...finally`, `throw`)]]`
+   - **[[DOM (Document Object Model) 操作 MOC]]**
+      - [[DOMの概要 (HTML/XMLドキュメントの構造化表現)]]
+      - [[要素の選択 (`getElementById`, `getElementsByClassName`, `getElementsByTagName`, `querySelector`, `querySelectorAll`)]]`
+      - [[要素の作成、追加、削除]]
+      - [[属性の操作]]
+      - [[テキストコンテンツの操作]]
+      - [[スタイルの操作]]
+      - [[クラスリストの操作 (`classList`)]]
+      - [[DOMツリーのトラバース (親子、兄弟関係)]]
+   - **[[イベント処理 (Event Handling) MOC]]**
+      - `[[イベントリスナーの登録 (`addEventListener`) と削除 (`removeEventListener`)]]`
+      - `[[イベントオブジェクト (Event Object)]]`
+      - `[[イベントの種類 (マウスイベント, キーボードイベント, フォームイベント, DOM変更イベントなど)]]`
+      - `[[イベントフロー (キャプチャリングとバブリング)]]`
+      - `[[イベント移譲 (Event Delegation)]]`
+      - `[[`preventDefault()` と `stopPropagation()`]]`
+   - **[[非同期JavaScript (Asynchronous JavaScript) MOC]]**
+      - [[非同期処理の必要性 (ブロッキングの回避)]]
+      - `[[コールバック関数 (Callbacks) とコールバック地獄 (Callback Hell)]]`
+      - `[[Promiseオブジェクト (`new Promise`, `then`, `catch`, `finally`, `Promise.all`, `Promise.race`)]]`
+      - `[[async/await構文]]`
+      - `[[イベントループ (Event Loop), コールスタック (Call Stack), タスクキュー (Task Queue / Message Queue)]]`
+      - `[[`setTimeout`, `setInterval`]]`
+   - **[[Web API (ブラウザAPI) の利用 MOC]]**
+      - `[[Fetch API / XMLHttpRequest (XHR) (Ajax)]]` (HTTPリクエスト)
+      - `[[localStorage / sessionStorage]]` (Webストレージ)
+      - `[[IndexedDB]]`
+      - `[[Geolocation API]]`
+      - `[[History API]]` (SPAルーティング)
+      - `[[Canvas API / WebGL API]]`
+      - `[[WebRTC API]]`
+      - `[[Web Workers API]]` (バックグラウンド処理)
+      - `[[Service Workers API]]` (PWA)
+   - **JSON (JavaScript Object Notation)** (再掲・JSでの扱い)
+      - `[[`JSON.parse()`, `JSON.stringify()`]]`
+   - **ES6+ の主要機能**
+      - `[[アロー関数]]`
+      - `[[テンプレートリテラル]]`
+      - `[[分割代入 (Destructuring assignment)]]`
+      - `[[デフォルトパラメータ]]`
+      - `[[残余引数 (Rest parameters) とスプレッド構文 (Spread syntax)]]`
+      - `[[オブジェクトリテラルの拡張]]`
+      - `[[Map / Set / WeakMap / WeakSet]]`
+      - `[[シンボル (Symbol)]]`
+      - `[[イテレータ (Iterator) とジェネレータ (Generator)]]`
+      - `[[Optional Chaining (`?.`)]]`
+      - `[[Nullish Coalescing Operator (`??`)]]`
+   - **[[TypeScript (TS) MOC]]** (JavaScriptのスーパーセット)
+      - [[TypeScriptの概要と利点 (静的型付け)]]
+      - `[[基本的な型 (string, number, boolean, array, tuple, enum, any, void, null, undefined, never, object)]]`
+      - `[[インターフェース (Interface)]]`
+      - `[[クラス (Class) と継承、アクセス修飾子]]`
+      - `[[ジェネリクス (Generics)]]`
+      - `[[型推論 (Type Inference) と型アサーション (Type Assertion)]]`
+      - `[[型定義ファイル (`.d.ts`)]]` (DefinitelyTyped)
+      - [[TypeScriptコンパイラ (`tsc`) と設定 (`tsconfig.json`)]]
+      - [[JavaScriptプロジェクトへの段階的導入]]
+   - **JavaScriptのデバッグ** (ブラウザ開発者ツール, `console.log`, デバッガ)
+   - **JavaScriptのパフォーマンス最適化** (DOM操作の最小化, イベントループの理解, メモリリーク対策)
+   - **JavaScriptのセキュリティ** (XSS対策など - 詳細はセキュリティMOCで)
+   - **JavaScriptのテスト** (詳細はテストMOCで)
+   - **JavaScriptのコーディング標準とベストプラクティス** (ESLint, Prettierなど)
+
+## 3. [[モダンJavaScriptフレームワーク/ライブラリ MOC]]
+
+### 3.1. [[React MOC]] (Facebook)
+   - **Reactの基本**
+      - [[Reactの思想 (宣言的UI, コンポーネントベース, Learn Once, Write Anywhere)]]
+      - [[仮想DOM (Virtual DOM) と差分検出アルゴリズム (Reconciliation)]]
+      - [[JSX (JavaScript XML)]]
+   - **主要な概念**
+      - `[[コンポーネント (Component - 関数コンポーネントとクラスコンポーネント)]]`
+      - `[[プロパティ (Props)]]` (親から子へのデータ受け渡し)
+      - `[[状態 (State)]]` (コンポーネント内部のデータ)
+      - `[[ライフサイクルメソッド (Lifecycle Methods - クラスコンポーネント) / フック (Hooks - 関数コンポーネント)]]`
+      - `[[イベント処理 (Event Handling)]]`
+      - `[[条件付きレンダリング (Conditional Rendering)]]`
+      - `[[リストとキー (Lists and Keys)]]`
+      - `[[フォーム (Forms)]]`
+      - `[[コンポジション vs. 継承]]`
+   - **[[Reactフック (Hooks) MOC]]**
+      - `[[`useState`]]`
+      - `[[`useEffect`]]` (副作用の処理、クリーンアップ)
+      - `[[`useContext`]]` (Context API)
+      - `[[`useReducer`]]` (複雑な状態管理)
+      - `[[`useCallback`, `useMemo`]]` (パフォーマンス最適化)
+      - `[[`useRef`]]` (DOM参照、ミュータブルな値の保持)
+      - `[[カスタムフック (Custom Hooks)]]`
+   - **Reactエコシステム**
+      - `[[ルーティング (React Router)]]`
+      - `[[状態管理 (Redux, Zustand, Recoil, Context API)]]` (詳細は状態管理MOCで)
+      - `[[フォームライブラリ (Formik, React Hook Form)]]`
+      - `[[スタイリング (CSS Modules, Styled Components, Emotion, Tailwind CSS)]]`
+      - `[[テスト (Jest, React Testing Library, Enzyme)]]`
+      - `[[Create React App (CRA) / Vite (Reactテンプレート)]]` (プロジェクト作成)
+   - **[[Next.js (Reactフレームワーク) MOC]]** (SSR, SSG, API Routesなど)
+   - **Reactのベストプラクティスとパターン**
+   - **Reactのパフォーマンス最適化**
+
+### 3.2. [[Vue.js MOC]] (Evan You)
+   - **Vue.jsの基本**
+      - [[Vue.jsの思想 (プログレッシブフレームワーク, 段階的な導入の容易さ)]]
+      - [[仮想DOMとリアクティブシステム]]
+   - **主要な概念**
+      - `[[Vueインスタンス / アプリケーションインスタンス]]`
+      - `[[テンプレート構文 (ディレクティブ: `v-bind`, `v-model`, `v-if`, `v-for`, `v-on`など)]]`
+      - `[[コンポーネント (Component)]]` (SFC - Single File Components: `.vue`ファイル)
+      - `[[プロパティ (Props)]]`
+      - `[[データ (Data) / リアクティブな状態]]`
+      - `[[算出プロパティ (Computed Properties)]]`
+      - `[[ウォッチャ (Watchers)]]`
+      - `[[ライフサイクルフック (Lifecycle Hooks)]]`
+      - `[[イベント処理 (`v-on` / `@`)]]`
+      - `[[フォーム入力バインディング (`v-model`)]]`
+      - `[[スロット (Slots)]]` (コンポーネントのコンテンツ配信)
+      - `[[トランジションとアニメーション]]`
+   - **[[Composition API (Vue 3) MOC]]** (vs. Options API)
+      - `[[`setup()` 関数]]`
+      - `[[リアクティビティAPI (`ref`, `reactive`, `computed`, `watch`)]]`
+      - `[[ライフサイクルフック (Composition API版)]]`
+      - `[[Provide / Inject]]`
+      - `[[カスタムコンポーザブル関数 (Custom Composables)]]`
+   - **Vueエコシステム**
+      - `[[ルーティング (Vue Router)]]`
+      - `[[状態管理 (Pinia (推奨), Vuex)]]` (詳細は状態管理MOCで)
+      - `[[スタイリング (Scoped CSS, CSS Modules, Tailwind CSS)]]`
+      - `[[テスト (Vue Test Utils, Jest, Vitest, Cypress)]]`
+      - `[[Vue CLI / Vite (Vueテンプレート)]]` (プロジェクト作成)
+   - **[[Nuxt.js (Vue.jsフレームワーク) MOC]]** (SSR, SSG, API Routesなど)
+   - **Vue.jsのベストプラクティスとパターン**
+   - **Vue.jsのパフォーマンス最適化**
+
+### 3.3. [[Angular MOC]] (Google)
+   - **Angularの基本**
+      - [[Angularの思想 (フル装備のプラットフォーム, TypeScriptベース, MVW - Model-View-Whatever)]]
+      - [[依存性の注入 (Dependency Injection - DI)]]
+      - [[Angularモジュール (`NgModule`)]]
+   - **主要な概念**
+      - `[[コンポーネント (Component)]]`
+      - `[[テンプレート (Template)]]` (ディレクティブ: `*ngIf`, `*ngFor`, `[(ngModel)]`など)
+      - `[[ディレクティブ (Directive - コンポーネント, 構造, 属性)]]`
+      - `[[サービス (Service)]]`
+      - `[[データバインディング (補間, プロパティ, イベント, 双方向)]]`
+      - `[[パイプ (Pipe)]]` (データ変換)
+      - `[[フォーム (テンプレート駆動フォームとリアクティブフォーム)]]`
+      - `[[HTTPクライアント (`HttpClient`)]]`
+      - `[[ライフサイクルフック (Lifecycle Hooks)]]`
+      - `[[RxJS (リアクティブプログラミングライブラリ) との統合]]`
+   - **Angularエコシステム**
+      - `[[ルーティング (`@angular/router`)]]`
+      - `[[状態管理 (NgRx, Akita, Services + RxJS)]]`
+      - `[[Angular Material (UIコンポーネントライブラリ)]]`
+      - `[[テスト (Karma, Jasmine, Protractor(非推奨) / WebdriverIO/Cypress)]]`
+      - `[[Angular CLI]]` (プロジェクト作成、コード生成、ビルド)
+   - **Angularのベストプラクティスとパターン**
+   - **Angularのパフォーマンス最適化** (Change Detection Strategy, AOTコンパイル)
+
+### 3.4. [[Svelte / SvelteKit MOC]] (Rich Harris)
+   - **Svelteの基本**
+      - [[Svelteの思想 (コンパイラとしてのフレームワーク, 仮想DOMなし, 真のリアクティビティ)]]
+      - [[ビルド時に最適化されたJavaScriptを生成]]
+   - **主要な概念**
+      - `[[コンポーネント (`.svelte`ファイル)]]`
+      - `[[リアクティブな宣言 (`$:`)]]`
+      - `[[プロパティ (Props)]]`
+      - `[[イベント処理]]`
+      - `[[バインディング (`bind:`)]]`
+      - `[[ストア (Stores)]]` (組み込み状態管理)
+      - `[[ライフサイクルフック]]`
+      - `[[トランジションとアニメーション]]`
+      - `[[スロット (Slots)]]`
+   - **[[SvelteKit (Svelteフレームワーク) MOC]]** (ルーティング, SSR, SSG, APIエンドポイント)
+   - **Svelteの利点と適用ケース**
+
+### 3.5. [[フレームワーク/ライブラリの比較と選択基準 MOC]]
+   - `[[学習曲線]]`
+   - `[[パフォーマンス]]`
+   - `[[エコシステムの成熟度とコミュニティサポート]]`
+   - `[[プロジェクトの規模と要件]]`
+   - `[[チームのスキルセット]]`
+   - `[[状態管理の統合度]]`
+   - `[[スケーラビリティ]]`
+
+## 4. [[状態管理 (State Management) MOC]]
+   - **状態管理とは**
+      - [[フロントエンドにおける状態の定義と種類 (UI状態, データ状態, 通信状態)]]
+      - [[なぜ状態管理が必要か (コンポーネント間のデータ共有、複雑なアプリケーション)]]
+   - **状態管理のパターンとアプローチ**
+      - `[[ローカルコンポーネント状態]]`
+      - `[[Propsによるデータリレー (Prop Drilling) とその問題点]]`
+      - **[[Context API (React) / Provide-Inject (Vue)]]** (中規模の状態共有)
+      - **[[グローバル状態管理ライブラリ MOC]]**
+         - `[[Redux (React) の基本原則 (単一ストア, Stateは読み取り専用, Reducerによる変更)]]`
+            - `[[Action, Reducer, Store, Dispatch, Middleware (Thunk, Saga)]]`
+            - `[[Redux Toolkit (RTK)]]`
+         - `[[Zustand (React)]]` (シンプルで軽量な状態管理)
+         - `[[Recoil (React)]]` (Facebookによる実験的状態管理)
+         - `[[Pinia (Vue) の特徴と使い方]]` (Vuexの後継推奨)
+         - `[[Vuex (Vue) の基本 (State, Getter, Mutation, Action, Module)]]` (Vue 2/3)
+         - `[[NgRx (Angular) の基本 (Store, Actions, Reducers, Effects, Selectors)]]` (RxJSベース)
+         - `[[Akita (Angular)]]`
+      - `[[サーバーキャッシュとしての状態管理 (React Query/TanStack Query, SWR, Apollo Client)]]`
+   - **状態管理ライブラリの選択基準**
+   - **状態管理のベストプラクティス** (正規化、イミュータビリティ、副作用の扱い)
+
+## 5. [[UI/UXデザインと実装 MOC]]
+   - **UI/UXの基本原則** (詳細はデザイン系MOCと連携)
+   - **ワイヤーフレームとモックアップから実装へ**
+   - **コンポーネントライブラリの活用**
+      - `[[Material UI (React), Ant Design (React/Vue/Angular), Chakra UI, Bootstrap (JS版)]]`
+      - `[[ヘッドレスUIコンポーネント (Headless UI)]]` (Radix UI, Headless UI by Tailwind Labs)
+   - **デザイントークン (Design Tokens)** (色、フォント、スペースなどの一元管理)
+   - **アクセシブルなUIコンポーネントの実装**
+   - **マイクロインタラクションの実装**
+   - **UIの状態管理 (ローディング、エラー、空状態など)**
+   - **国際化 (i18n) と地域化 (l10n) のUIへの反映**
+
+## 6. [[Web API連携 (Working with Web APIs) MOC]]
+   - **APIリクエストの送信**
+      - `[[Fetch API]]` (再掲)
+      - `[[XMLHttpRequest (XHR)]]` (再掲・レガシー)
+      - `[[AxiosなどのHTTPクライアントライブラリ]]`
+   - **レスポンスデータの処理** (JSON, XMLなど)
+   - **エラーハンドリング** (ネットワークエラー、サーバーエラー)
+   - **認証と認可**
+      - `[[トークンベース認証 (JWTなど) の扱い]]`
+      - `[[APIキーの安全な管理 (クライアントサイドの限界)]]`
+   - **CORS (Cross-Origin Resource Sharing)**
+      - [[CORSの仕組みとフロントエンドでの対応]]
+   - **APIクライアントコードの設計** (サービスクラス、リポジトリパターンなど)
+   - **GraphQLクライアントの利用** (Apollo Client, Relay, urql)
+   - **gRPC-webの利用**
+
+## 7. [[ビルドツールと開発環境 MOC]]
+   - **パッケージマネージャ**
+      - `[[npm (Node Package Manager)]]` (`package.json`, `package-lock.json`)
+      - `[[yarn]]` (`yarn.lock`)
+      - `[[pnpm]]`
+   - **モジュールバンドラ**
+      - **[[Webpack MOC]]** (ローダー, プラグイン, 設定ファイル)
+      - **[[Parcel MOC]]** (設定不要のバンドラ)
+      - **[[Rollup MOC]]** (ライブラリ作成向け)
+      - **[[Vite MOC]]** (ESモジュールベースの高速な開発サーバーとビルドツール)
+   - **トランスパイラ**
+      - **[[Babel MOC]]** (新しいJavaScript構文を古いブラウザでも動作するように変換)
+      - **[[TypeScriptコンパイラ (tsc)]]** (再掲)
+   - **リンターとフォーマッタ**
+      - `[[ESLint]]` (JavaScript/TypeScriptの静的解析)
+      - `[[Stylelint]]` (CSSの静的解析)
+      - `[[Prettier]]` (コードフォーマッタ)
+      - [[huskyとlint-stagedによるコミット前チェック]]
+   - **開発サーバー** (ホットリロード/ホットモジュールリプレイスメント - HMR)
+   - **IDEとエディタ** (VS Code, WebStorm/IntelliJ IDEAなど) と拡張機能
+   - **ブラウザ開発者ツール (Browser Developer Tools)** (再掲・フロントエンド開発でのフル活用)
+      - `[[Elementsパネル]]` (DOMとCSSの検査・編集)
+      - `[[Consoleパネル]]` (ログ出力、JS実行)
+      - `[[Sourcesパネル]]` (JSデバッグ、ブレークポイント)
+      - `[[Networkパネル]]` (HTTPリクエスト/レスポンスの監視)
+      - `[[Performanceパネル]]` (実行パフォーマンス分析)
+      - `[[Memoryパネル]]` (メモリリーク調査)
+      - `[[Applicationパネル]]` (ストレージ、Service Worker、PWA)
+      - `[[Lighthouse]]` (Webサイト品質監査ツール)
+   - **バージョン管理システム (`Git`)** (再掲・フロントエンドでの活用)
+
+## 8. [[フロントエンドのテスト (Testing in Frontend) MOC]]
+   - **テストの重要性とテストピラミッド** (再掲・フロントエンド文脈)
+   - **[[ユニットテスト (Unit Testing)]]**
+      - `[[純粋関数、コンポーネントのロジック部分のテスト]]`
+      - `[[Jest, Vitest, Mocha, Jasmineなどのフレームワーク]]`
+   - **[[コンポーネントテスト (Component Testing)]]**
+      - `[[個々のUIコンポーネントのレンダリング、インタラクションのテスト]]`
+      - `[[React Testing Library, Vue Test Utils, Svelte Testing Library, Angular Testing Utilities]]`
+      - `[[Storybookとの連携によるコンポーネント駆動開発 (CDD)]]`
+   - **[[E2E (End-to-End) テスト / UIテスト]]**
+      - `[[ユーザー操作のシミュレーションによるアプリケーション全体のテスト]]`
+      - `[[Cypress, Playwright, Selenium WebDriver, WebdriverIO]]`
+      - `[[E2Eテストの課題 (実行時間、不安定さ、メンテナンスコスト)]]`
+   - **[[ビジュアルリグレッションテスト (Visual Regression Testing)]]** (Percy, Applitools, Playwright)
+   - **[[アクセシビリティテスト (Accessibility Testing) の自動化]]** (axe-coreなど)
+   - **[[パフォーマンステスト (Performance Testing)]]** (Lighthouse, WebPageTest API)
+   - **[[モックとスタブの活用]]** (MSW - Mock Service Workerなど)
+   - **テストカバレッジ**
+   - **CI/CDパイプラインへのテスト統合**
+
+## 9. [[フロントエンドのパフォーマンス最適化 MOC]]
+   - **パフォーマンス指標**
+      - **[[Core Web Vitals (LCP, FID/INP, CLS)]]**
+      - `[[First Contentful Paint (FCP)]]`
+      - `[[Time to Interactive (TTI)]]`
+      - `[[Total Blocking Time (TBT)]]`
+      - [[Lighthouseスコアの解釈]]
+   - **レンダリングパフォーマンス**
+      - `[[ブラウザのレンダリングパス (Critical Rendering Path)]]`
+      - `[[レンダリングブロッキングリソースの削減 (CSS, JavaScript)]]`
+      - `[[レイアウト計算 (Layout/Reflow) と再描画 (Paint/Repaint) の最適化]]`
+      - `[[ハードウェアアクセラレーションの活用 (`transform`, `opacity`)]]`
+   - **アセット最適化**
+      - `[[画像最適化 (フォーマット選択: WebP/AVIF, 圧縮, レスポンシブ画像)]]`
+      - `[[フォント最適化 (Webフォント, FOUT/FOIT対策, サブセット化)]]`
+      - `[[CSS/JavaScriptの最小化 (Minification) と圧縮 (Compression - Gzip, Brotli)]]`
+   - **コード最適化**
+      - `[[コード分割 (Code Splitting)]]`
+      - `[[遅延読み込み (Lazy Loading - 画像, コンポーネント)]]`
+      - `[[ツリーシェイキング (Tree Shaking)]]`
+      - `[[不要なライブラリの削除]]`
+      - `[[効率的なJavaScriptの記述 (ループ最適化, DOM操作の最小化)]]`
+      - `[[メモ化 (Memoization)]]` (React.memo, useMemo)
+   - **ネットワークパフォーマンス**
+      - `[[HTTP/2, HTTP/3の活用]]`
+      - `[[CDN (Content Delivery Network) の利用]]`
+      - `[[ブラウザキャッシュの活用 (HTTPキャッシュヘッダ)]]`
+      - `[[DNSプリフェッチ, プリコネクト, プリロード, プリレンダ]]`
+   - **サーバーサイド最適化 (フロントエンドへの影響)**
+      - `[[サーバー応答時間 (TTFB - Time to First Byte)]]`
+   - **パフォーマンス監視と継続的改善**
+
+## 10. [[Webアクセシビリティ (Web Accessibility - a11y) MOC]]
+   - **アクセシビリティとは**
+      - [[アクセシビリティの定義 (全ての人が情報にアクセスし利用できること)]]
+      - [[なぜアクセシビリティが重要か (法的要件,倫理的責任,ビジネス機会)]]
+   - **[[WCAG (Web Content Accessibility Guidelines) MOC]]**
+      - `[[4つの原則 (知覚可能, 操作可能, 理解可能, 堅牢)]]`
+      - `[[達成基準のレベル (A, AA, AAA)]]`
+   - **アクセシブルなHTMLの実装**
+      - `[[セマンティックHTMLの適切な使用]]` (再掲)
+      - `[[`alt`テキストの提供]]`
+      - `[[適切な見出し構造]]`
+      - `[[フォームのラベル付けとグループ化]]`
+      - `[[テーブルのアクセシビリティ (`<caption>`, `<thead>`, `scope`属性)]]`
+   - **[[WAI-ARIA (Web Accessibility Initiative – Accessible Rich Internet Applications) MOC]]**
+      - `[[ARIAロール (Role), ステート (State), プロパティ (Property)]]`
+      - `[[動的なコンテンツやカスタムウィジェットのアクセシビリティ向上]]`
+      - `[[ARIAの使いすぎに注意]]`
+   - **キーボードナビゲーション**
+      - `[[全ての機能がキーボードで操作可能であること]]`
+      - `[[フォーカス管理とフォーカスインジケータ]]`
+      - `[[適切なタブ順序 (`tabindex`)]]`
+   - **スクリーンリーダー対応**
+      - `[[スクリーンリーダーでの読み上げテスト]]`
+   - **色のコントラストと視覚的デザイン**
+   - **動的コンテンツとインタラクション**
+   - **アクセシビリティテスト**
+      - `[[手動テスト (キーボード操作、スクリーンリーダー)]]`
+      - `[[自動テストツール (axe-core, Lighthouse, WAVE)]]`
+      - `[[ユーザビリティテスト (障害のあるユーザー参加)]]`
+   - **アクセシビリティの継続的取り組み**
+
+## 11. [[フロントエンドセキュリティ (Frontend Security) MOC]]
+   - **フロントエンドセキュリティの概要と重要性** (クライアントサイドのリスク)
+   - **[[クロスサイトスクリプティング (XSS - Cross-Site Scripting) MOC]]**
+      - `[[Stored XSS, Reflected XSS, DOM-based XSS]]`
+      - `[[対策 (入力サニタイズ, 出力エスケープ, Content Security Policy)]]`
+   - **[[クロスサイトリクエストフォージェリ (CSRF - Cross-Site Request Forgery) MOC]]**
+      - `[[対策 (CSRFトークン, SameSite Cookie属性)]]`
+   - **[[クリックジャッキング (Clickjacking) MOC]]**
+      - `[[対策 (`X-Frame-Options`ヘッダ, CSPの`frame-ancestors`)]]`
+   - **コンテンツセキュリティポリシー (CSP - Content Security Policy)**
+      - `[[CSPディレクティブによるリソース読み込み制御]]`
+   - **HTTPSの徹底** (再掲・フロントエンド観点)
+   - **安全なAPI連携**
+      - `[[機密情報 (APIキーなど) のクライアントサイドでの扱いの危険性]]`
+      - `[[BFF (Backend For Frontend) パターンの活用]]`
+   - **サードパーティライブラリの脆弱性**
+      - `[[依存関係の定期的なスキャンと更新 (npm audit, Snykなど)]]`
+   - **セキュアなセッション管理 (Cookie属性: `HttpOnly`, `Secure`, `SameSite`)**
+   - **[[(オプション) Subresource Integrity (SRI)]]** (CDN経由のファイルの完全性検証)
+   - **[[(オプション) Open Redirect脆弱性]]**
+
+## 12. [[ブラウザとWeb標準 MOC]]
+   - **主要ブラウザとそのレンダリングエンジン** (Chrome/Blink, Firefox/Gecko, Safari/WebKit)
+   - **Web標準化団体** (W3C, WHATWG, ECMA International)
+   - **ブラウザ間の互換性とクロスブラウザテスト**
+   - **ポリフィル (Polyfill) とトランスパイラ (Transpiler)** (古いブラウザへの対応)
+   - **Can I use... (ブラウザ機能のサポート状況確認サイト)**
+   - **ブラウザのDevToolsの高度な活用** (再掲)
+   - **[[(オプション) WebAssembly (Wasm)]]** (概要とフロントエンドでの利用可能性)
+
+## 13. [[レスポンシブWebデザイン (RWD) MOC]] (再掲・詳細)
+   - **RWDの3つの基本技術要素**
+      - `[[フルードグリッド (Fluid Grids)]]`
+      - `[[フレキシブルイメージ/メディア (Flexible Images/Media)]]`
+      - `[[メディアクエリ (Media Queries)]]` (再掲・詳細)
+   - **モバイルファーストアプローチ**
+   - **レスポンシブデザインのパターン** (Mostly Fluid, Column Drop, Layout Shifter, Off-Canvasなど)
+   - **ブレークポイントの設計**
+   - **タッチデバイスの考慮** (タップターゲットのサイズ、ジェスチャー)
+   - **レスポンシブデザインのテストとデバッグ** (ブラウザのレスポンシブモード)
+
+## 14. [[プログレッシブWebアプリ (PWA - Progressive Web Apps) MOC]]
+   - **PWAとは** (Webとネイティブアプリの利点を組み合わせたアプリ)
+   - **PWAの主要技術**
+      - `[[Service Worker]]` (オフライン対応、バックグラウンド同期、プッシュ通知)
+      - `[[Web App Manifest]]` (ホーム画面への追加、スプラッシュスクリーン)
+      - `[[HTTPS]]` (必須)
+   - **PWAの利点** (インストール可能、オフライン動作、プッシュ通知、アプリストア不要)
+   - **PWAの実現ステップ**
+   - **PWAのテストとデバッグ** (Lighthouse, Chrome DevTools Applicationパネル)
+   - **PWAの配布とストア登録 (TWAなど)**
+
+## 15. [[サーバーサイドレンダリング (SSR) と静的サイト生成 (SSG) MOC]]
+   - **クライアントサイドレンダリング (CSR) の課題** (初期表示速度、SEO)
+   - **[[サーバーサイドレンダリング (SSR) MOC]]**
+      - [[SSRの仕組みと利点 (初期表示高速化、SEO向上)]]
+      - [[SSRの課題 (サーバー負荷、複雑性)]]
+      - [[Next.js, Nuxt.js, SvelteKitなどのフレームワークにおけるSSR]]
+   - **[[静的サイト生成 (SSG) MOC]]**
+      - [[SSGの仕組みと利点 (最高速、高セキュリティ、低コスト)]]
+      - [[SSGの適用ケース (ブログ、ドキュメントサイト、ポートフォリオ)]]
+      - [[Gatsby, Jekyll, Hugo, Next.js (SSGモード), Nuxt.js (SSGモード), SvelteKit (SSGモード)]]
+   - **[[インクリメンタル静的再生成 (ISR - Incremental Static Regeneration)]]** (Next.jsなど)
+   - **[[ハイドレーション (Hydration)]]** (SSR/SSGされたページへのJavaScriptの適用)
+   - **[[レンダリングパターンの選択 (CSR vs. SSR vs. SSG vs. ISR)]]** (アイランドアーキテクチャ、パーシャルハイドレーション)
+
+## 16. [[フロントエンドアーキテクチャ MOC]]
+   - **コンポーネントベースアーキテクチャ (CBA)** (再掲・アーキテクチャ視点)
+   - **状態管理アーキテクチャパターン** (Flux, Reduxパターンなど)
+   - **データフローアーキテクチャ** (単方向データフローなど)
+   - **モジュール性と関心の分離**
+   - **[[マイクロフロントエンド (Micro Frontends) MOC]]**
+      - `[[マイクロフロントエンドの概念と目的 (大規模フロントエンドの分割統治)]]`
+      - `[[実装パターン (iframe, Web Components, シングルSPAなど)]]`
+      - `[[利点と課題]]`
+   - **Atomic Design (アトミックデザイン)** (コンポーネント設計への応用)
+   - **ディレクトリ構造とコード構成のベストプラクティス**
+   - **スケーラブルなフロントエンドアーキテクチャの設計**
+
+## 17. [[フロントエンド開発ワークフローとベストプラクティス MOC]]
+   - **バージョン管理 (Git) とブランチ戦略** (GitFlow, GitHub Flowなど - フロントエンド文脈)
+   - **コードレビュー**
+   - **CI/CDパイプラインの構築** (Lint, Test, Build, Deploy)
+   - **ドキュメンテーション** (コードコメント、コンポーネントドキュメント、API仕様)
+   - **エラー監視とレポーティング** (Sentry, Rollbarなど)
+   - **パフォーマンスバジェットの設定と監視**
+   - **クロスファンクショナルチームとの連携** (デザイナー、バックエンド開発者、QA)
+   - **技術的負債の管理とリファクタリング**
+   - **継続的な学習と技術トレンドの追跡**
+   - **フロントエンド開発におけるアンチパターン**
