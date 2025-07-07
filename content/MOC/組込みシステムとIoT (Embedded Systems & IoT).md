@@ -1,0 +1,254 @@
+---
+tags:
+  - moc
+enableToc: "true"
+draft: "false"
+permalink: moc/embedded-systems-and-iot
+---
+## 1. [[組込みシステムとIoT入門 MOC]]
+   - **組込みシステムとは**
+      - [[組込みシステムの定義 (特定の機能に特化し、機器に組み込まれるコンピュータシステム)]]
+      - [[組込みシステムの特徴 (リソース制約, リアルタイム性, 高信頼性, 省電力)]]
+      - `[[汎用コンピュータとの違い]]`
+      - `[[身の回りの組込みシステムの例 (家電, 自動車, 産業機器)]]`
+   - **IoT (Internet of Things) とは**
+      - [[IoTの定義 (モノがインターネットに接続され、相互に情報をやり取りする仕組み)]]
+      - [[IoTの構成要素 (デバイス, ゲートウェイ, ネットワーク, クラウド)]]
+      - [[IoTがもたらす価値 (可視化, 遠隔操作, 自動化, 予測)]]
+   - **組込みシステムとIoTの関係**
+      - [[IoTデバイスは組込みシステムの一形態]]
+      - `[["M2M (Machine-to-Machine)"との関係]]`
+   - **開発の難しさと特有の課題**
+      - `[[ハードウェアとソフトウェアの密接な連携]]`
+      - `[[リソースの制約 (メモリ, CPU, 電力)]]`
+      - `[[デバッグの困難さ]]`
+      - `[[セキュリティリスク]]`
+      - `[[ライフサイクルの長さとメンテナンス]]`
+   - **組込み/IoT開発の学習ロードマップ (例)**
+
+## 2. [[組込みシステムのハードウェア基礎 MOC]]
+   - **[[マイクロプロセッサ (MPU) vs. マイクロコントローラ (MCU) MOC]]**
+      - `[[MPUの定義と特徴 (汎用プロセッサ)]]`
+      - `[[MCUの定義と特徴 (CPU, メモリ, I/Oがワンチップに統合)]]`
+      - `[[MPUとMCUの使い分け]]`
+   - **MCUのアーキテクチャ**
+      - `[[CPUコア (ARM Cortex-M, RISC-V, AVRなど)]]`
+      - `[[命令セットアーキテクチャ (ISA - RISC vs. CISC)]]` (再掲・組込み文脈)
+      - **[[メモリ (Memory)]]**
+         - `[[フラッシュメモリ (Flash Memory) - プログラム格納用]]`
+         - `[[SRAM (Static RAM) - データ格納用]]`
+         - `[[EEPROM (Electrically Erasable PROM)]]`
+   - **[[ペリフェラル (Peripherals) / 内蔵周辺機能 MOC]]**
+      - **[[汎用入出力 (GPIO - General Purpose Input/Output)]]** (Lチカの基礎)
+      - **[[タイマ / カウンタ (Timer/Counter)]]**
+         - `[[PWM (Pulse Width Modulation) 制御]]` (モーター、LED調光)
+      - **[[割り込みコントローラ (Interrupt Controller)]]**
+      - **[[A/Dコンバータ (ADC - Analog-to-Digital Converter)]]**
+      - **[[D/Aコンバータ (DAC - Digital-to-Analog Converter)]]**
+      - **[[ウォッチドッグタイマ (WDT - Watchdog Timer)]]**
+      - **[[シリアル通信インターフェース]]** (詳細は後述)
+         - `[[UART (Universal Asynchronous Receiver/Transmitter)]]`
+         - `[[I2C (Inter-Integrated Circuit)]]`
+         - `[[SPI (Serial Peripheral Interface)]]`
+   - **[[シングルボードコンピュータ (SBC - Single-Board Computer) MOC]]**
+      - `[[Raspberry Pi (フルサイズモデル)]]` (MPUベース)
+      - `[[SBCとMCUボードの違い]]`
+   - **[[(オプション) FPGA (Field-Programmable Gate Array) と ASIC (Application-Specific Integrated Circuit)]]**
+
+## 3. [[組込みシステムのソフトウェア基礎 MOC]]
+   - **[[組込みプログラミング言語 MOC]]**
+      - **[[C言語と組込み開発]]**
+         - `[[ビット演算]]`
+         - `[[ポインタとメモリアドレス直接操作]]`
+         - `[[`volatile` キーワード]]`
+         - `[[構造体とレジスタマッピング]]`
+      - **[[C++と組込み開発]]**
+         - `[[オブジェクト指向の適用]]`
+         - `[[RAII (Resource Acquisition Is Initialization) によるリソース管理]]`
+         - `[[組込み向けC++の注意点 (例外、RTTI、STL)]]`
+      - **[[MicroPython / CircuitPython MOC]]**
+         - `[[Pythonの組込み向けサブセット]]`
+         - `[[ラピッドプロトタイピングと教育での利用]]`
+      - `[[(オプション) Ada, Rust, Goなどの組込み利用]]`
+   - **[[ベアメタルプログラミング (Bare-metal Programming) MOC]]**
+      - [[OSなしでハードウェアを直接制御するプログラミング]]
+      - `[[ブートシーケンスとスタートアップルーチン]]`
+      - `[[レジスタ直接操作]]`
+      - `[[割り込みハンドラ (Interrupt Service Routine - ISR) の実装]]`
+   - **[[リアルタイムOS (RTOS - Real-Time Operating System) MOC]]**
+      - `[[RTOSの定義と目的 (時間的制約を守る)]]`
+      - `[[汎用OSとの違い]]`
+      - **[[RTOSのコアコンセプト]]**
+         - `[[タスク (スレッド) 管理]]`
+         - `[[リアルタイムスケジューリング]]` (優先度ベース、プリエンプティブ)
+         - `[[タスク間同期 (セマフォ, ミューテックス, キュー)]]`
+         - `[[割り込み管理]]`
+         - `[[メモリ管理]]`
+      - **[[ハードリアルタイム vs. ソフトリアルタイム]]**
+      - **[[代表的なRTOS]]**
+         - `[[FreeRTOS]]` (デファクトスタンダード)
+         - `[[Azure RTOS (ThreadX)]]`
+         - `[[Zephyr]]`
+         - `[[mbed OS]]`
+   - **[[組込みLinux (Embedded Linux) MOC]]**
+      - `[[組込みLinuxの利点と適用分野]]` (SBCなど高機能デバイス)
+      - `[[クロスコンパイル環境の構築]]`
+      - `[[ブートローダ (U-Bootなど)]]`
+      - `[[Linuxカーネルのコンフィグレーションとビルド]]`
+      - `[[ルートファイルシステムの構築]]`
+      - `[[デバイスドライバの基礎]]`
+      - `[[(オプション) Yocto Project / Buildroot]]` (カスタムLinuxディストリビューション構築)
+
+## 4. [[組込み/IoT向けハードウェアプラットフォーム MOC]]
+   - **[[Arduino MOC]]**
+      - `[[Arduinoの思想とエコシステム (プロトタイピング、教育)]]`
+      - `[[Arduinoボードの種類 (Uno, Nano, Megaなど)]]`
+      - `[[Arduino IDEとプログラミング言語 (C++ベース)]]`
+      - `[[シールド (Shields) による機能拡張]]`
+   - **[[ESP32 / ESP8266 MOC]]**
+      - `[[ESP32/ESP8266の特徴 (Wi-Fi/Bluetooth内蔵、低価格、高性能)]]`
+      - `[[開発環境 (Arduino IDE, ESP-IDF, MicroPython)]]`
+   - **[[Raspberry Pi Pico MOC]]**
+      - `[[RP2040マイクロコントローラ]]`
+      - `[[PIO (Programmable I/O)]]`
+      - `[[開発環境 (C/C++ SDK, MicroPython)]]`
+   - **[[STM32 MOC]]** (ARM Cortex-Mベース)
+      - `[[STM32シリーズのラインナップ]]`
+      - `[[開発環境 (STM32CubeIDE, Mbed, Keil, IAR)]]`
+   - **[[Raspberry Pi (フルサイズ) MOC]]** (SBC)
+      - `[[Raspberry Pi OS (旧Raspbian)]]`
+      - `[[GPIOプログラミング (Python, C)]]`
+      - `[[IoTゲートウェイとしての利用]]`
+   - **[[センサー (Sensors) MOC]]**
+      - `[[センサーの種類 (温度, 湿度, 圧力, 加速度, ジャイロ, 光, 距離, ガスなど)]]`
+      - `[[センサーとのインターフェース (I2C, SPI, UART, アナログ)]]`
+   - **[[アクチュエータ (Actuators) MOC]]**
+      - `[[アクチュエータの種類 (LED, モーター, サーボ, リレー, ソレノイド)]]`
+      - `[[ドライバ回路の必要性]]`
+
+## 5. [[IoT通信プロトコルとネットワーク MOC]]
+   - **IoTネットワークの階層と課題** (低消費電力、長距離、多数デバイス接続)
+   - **[[低消費電力広域ネットワーク (LPWAN - Low-Power Wide-Area Network) MOC]]**
+      - **[[LoRaWAN MOC]]**
+         - `[[LoRa (物理層) と LoRaWAN (MAC層)]]`
+         - `[[アーキテクチャ (エンドデバイス, ゲートウェイ, ネットワークサーバー, アプリケーションサーバー)]]`
+         - `[[クラス (A, B, C)]]`
+      - **[[NB-IoT (NarrowBand-IoT) MOC]]** (セルラーLPWAN)
+      - `[[Sigfox MOC]]` (ウルトラナローバンド)
+   - **[[近距離無線通信 (Short-Range Wireless) MOC]]**
+      - **[[Wi-Fi (IEEE 802.11)]]**
+         - `[[IoTにおけるWi-Fiの利用 (消費電力の課題)]]`
+         - `[[Wi-Fi HaLow (IEEE 802.11ah)]]`
+      - **[[Bluetooth / Bluetooth Low Energy (BLE) MOC]]**
+         - `[[BLEのアーキテクチャ (GATT, GAP)]]`
+         - `[[セントラルとペリフェラル]]`
+         - `[[プロファイル、サービス、キャラクタリスティック]]`
+         - `[[ビーコン (iBeacon, Eddystone)]]`
+      - **[[メッシュネットワークプロトコル]]**
+         - `[[Zigbee MOC]]`
+         - `[[Z-Wave MOC]]`
+         - `[[Thread MOC]]`
+      - `[[NFC (Near Field Communication)]]`
+   - **[[アプリケーション層プロトコル (IoT向け) MOC]]**
+      - **[[MQTT (Message Queuing Telemetry Transport) MOC]]**
+         - `[[Publish/Subscribeモデル]]`
+         - `[[ブローカー (Broker), トピック (Topic), QoS (Quality of Service)]]`
+      - **[[CoAP (Constrained Application Protocol) MOC]]**
+         - `[[リソース制約環境向けのRESTライクプロトコル]]`
+         - `[[UDPベース]]`
+      - **[[AMQP (Advanced Message Queuing Protocol) MOC]]**
+      - **[[HTTP/HTTPSのIoT利用と課題]]**
+
+## 6. [[IoTプラットフォームとクラウド連携 MOC]]
+   - **IoTプラットフォームの役割** (デバイス管理、データ収集、処理、分析、可視化)
+   - **主要なクラウドIoTプラットフォーム**
+      - **[[AWS IoT MOC]]**
+         - `[[AWS IoT Core (デバイスゲートウェイ, メッセージブローカー)]]`
+         - `[[AWS IoT Device Management]]`
+         - `[[AWS IoT Device Defender]]` (セキュリティ)
+         - `[[AWS IoT Analytics]]`
+         - `[[AWS IoT Greengrass]]` (エッジコンピューティング)
+      - **[[Azure IoT MOC]]**
+         - `[[Azure IoT Hub]]`
+         - `[[Azure IoT Central]]` (SaaSソリューション)
+         - `[[Azure Sphere]]` (セキュアMCUプラットフォーム)
+      - **[[Google Cloud IoT MOC]]**
+         - `[[Cloud IoT Core (サービス終了、移行先)]]`
+         - `[[Pub/Sub` と `Dataflow` を用いたアーキテクチャ]]`
+   - **デバイスプロビジョニングと管理**
+   - **データインジェストとストレージ**
+   - **ルールエンジンとイベント処理**
+   - **デバイスツイン (Device Twin / Digital Twin)**
+   - **クラウドからデバイスへの通信 (Cloud-to-Device)**
+
+## 7. [[組込みシステムとIoTのセキュリティ MOC]]
+   - **組込み/IoTセキュリティの特有の脅威** (物理的攻撃, ライフサイクルの長さ, リソース制約)
+   - **[[デバイスレベルのセキュリティ MOC]]**
+      - **[[セキュアブート (Secure Boot)]]**
+      - **[[トラストゾーン (TrustZone) / TEE (Trusted Execution Environment)]]**
+      - **[[ハードウェアセキュリティモジュール (HSM) / セキュアエレメント (SE)]]**
+      - **[[物理的複製困難関数 (PUF - Physically Unclonable Function)]]**
+      - **[[ファームウェアの暗号化と署名]]**
+      - **[[デバッグポートの無効化]]**
+      - `[[耐タンパー性 (Tamper Resistance)]]`
+   - **[[通信のセキュリティ MOC]]**
+      - `[[TLS / DTLS (Datagram TLS)]]` (CoAP向け)
+      - `[[VPNの利用]]`
+      - `[[プロトコル固有のセキュリティ (LoRaWANのJoin Procedureなど)]]`
+   - **[[ネットワークレベルのセキュリティ MOC]]**
+      - `[[デバイスのセグメンテーション]]`
+      - `[[ファイアウォールとIDS/IPS]]`
+   - **[[クラウド/アプリケーションレベルのセキュリティ MOC]]**
+      - **[[デバイス認証と認可]]** (X.509証明書, トークン)
+      - `[[APIセキュリティ]]`
+      - `[[データの暗号化 (保存時、転送時)]]`
+   - **[[セキュアなファームウェア更新 (FOTA/OTA) MOC]]**
+      - [[ファームウェアの完全性と真正性の検証]]
+      - [[安全な配信メカニズム]]
+      - [[ロールバック機能]]
+   - **セキュリティのライフサイクル管理**
+   - **主要なIoTセキュリティガイドライン**
+
+## 8. [[組込み/IoT開発のプロセスと運用 MOC]]
+   - **[[組込み開発のワークフロー MOC]]**
+      - `[[クロスコンパイル]]`
+      - `[[デバッギングとトレース (JTAG, SWD)]]`
+      - `[[ロジックアナライザとオシロスコープ]]`
+      - `[[ハードウェアインザループ (HIL) シミュレーション]]`
+   - **[[組込み/IoTシステムのテスト MOC]]**
+      - `[[ユニットテストとハードウェア抽象化レイヤー (HAL)]]`
+      - `[[インテグレーションテスト (ハードウェア含む)]]`
+      - `[[システムテスト]]`
+      - `[[耐久テストとストレステスト]]`
+      - `[[消費電力テスト]]`
+   - **[[CI/CD for Embedded/IoT MOC]]**
+      - [[ハードウェアを組み合わせたテストの自動化]]
+      - [[ファームウェアの自動ビルドと配布]]
+   - **[[DevOps for IoT (IoT DevOps) MOC]]**
+      - [[デバイスフリート管理 (Device Fleet Management)]]
+      - [[リモート監視とメンテナンス]]
+      - [[FOTA (Firmware Over-the-Air) 更新の運用]]
+
+## 9. [[組込み/IoTの応用分野とケーススタディ MOC]]
+   - **[[スマートホーム]]** (スマートスピーカー, スマート照明, スマートロック)
+   - **[[ウェアラブルデバイス]]** (スマートウォッチ, フィットネストラッカー)
+   - **[[コネクテッドカーと自動運転]]** (ECU, CANバス, V2X)
+   - **[[インダストリアルIoT (IIoT) / インダストリー4.0]]**
+      - `[[予知保全 (Predictive Maintenance)]]`
+      - `[[スマートファクトリー]]`
+      - `[[SCADAとPLC]]`
+   - **[[スマートシティ]]** (スマート街灯, 交通監視, 環境センシング)
+   - **[[スマート農業 (Smart Agriculture)]]** (土壌センサー, ドローン, 自動水やり)
+   - **[[ヘルスケアIoT (IoMT - Internet of Medical Things)]]** (遠隔患者モニタリング, ウェアラブルセンサー)
+   - **[[スマートグリッドとエネルギー管理]]**
+   - **[[小売業 (スマートリテール)]]** (在庫管理, ビーコンによる顧客追跡)
+
+## 10. [[組込み/IoTの将来とトレンド MOC]]
+   - **[[エッジコンピューティングとAI (Edge AI / TinyML)]]**
+      - [[デバイス上での機械学習推論]]
+   - **[[5GとIoT]]** (高速・低遅延・多接続)
+   - **[[WebAssembly (Wasm) とIoT/組込み]]** (ポータビリティとセキュリティ)
+   - **[[デジタルツイン (Digital Twin)]]**
+   - **[[セキュリティとプライバシーのさらなる重要化]]**
+   - **[[持続可能性と省エネルギー技術]]**
+   - **[[オープンソースハードウェアとソフトウェアの役割拡大]]**
